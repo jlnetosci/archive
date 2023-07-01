@@ -1,0 +1,57 @@
+#!/bin/bash
+# ------------------------------------------------------------------
+# Author: 		João L. Neto (https://github.com/jlnetosci/)
+#
+# Created: 		2023-06-30
+#
+# Description:	Archives websites into the wayback machine. 
+#				Saves a local copy to be pushed to github and  
+#				function as a web-based personal archive.
+#				Outputs lists to feed into a summary table.
+#
+# Arguments: 	$1: url to be archived
+#				$2: name of the folder to save the webpage
+#				$3: prefix of web-based personal archive to add to 
+#					list
+#
+# Notes:		1) If left empty $3 will default to 
+#				https://github.com/jlnetosci/archive/pages/
+#				2) Depends on python3 and the waybackpy package.  
+#				3) Depends on companion script named savepage.
+# ------------------------------------------------------------------
+
+#Add URL to the original URLs list and folder to the folders list
+echo $1 >> original.lst
+tail -n 1 original.lst
+echo $2 >> folder.lst
+tail -n 1 folder.lst
+
+#Recode third positional argument 
+archive_dir=$3
+
+#Backup to the wayback machine
+waybackpy --url $1 --save >> outputs.txt
+
+#Check output from wayback
+tail -n 4 outputs.txt
+
+#Add wayback URL to wayback list
+tail -n 3 outputs.txt | head -n 1 >> wayback.lst
+
+#Save local copy using the savepage script
+savepage $1 $2 >> outputs.txt
+
+#Check output from savepage
+tail -n 1 outputs.txt
+
+#Check for the third argument
+if [ -z "$3" ]
+then
+	archive_dir="https://github.com/jlnetosci/archive/pages/"
+fi
+
+#Add archive URL to archive list
+echo "$archive_dir$2" >> archive.lst
+
+#Add webarchive URL to the metadata file
+cat <(echo "Webarchive URL:") <(tail -n 1 wayback.lst) | tr "\n" " "^C >> $PWD/pages/$2/metadata.txt

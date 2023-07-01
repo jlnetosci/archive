@@ -1,0 +1,47 @@
+#!/bin/env python3
+import subprocess
+from bs4 import BeautifulSoup
+import requests
+from datetime import datetime
+import argparse
+
+def save_webpage_with_metadata(url, folder_name):
+    """
+    Saves a webpage and associated resources, along with metadata.
+
+    The function downloads the webpage and associated resources using wget, extracts metadata using BeautifulSoup, and saves the metadata to a file. 
+    The metadata includes date and time at save, webpage title, description (if available), and URL.
+
+    Args:
+        url (str): The URL of the webpage to save.
+        folder_name (str): The name of the folder to save the webpage and metadata.
+    """
+    # Download the webpage and associated resources using wget
+    wget_command = f'wget -q --page-requisites --adjust-extension --convert-links --no-parent --timestamping --no-directories --directory-prefix=./pages/{folder_name}/ {url}'
+    subprocess.call(wget_command, shell=True)
+
+    # Extract metadata using BeautifulSoup
+    response = requests.get(url)
+    soup = BeautifulSoup(response.content, 'html.parser')
+    title = soup.title.string.strip() if soup.title else ''
+    description = soup.find('meta', attrs={'name': 'description'})
+    description = description['content'].strip() if description else ''
+
+    # Save the metadata to a file
+    metadata_file = f'./pages/{folder_name}/metadata.txt'
+    with open(metadata_file, 'w', encoding='utf-8') as file:
+        current_datetime = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+        file.write(f'Date and Time: {current_datetime}\n')
+        file.write(f'Title: {title}\n')
+        file.write(f'Description: {description}\n')
+        file.write(f'URL: {url}\n')
+
+    print('Webpage and metadata saved successfully!')
+
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser(description='Save webpage with metadata')
+    parser.add_argument('url', type=str, help='URL of the webpage')
+    parser.add_argument('folder_name', type=str, help='Folder name for saving the webpage and metadata')
+    args = parser.parse_args()
+
+    save_webpage_with_metadata(args.url, args.folder_name)
