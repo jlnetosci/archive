@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        
+        
+            <title>How to Dual Boot Windows 10 and Ubuntu – Linux Dual Booting Tutorial</title>
+        
+        <meta name="HandheldFriendly" content="True" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        
+            <link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,400&family=Roboto+Mono:wght@400;700&display=swap">
+        
+
+        
+        
+    <link
+  rel="preload"
+  as="style"
+  onload="this.onload=null;this.rel='stylesheet'"
+  href="https://cdn.freecodecamp.org/news-assets/prism/1.29.0/themes/prism.min.css"
+/>
+<noscript>
+  <link
+    rel="stylesheet"
+    href="https://cdn.freecodecamp.org/news-assets/prism/1.29.0/themes/prism.min.css"
+  />
+</noscript>
+<link
+  rel="preload"
+  as="style"
+  onload="this.onload=null;this.rel='stylesheet'"
+  href="https://cdn.freecodecamp.org/news-assets/prism/1.29.0/plugins/unescaped-markup/prism-unescaped-markup.min.css"
+/>
+<noscript>
+  <link
+    rel="stylesheet"
+    href="https://cdn.freecodecamp.org/news-assets/prism/1.29.0/plugins/unescaped-markup/prism-unescaped-markup.min.css"
+  />
+</noscript>
+
+<script
+  defer
+  src="https://cdn.freecodecamp.org/news-assets/prism/1.29.0/components/prism-core.min.js"
+></script>
+<script
+  defer
+  src="https://cdn.freecodecamp.org/news-assets/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"
+></script>
+
+
+
+        
+        <link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://www.freecodecamp.org/news/assets/css/global-26e2f3cde9.css" />
+        <link rel="stylesheet" type="text/css" href="screen-5a4f9d5c91.css" />
+        <link rel="stylesheet" type="text/css" href="search-bar-124f5f949c.css" />
+
+        
+        <script defer src="https://cdn.freecodecamp.org/news-assets/algolia/algoliasearch-3-33-0/algoliasearch.min.js"></script>
+        <script defer src="https://cdn.freecodecamp.org/news-assets/algolia/autocomplete-0-36-0/autocomplete.min.js"></script>
+
+        
+        <script defer src="https://cdn.freecodecamp.org/news-assets/dayjs/1.10.4/dayjs.min.js"></script>
+        <script defer src="https://cdn.freecodecamp.org/news-assets/dayjs/1.10.4/localizedFormat.min.js"></script>
+        <script defer src="https://cdn.freecodecamp.org/news-assets/dayjs/1.10.4/relativeTime.min.js"></script>
+
+        
+        
+            <script defer src="https://cdn.freecodecamp.org/news-assets/dayjs/1.10.4/locale/en.min.js"></script>
+        
+
+        
+        <script>let client,index;document.addEventListener("DOMContentLoaded",(()=>{client=algoliasearch("QMJYL5WYTI","89770b24481654192d7a5c402c6ad9a0"),index=client.initIndex("news")})),document.addEventListener("DOMContentLoaded",(()=>{const e=window.screen.width,t=window.screen.height,n=e>=767&&t>=768?8:5,o=document.getElementById("search-form"),s=document.getElementById("search-input"),a=document.getElementById("dropdown-container");let i,d,c;s.addEventListener("input",(e=>{i=e.target.value})),o.addEventListener("submit",(e=>{e.preventDefault(),function(){if(d=document.getElementsByClassName("aa-cursor")[0],d&&i){const e=d.querySelector("a").href;window.location.assign(e)}else!d&&i&&c&&window.location.assign(`https://www.freecodecamp.org/news/search?query=${i}`)}()}));const l=autocomplete("#search-input",{hint:!1,keyboardShortcuts:["s",191],openOnFocus:!0,appendTo:a,debug:!0},[{source:autocomplete.sources.hits(index,{hitsPerPage:n}),debounce:250,templates:{suggestion:e=>(c=!0,`\n            <a href="https://www.freecodecamp.org/news/${e.url}">\n              <div class="algolia-result">\n                <span>${e._highlightResult.title.value}</span>\n              </div>\n            </a>\n          `),empty:()=>(c=!1,'\n            <div class="aa-suggestion footer-suggestion no-hits-footer">\n              <div class="algolia-result">\n                <span>\n                  No tutorials found\n                </span>\n              </div>\n            </div>\n          '),footer:e=>{if(!e.isEmpty)return`\n              <div class="aa-suggestion footer-suggestion">\n                <a id="algolia-footer-selector" href="https://www.freecodecamp.org/news/search?query=${i}">\n                  <div class="algolia-result algolia-footer">\n                    See all results for ${i}\n                  </div>\n                </a>\n              </div>\n            `}}}]).on("autocomplete:selected",((e,t,n,o)=>{d=t?t.url:`https://www.freecodecamp.org/news/search?query=${i}`,"click"!==o.selectionMethod&&"tabKey"!==o.selectionMethod&&c&&window.location.assign(d)}));document.addEventListener("click",(e=>{e.target!==s&&l.autocomplete.close()}))})),document.addEventListener("DOMContentLoaded",(()=>{dayjs.extend(dayjs_plugin_localizedFormat),dayjs.extend(dayjs_plugin_relativeTime),dayjs.locale("en")}));const isAuthenticated=document.cookie.split(";").some((e=>e.trim().startsWith("jwt_access_token="))),isDonor=document.cookie.split(";").some((e=>e.trim().startsWith("isDonor=true")));</script>
+
+        
+        
+    
+        <script
+            data-ad-client="ca-pub-9482786369113753"
+            src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
+            crossorigin="anonymous"
+            async
+        ></script>
+    
+
+
+        
+        
+    <script defer src="fitvids-5d12072cbf.js"></script>
+    
+    <script>document.addEventListener("DOMContentLoaded",(()=>{const t=document.querySelector(".post-full-content");t&&fitVids(t)}));</script>
+
+
+        
+        
+
+        <link rel="icon" href="https://cdn.freecodecamp.org/universal/favicons/favicon.ico" type="image/png">
+        
+        
+            <link rel="canonical" href="https://www.freecodecamp.org/news/how-to-dual-boot-windows-10-and-ubuntu-linux-dual-booting-tutorial/">
+        
+        <meta name="referrer" content="no-referrer-when-downgrade">
+
+        
+
+        
+    <meta name="description" content="You don’t have to have two different computers to use Linux and Windows 10. It&#39;s possible to have a Linux distro installed on a computer with Windows 10 preinstalled. In this article, I will show you how to dual boot Windows 10 and the popular Ubuntu Linux distro. But before">
+
+    
+    <meta property="og:site_name" content="freeCodeCamp.org">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="How to Dual Boot Windows 10 and Ubuntu – Linux Dual Booting Tutorial">
+    
+        <meta property="og:description" content="You don’t have to have two different computers to use Linux and Windows 10. It&#39;s possible to have a Linux distro installed on a computer with Windows 10 preinstalled. In this article, I will show you how to dual boot Windows 10 and the popular Ubuntu Linux distro. But before">
+    
+    <meta property="og:url" content="https://www.freecodecamp.org/news/how-to-dual-boot-windows-10-and-ubuntu-linux-dual-booting-tutorial/">
+    <meta property="og:image" content="https://www.freecodecamp.org/news/content/images/2022/08/dualBoot--1-.png">
+    <meta property="article:published_time" content="2022-08-24T20:09:09.000Z">
+    <meta property="article:modified_time" content="2022-08-24T20:09:09.000Z">
+    
+        <meta property="article:tag" content="Linux">
+    
+        <meta property="article:tag" content="Windows 10">
+    
+    <meta property="article:publisher" content="https://www.facebook.com/freecodecamp">
+    
+
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="How to Dual Boot Windows 10 and Ubuntu – Linux Dual Booting Tutorial">
+    
+        <meta name="twitter:description" content="You don’t have to have two different computers to use Linux and Windows 10. It&#39;s possible to have a Linux distro installed on a computer with Windows 10 preinstalled. In this article, I will show you how to dual boot Windows 10 and the popular Ubuntu Linux distro. But before">
+    
+    <meta name="twitter:url" content="https://www.freecodecamp.org/news/how-to-dual-boot-windows-10-and-ubuntu-linux-dual-booting-tutorial/">
+    <meta name="twitter:image" content="https://www.freecodecamp.org/news/content/images/2022/08/dualBoot--1-.png">
+    <meta name="twitter:label1" content="Written by">
+    <meta name="twitter:data1" content="Kolade Chris">
+    <meta name="twitter:label2" content="Filed under">
+    <meta name="twitter:data2" content="Linux, Windows 10">
+    <meta name="twitter:site" content="@freecodecamp">
+    
+        <meta name="twitter:creator" content="@ksound22">
+    
+
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="628">
+
+
+        
+    <script type="application/ld+json">{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"publisher": {
+		"@type": "Organization",
+		"name": "freeCodeCamp.org",
+		"url": "https://www.freecodecamp.org/news/",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://cdn.freecodecamp.org/platform/universal/fcc_primary.svg",
+			"width": 2100,
+			"height": 240
+		}
+	},
+	"image": {
+		"@type": "ImageObject",
+		"url": "https://www.freecodecamp.org/news/content/images/2022/08/dualBoot--1-.png",
+		"width": 1200,
+		"height": 628
+	},
+	"url": "https://www.freecodecamp.org/news/how-to-dual-boot-windows-10-and-ubuntu-linux-dual-booting-tutorial/",
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": "https://www.freecodecamp.org/news/"
+	},
+	"datePublished": "2022-08-24T20:09:09.000Z",
+	"dateModified": "2022-08-24T20:09:09.000Z",
+	"keywords": "Linux, Windows 10",
+	"description": "You don’t have to have two different computers to use Linux and Windows 10. It&#x27;s\npossible to have a Linux distro installed on a computer with Windows 10\npreinstalled.\n\nIn this article, I will show you how to dual boot Windows 10 and the popular\nUbuntu Linux distro. But before that, you have to install Ubuntu on your Windows\n10 PC.\n\nBefore you go through this process, you must backup your files. That’s because\ninstalling an OS is a risky process. Sometimes it can overwrite the existing OS\nand del",
+	"headline": "How to Dual Boot Windows 10 and Ubuntu – Linux Dual Booting Tutorial",
+	"author": {
+		"@type": "Person",
+		"name": "Kolade Chris",
+		"url": "https://www.freecodecamp.org/news/author/kolade/",
+		"sameAs": [
+			"http://koladechris.com",
+			"https://twitter.com/ksound22"
+		],
+		"image": {
+			"@type": "ImageObject",
+			"url": "https://www.freecodecamp.org/news/content/images/2023/01/kolade-recent.jpg",
+			"width": 400,
+			"height": 400
+		}
+	}
+}</script>
+
+
+        <meta name="generator" content="Eleventy">
+        <link rel="alternate" type="application/rss+xml" title="freeCodeCamp.org" href="https://www.freecodecamp.org/news/rss/">
+
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+
+<!-- Web Monetization (https://webmonetization.org/) -->
+<meta name="monetization" content="$ilp.uphold.com/LJmbPn7WD4JB">
+<!-- end Web Monetization -->
+
+<!-- dataLayer setup -->
+<script>
+window.dataLayer = window.dataLayer || [];
+</script>
+<!-- End dataLayer setup -->
+
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5D6RKKP');</script>
+<!-- End Google Tag Manager -->
+
+
+<meta name="google-site-verification" content="b4tITLzEeeZGEpvD4mGNf3khKM4fvqejQaz9SYBQP8E" />
+
+        
+    </head>
+    
+    
+        <body class="home-template">
+    
+        <div class="site-wrapper">
+            <nav class="site-nav nav-padding">
+    <div class="site-nav-left">
+        
+<form id="search-form" data-test-label="search-bar">
+    <div role="search" class="searchbox__wrapper">
+        <label class="fcc_sr_only" for='search-input'>
+            Search
+        </label>
+        <input type="search" placeholder="
+    Search 10,100+ tutorials
+" id="search-input" />
+        <button type="submit" class="ais-SearchBox-submit">
+            <svg class="ais-SearchBox-submitIcon" xmlns="https://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 40 40">
+    <path d="M26.804 29.01c-2.832 2.34-6.465 3.746-10.426 3.746C7.333 32.756 0 25.424 0 16.378 0 7.333 7.333 0 16.378 0c9.046 0 16.378 7.333 16.378 16.378 0 3.96-1.406 7.594-3.746 10.426l10.534 10.534c.607.607.61 1.59-.004 2.202-.61.61-1.597.61-2.202.004L26.804 29.01zm-10.426.627c7.323 0 13.26-5.936 13.26-13.26 0-7.32-5.937-13.257-13.26-13.257C9.056 3.12 3.12 9.056 3.12 16.378c0 7.323 5.936 13.26 13.258 13.26z" />
+</svg>
+
+            <span class="fcc_sr_only">Submit your search query</span>
+        </button>
+        <div id='dropdown-container'></div>
+    </div>
+</form>
+
+    </div>
+    <div class="site-nav-middle">
+        <a class="site-nav-logo" href="https://www.freecodecamp.org/news" data-test-label="site-nav-logo"><img src="https://cdn.freecodecamp.org/platform/universal/fcc_primary.svg" alt="freeCodeCamp.org" /></a>
+    </div>
+    <div class="site-nav-right">
+        <div class="nav-group">
+            <a
+                class="nav-forum"
+                id="nav-forum"
+                rel="noopener noreferrer"
+                href="https://forum.freecodecamp.org/"
+                target="_blank"
+                data-test-label="forum-button"
+            >Forum</a>
+            <a
+                class="toggle-button-nav"
+                id="nav-donate"
+                rel="noopener noreferrer"
+                href="https://www.freecodecamp.org/donate/"
+                target="_blank"
+                data-test-label="donate-button"
+            >Donate</a>
+        </div>
+    </div>
+</nav>
+
+
+            
+            <a class="banner" id="banner" data-test-label="banner" rel="noopener noreferrer" target="_blank">
+    <p id="banner-text"></p>
+</a>
+
+
+    
+    <script>document.addEventListener("DOMContentLoaded",(()=>{const e=document.getElementById("banner"),t=document.getElementById("banner-text");isAuthenticated?(t.innerHTML="Support our charity and our mission. <span>Donate to freeCodeCamp.org</span>.",e.href="https://www.freecodecamp.org/donate",e.setAttribute("text-variation","authenticated")):isDonor?(t.innerHTML="Thank you for supporting freeCodeCamp through <span>your donations</span>.",e.href="https://www.freecodecamp.org/news/how-to-donate-to-free-code-camp/",e.setAttribute("text-variation","donor")):(t.innerHTML="Learn to code — <span>free 3,000-hour curriculum</span>",e.href="https://www.freecodecamp.org/",e.setAttribute("text-variation","default"))}));</script>
+
+
+            <div id="error-message"></div>
+
+            
+    <main id="site-main" class="post-template site-main outer">
+        <div class="inner ad-layout">
+            <article class="post-full post ">
+                <header class="post-full-header">
+                    <section class="post-full-meta">
+                        <time class="post-full-meta-date" datetime="Wed Aug 24 2022 20:09:09 GMT+0000 (Coordinated Universal Time)">
+                            August 24, 2022
+                        </time>
+                        
+                            <span class="date-divider">/</span>
+                            <a  dir="ltr" href="https://www.freecodecamp.org/news/tag/linux/">
+                                #Linux
+                            </a>
+                        
+                    </section>
+                    <h1 class="post-full-title">How to Dual Boot Windows 10 and Ubuntu – Linux Dual Booting Tutorial</h1>
+                </header>
+                <div class="post-full-author-header" data-test-label="author-header-no-bio">
+                    
+                        
+                            
+    
+    
+    
+
+    <section class="author-card" data-test-label="author-card">
+        
+            
+    <img
+      srcset="kolade-recent.jpg 60w"
+      sizes="60px"
+      src="kolade-recent.jpg"
+      class="author-profile-image"
+      alt="Kolade Chris"
+      width="400"
+      height="400"
+      onerror="this.style.display='none'"
+      
+      data-test-label="profile-image"
+    />
+  
+        
+
+        <section class="author-card-content author-card-content-no-bio">
+            <span class="author-card-name">
+                <a href="https://www.freecodecamp.org/news/author/kolade/" data-test-label="profile-link">
+                    
+                        Kolade Chris
+                    
+                </a>
+            </span>
+            
+        </section>
+    </section>
+
+                        
+                    
+                </div>
+                
+                    <figure class="post-full-image">
+                        
+    <picture>
+      <source
+        media="(max-width: 700px)"
+        sizes="1px"
+        srcset="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7 1w"
+      />
+      <source 
+        media="(min-width: 701px)"
+        sizes="(max-width: 800px) 400px, (max-width: 1170px) 700px, 1400px"
+        srcset="https://www.freecodecamp.org/news/content/images/size/w300/2022/08/dualBoot--1-.png 300w,https://www.freecodecamp.org/news/content/images/size/w600/2022/08/dualBoot--1-.png 600w,https://www.freecodecamp.org/news/content/images/size/w1000/2022/08/dualBoot--1-.png 1000w,https://www.freecodecamp.org/news/content/images/size/w2000/2022/08/dualBoot--1-.png 2000w"
+      />
+      <img
+        onerror="this.style.display='none'"
+        src="dualBoot--1-.png"
+        alt="How to Dual Boot Windows 10 and Ubuntu – Linux Dual Booting Tutorial",
+        width="1200"
+        height="628"
+      >
+    </picture>
+  
+                    </figure>
+                
+                <section class="post-full-content">
+                    <div class="post-and-sidebar">
+                        <section class="post-content ">
+                            
+<p>You don’t have to have two different computers to use Linux and Windows 10. It's possible to have a Linux distro installed on a computer with Windows 10 preinstalled.</p>
+<p>In this article, I will show you how to dual boot Windows 10 and the popular Ubuntu Linux distro. But before that, you have to install Ubuntu on your Windows 10 PC.</p>
+<p>Before you go through this process, you must backup your files. That’s because installing an OS is a risky process. Sometimes it can overwrite the existing OS and delete all your files.</p>
+<p><strong>N.B.</strong>: Most of the processes in this article take time to get done, so you need to be patient.</p>
+<h2 id="whatwellcoverastepbystepguidetodualbootingwindows10andlinux">What We’ll Cover – A step-by-step Guide to Dual-Booting Windows 10 and Linux</h2>
+<ul>
+<li><a href="how-to-dual-boot-windows-10-and-ubuntu-linux-dual-booting-tutorial.html#prerequisites">Prerequisites</a></li>
+<li><a href="how-to-dual-boot-windows-10-and-ubuntu-linux-dual-booting-tutorial.html#howtopartitionyourharddriveforubuntu">How to Partition your Hard Drive for Ubuntu</a></li>
+<li><a href="how-to-dual-boot-windows-10-and-ubuntu-linux-dual-booting-tutorial.html#howtooptimizeyourharddriveformorepartitionspaceoptional">How to Optimize your Hard Drive for More Partition Space (Optional)</a></li>
+<li><a href="how-to-dual-boot-windows-10-and-ubuntu-linux-dual-booting-tutorial.html#howtodownloadubuntuinisoimageformat">How to Download Ubuntu in ISO Image Format</a></li>
+<li><a href="how-to-dual-boot-windows-10-and-ubuntu-linux-dual-booting-tutorial.html#howtomakeanubuntulinuxbootableusbdrive">How to Make an Ubuntu (Linux) Bootable USB Drive</a></li>
+<li><a href="how-to-dual-boot-windows-10-and-ubuntu-linux-dual-booting-tutorial.html#howtoinstallubuntulinuxdistroalongwithwindows10">How to Install Ubuntu Linux Distro along with Windows 10</a></li>
+<li><a href="how-to-dual-boot-windows-10-and-ubuntu-linux-dual-booting-tutorial.html#nowyoucandualbootubuntuandwindows10">Now You Can Dual Boot Ubuntu and Windows 10</a></li>
+<li><a href="how-to-dual-boot-windows-10-and-ubuntu-linux-dual-booting-tutorial.html#conclusion">Conclusion</a></li>
+</ul>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>Most importantly, there are some things you must have in place if you want to use (and dual boot) Ubuntu and Windows 10 on the same PC:</p>
+<ul>
+<li>A computer preinstalled with Windows 10</li>
+<li>A partitioned hard drive</li>
+<li>A BIOS in UEFI mode (Unified Extensible Firmware Interface)</li>
+<li>An empty USB drive of at least 4Gig for creating a bootable disk</li>
+<li>An internet connection to download Ubuntu ISO image (the Linux distro) and Rufus (a bootable drive creation tool)</li>
+</ul>
+<h2 id="howtocheckifyourpcbiosisinuefimode">How to Check If Your PC BIOS is in UEFI Mode</h2>
+<p>To check if your PC BIOS comes in UEFI mode, search for “system information” and hit <code>ENTER</code>.<br>
+<img src="ss1-5.png" alt="ss1-5" width="787" height="641" loading="lazy"></p>
+<p>Look under BIOS mode to confirm that your PC BIOS mode comes as UEFI.<br>
+<img src="ss2-5.png" alt="ss2-5" width="675" height="265" loading="lazy"></p>
+<p>If your PC BIOS is not in UEFI mode, the two operating systems won’t see each other. You can learn more about the <a href="https://www.freecodecamp.org/news/uefi-vs-bios/">difference between these two modes here</a>.</p>
+<h2 id="howtopartitionyourharddriveforubuntu">How to Partition your Hard Drive for Ubuntu</h2>
+<p>You have to partition your hard drive because you must set aside at least 20Gig for Ubuntu to live in and boot from.</p>
+<p><strong>To partition your hard drive, follow the steps below</strong>:</p>
+<p><strong>Step 1</strong>: Right-click on Start and select “Disk Management”.<br>
+<img src="ss3-5.png" alt="ss3-5" width="272" height="620" loading="lazy"></p>
+<p><strong>Step 2</strong>: Right-click on your C drive and select shrink volume.<br>
+<img src="ss4-6.png" alt="ss4-6" width="757" height="600" loading="lazy"></p>
+<p><strong>Step 3</strong>: Select at least (20000) 20Gig for Ubuntu and click “Shrink”. IT can take some time to complete, so be patient.<br>
+<img src="ss5-6.png" alt="ss5-6" width="757" height="599" loading="lazy"></p>
+<p><strong>Step 4</strong> (optional): You can go ahead and assign a letter to the new volume. Right-click on the unallocated space and select “New Simple Volume”.<br>
+<img src="ss6-5.png" alt="ss6-5" width="757" height="600" loading="lazy"></p>
+<p><strong>Step 5</strong>: Follow the wizard and assign a letter to the drive, then follow the rest of it.<br>
+<img src="ss7-4.png" alt="ss7-4" width="763" height="602" loading="lazy"></p>
+<p>After completing the wizard, the drive should be listed on your computer.<br>
+<img src="ss8-4.png" alt="ss8-4" width="503" height="597" loading="lazy"></p>
+<p>Congrats! You’ve successfully partitioned your hard drive.</p>
+<p><strong>N.B.</strong>: If you have a lot of free space in your hard drive but your PC still didn’t give you up to 20Gig partition space, then you need to optimize your PC’s hard drive. Proceed to the next section of this article to do that.</p>
+<h2 id="howtooptimizeyourharddriveformorepartitionspaceoptional">How to Optimize your Hard Drive for More Partition Space (Optional)</h2>
+<p>The common purpose of hard disk optimization is to speed up your computer during boot time and make it run smoother.</p>
+<p>At the same time, the process will defragment the hard disk and make free space more available for partitioning.</p>
+<p>To optimize your hard drive, click Start (Windows logo key), search for “defrag” and select “Defragment and Optimize Drives”.<br>
+<img src="ss9-3.png" alt="ss9-3" width="787" height="644" loading="lazy"></p>
+<p>Make sure your C drive is highlighted, then click “Optimize”.<br>
+<img src="ss10-3.png" alt="ss10-3" width="705" height="509" loading="lazy"></p>
+<p>After you’ve been able to set aside at least 20Gig for Ubuntu by partitioning your hard drive, then it’s time to download Ubuntu and make a bootable USB.</p>
+<h2 id="howtodownloadubuntuinisoimageformat">How to Download Ubuntu in ISO Image Format</h2>
+<p>The next thing is to download Ubuntu in ISO image format so you can install Ubuntu. You can download it from the Ubuntu distro website.<br>
+<img src="ss11-3.png" alt="ss11-3" width="1583" height="822" loading="lazy"></p>
+<p>After downloading Ubuntu, don’t do anything with it yet. You need to make a bootable USB and put it in there. That’s how you’ll be able to use it.</p>
+<p>The reason you can’t install Ubuntu just like that is that it doesn’t come as an executable. It comes in form of ISO (optical disk image). That means you have to find a disk to put it in before it can work.</p>
+<p>The next part of this guide shows how you can put the downloaded Ubuntu ISO on a USB stick.</p>
+<h2 id="howtomakeanubuntulinuxbootableusbdrive">How to Make an Ubuntu (Linux) Bootable USB Drive</h2>
+<p>You won’t be able to make a bootable USB drive for Ubuntu by just placing the downloaded ISO image in it. Follow these steps to get it done:</p>
+<p><strong>Step 1</strong>: You need to download a bootable USB drive creation tool like Rufus. You can <a href="https://rufus.ie/en/">download Rufus from their website</a>.<br>
+<img src="ss12-3.png" alt="ss12-3" width="1592" height="708" loading="lazy"></p>
+<p><strong>Step 2</strong>: Insert the empty USB drive into your Windows 10 PC. Right-click on Rufus and select “Open”.<br>
+<img src="ss13-1.png" alt="ss13-1" width="1074" height="673" loading="lazy"></p>
+<p><strong>Step 3</strong>: Under “Device”, select your USB drive. And under “Boot selection”, click the “Select” button and select the Ubuntu ISO file you downloaded</p>
+<p><strong>Step 4</strong>: Leave every other thing as default and click the “START” button to start burning the Ubuntu distro to the drive.<br>
+<img src="ss14-1.png" alt="ss14-1" width="477" height="583" loading="lazy"></p>
+<p><strong>Step 5</strong>: Click OK to start the process.<br>
+<img src="ss15-1.png" alt="ss15-1" width="550" height="272" loading="lazy"><br>
+<img src="ss16-1.png" alt="ss16-1" width="477" height="583" loading="lazy"></p>
+<p>Once the process is done, you should see “READY” on a green background. Click the Close button. Its time to install Ubuntu.</p>
+<p>Congrats! Now you have a bootable drive with which you can install Linux.</p>
+<p>The next step is to install the Ubuntu distro on your Windows 10 PC. To do this, you have to boot your PC from the bootable USB drive you created.</p>
+<h2 id="howtoinstallubuntulinuxdistroalongwithwindows10">How to Install Ubuntu Linux Distro along with Windows 10</h2>
+<p><strong>Step 1</strong>: Ensure the bootable drive is inserted into your Windows 10 PC</p>
+<p><strong>Step 2</strong>: Right-click on Start, hold SHIFT, and select Restart.<br>
+<img src="ss18-3.png" alt="ss18-3" width="642" height="643" loading="lazy"></p>
+<p><strong>Step 2</strong>: Select “Use a Device”.<br>
+<img src="1-use-a-device-1.jpg" alt="1-use-a-device-1" width="2000" height="958" loading="lazy"></p>
+<p><strong>Step 3</strong>: On the next screen, you should see several devices you can boot from.</p>
+<p>You may see the bootable drive as the name of the USB brand.<br>
+<img src="disk-1.jpg" alt="disk-1" width="2000" height="1500" loading="lazy"></p>
+<p>It’s possible to see it as “Ubuntu” too. Some other times, you might not see it, so you need to click on “See more devices".</p>
+<p>If you still cannot see your bootable drive, head over to your boot menu by getting into BIOS. You will see it there.</p>
+<p><strong>N.B.</strong>: You should be very careful while making changes in BIOS. Whatever you do there has a lasting effect on your computer. If you are not sure of what you're doing there, you should contact an IT professional.</p>
+<p><strong>Step 4</strong>: Choose "Install Ubuntu". You can also try it before installing it.<br>
+<img src="3-select-install-ubuntu.jpg" alt="3-select-install-ubuntu" width="1504" height="720" loading="lazy"></p>
+<p>Follow other prompts of the installation wizard and make sure you don’t replace your Windows 10 OS installation with Ubuntu. This is why I suggested you back up all your files.</p>
+<p>When you get to the point to select the partition you made, scroll to <a href="how-to-dual-boot-windows-10-and-ubuntu-linux-dual-booting-tutorial.html#howtopartitionyourharddriveforubuntu">the partition you made earlier</a> and press <code>ENTER</code>.<br>
+<img src="1-1-select-disk.jpg" alt="1-1-select-disk" width="1504" height="720" loading="lazy"></p>
+<p>Click OK to select all the space in the partition.<br>
+<img src="1-2-select-disk.jpg" alt="1-2-select-disk" width="1504" height="720" loading="lazy"></p>
+<p>This time around, the “Install now” button will not be greyed out anymore.<br>
+<img src="1-3-select-disk.jpg" alt="1-3-select-disk" width="1504" height="720" loading="lazy"></p>
+<p>Follow other prompts until Ubuntu starts installing.</p>
+<p>After the installation is done, Ubuntu will prompt you to remove the bootable drive and press <code>ENTER</code> to reboot your Computer.</p>
+<h2 id="nowyoucandualbootubuntuandwindows10">Now You Can Dual Boot Ubuntu and Windows 10</h2>
+<p>Immediately after you reboot the computer, you should see a screen that looks as shown below:<br>
+<img src="Snapchat-2063128211.jpg" alt="Snapchat-2063128211" width="1504" height="720" loading="lazy"></p>
+<p>Now, you can select which one to boot into between Ubuntu and Windows 10.</p>
+<p>To boot into Ubuntu, select Ubuntu. And to boot into Windows 10, select Windows boot manager.</p>
+<p>You can also get into your BIOS from the same place by choosing UEFI Firmware Settings.<br>
+<img src="Snapchat-778941832.jpg" alt="Snapchat-778941832" width="1504" height="720" loading="lazy"></p>
+<h2 id="conclusion">Conclusion</h2>
+<p>I hope this article helps you dual boot Ubuntu and Windows 10 on your computer.</p>
+<p>The ultimate aim of this article was to show you how to dual boot Ubuntu and Windows 10.</p>
+<p>But the article went beyond that to show you how to:</p>
+<ul>
+<li>check if your PC’s BIOS is in UEFI mode</li>
+<li>partition your hard drive</li>
+<li>optimize your hard drive</li>
+<li>make a bootable USB drive</li>
+<li>install Ubuntu Linux Distro along with Windows on your Windows 10 PC.</li>
+</ul>
+<p>If you find this article helpful, kindly share it with your friends and family.</p>
+<!--kg-card-end: markdown-->
+
+                        </section>
+                        
+                            <div class="sidebar">
+                                
+                                    <div class="ad-wrapper" data-test-label="ad-wrapper">
+    
+    <div class="ad-text" data-test-label="ad-text">ADVERTISEMENT</div>
+    <ins
+        class="adsbygoogle"
+        style="display: block; height: 280px;"
+        data-ad-client="ca-pub-9482786369113753"
+        data-ad-slot="5720086888"
+        data-ad-format="auto"
+        data-full-width-responsive="true"
+    ></ins>
+    <script>
+        if (!isAuthenticated) (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</div>
+
+                                
+                                    <div class="ad-wrapper" data-test-label="ad-wrapper">
+    
+    <div class="ad-text" data-test-label="ad-text">ADVERTISEMENT</div>
+    <ins
+        class="adsbygoogle"
+        style="display: block; height: 280px;"
+        data-ad-client="ca-pub-9482786369113753"
+        data-ad-slot="5720086888"
+        data-ad-format="auto"
+        data-full-width-responsive="true"
+    ></ins>
+    <script>
+        if (!isAuthenticated) (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</div>
+
+                                
+                                    <div class="ad-wrapper" data-test-label="ad-wrapper">
+    
+    <div class="ad-text" data-test-label="ad-text">ADVERTISEMENT</div>
+    <ins
+        class="adsbygoogle"
+        style="display: block; height: 280px;"
+        data-ad-client="ca-pub-9482786369113753"
+        data-ad-slot="5720086888"
+        data-ad-format="auto"
+        data-full-width-responsive="true"
+    ></ins>
+    <script>
+        if (!isAuthenticated) (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</div>
+
+                                
+                                    <div class="ad-wrapper" data-test-label="ad-wrapper">
+    
+    <div class="ad-text" data-test-label="ad-text">ADVERTISEMENT</div>
+    <ins
+        class="adsbygoogle"
+        style="display: block; height: 280px;"
+        data-ad-client="ca-pub-9482786369113753"
+        data-ad-slot="5720086888"
+        data-ad-format="auto"
+        data-full-width-responsive="true"
+    ></ins>
+    <script>
+        if (!isAuthenticated) (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</div>
+
+                                
+                                    <div class="ad-wrapper" data-test-label="ad-wrapper">
+    
+    <div class="ad-text" data-test-label="ad-text">ADVERTISEMENT</div>
+    <ins
+        class="adsbygoogle"
+        style="display: block; height: 280px;"
+        data-ad-client="ca-pub-9482786369113753"
+        data-ad-slot="5720086888"
+        data-ad-format="auto"
+        data-full-width-responsive="true"
+    ></ins>
+    <script>
+        if (!isAuthenticated) (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</div>
+
+                                
+                                    <div class="ad-wrapper" data-test-label="ad-wrapper">
+    
+    <div class="ad-text" data-test-label="ad-text">ADVERTISEMENT</div>
+    <ins
+        class="adsbygoogle"
+        style="display: block; height: 280px;"
+        data-ad-client="ca-pub-9482786369113753"
+        data-ad-slot="5720086888"
+        data-ad-format="auto"
+        data-full-width-responsive="true"
+    ></ins>
+    <script>
+        if (!isAuthenticated) (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</div>
+
+                                
+                                    <div class="ad-wrapper" data-test-label="ad-wrapper">
+    
+    <div class="ad-text" data-test-label="ad-text">ADVERTISEMENT</div>
+    <ins
+        class="adsbygoogle"
+        style="display: block; height: 280px;"
+        data-ad-client="ca-pub-9482786369113753"
+        data-ad-slot="5720086888"
+        data-ad-format="auto"
+        data-full-width-responsive="true"
+    ></ins>
+    <script>
+        if (!isAuthenticated) (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</div>
+
+                                
+                                    <div class="ad-wrapper" data-test-label="ad-wrapper">
+    
+    <div class="ad-text" data-test-label="ad-text">ADVERTISEMENT</div>
+    <ins
+        class="adsbygoogle"
+        style="display: block; height: 280px;"
+        data-ad-client="ca-pub-9482786369113753"
+        data-ad-slot="5720086888"
+        data-ad-format="auto"
+        data-full-width-responsive="true"
+    ></ins>
+    <script>
+        if (!isAuthenticated) (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</div>
+
+                                
+                                    <div class="ad-wrapper" data-test-label="ad-wrapper">
+    
+    <div class="ad-text" data-test-label="ad-text">ADVERTISEMENT</div>
+    <ins
+        class="adsbygoogle"
+        style="display: block; height: 280px;"
+        data-ad-client="ca-pub-9482786369113753"
+        data-ad-slot="5720086888"
+        data-ad-format="auto"
+        data-full-width-responsive="true"
+    ></ins>
+    <script>
+        if (!isAuthenticated) (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</div>
+
+                                
+                            </div>
+                        
+                    </div>
+                    <hr />
+                    
+                        <div class="post-full-author-header" data-test-label="author-header-with-bio">
+                            
+                                
+    
+    
+    
+
+    <section class="author-card" data-test-label="author-card">
+        
+            
+    <img
+      srcset="kolade-recent.jpg 60w"
+      sizes="60px"
+      src="kolade-recent.jpg"
+      class="author-profile-image"
+      alt="Kolade Chris"
+      width="400"
+      height="400"
+      onerror="this.style.display='none'"
+      loading="lazy"
+      data-test-label="profile-image"
+    />
+  
+        
+
+        <section class="author-card-content ">
+            <span class="author-card-name">
+                <a href="https://www.freecodecamp.org/news/author/kolade/" data-test-label="profile-link">
+                    
+                        Kolade Chris
+                    
+                </a>
+            </span>
+            
+                
+                    <p data-test-label="author-bio">Web developer and technical writer focusing on frontend technologies. I also dabble in a lot of other technologies.</p>
+                
+            
+        </section>
+    </section>
+
+                            
+                        </div>
+                        <hr />
+                    
+
+                    
+                    
+                        
+    
+
+
+<p data-test-label="social-row-cta" class="social-row">
+    If you read this far, tweet to the author to show them you care. <button id="tweet-btn" class="cta-button" data-test-label="tweet-button">Tweet a thanks</button>
+</p>
+
+
+    
+    <script>document.addEventListener("DOMContentLoaded",(()=>{const t=document.getElementById("tweet-btn"),e=window.location,n="How%20to%20Dual%20Boot%20Windows%2010%20and%20Ubuntu%20%E2%80%93%20Linux%20Dual%20Booting%20Tutorial".replace(/&#39;/g,"%27"),o="",i="@ksound22",r=Boolean("");let a;if(r&&(o||i)){const t={originalPostAuthor:"",currentPostAuthor:"Kolade Chris"};a=encodeURIComponent(`Thank you ${o||t.originalPostAuthor} for writing this helpful article, and ${i||t.currentPostAuthor} for translating it.`)}else!r&&i&&(a=encodeURIComponent(`Thank you ${i} for writing this helpful article.`));const l=`window.open(\n    '${a?`https://twitter.com/intent/tweet?text=${a}%0A%0A${n}%0A%0A${e}`:`https://twitter.com/intent/tweet?text=${n}%0A%0A${e}`}',\n    'share-twitter',\n    'width=550, height=235'\n  ); return false;`;t.setAttribute("onclick",l)}));</script>
+
+
+                        
+
+<div class="learn-cta-row" data-test-label="learn-cta-row">
+    <p>
+        Learn to code for free. freeCodeCamp's open source curriculum has helped more than 40,000 people get jobs as developers. <a href="https://www.freecodecamp.org/learn/" class="cta-button" id="learn-to-code-cta" rel="noopener noreferrer" target="_blank">Get started</a>
+    </p>
+</div>
+
+                    
+                </section>
+                
+                    <div class="banner-ad bottom">
+                        <div class="ad-wrapper" data-test-label="ad-wrapper">
+    
+    <div class="ad-text" data-test-label="ad-text">ADVERTISEMENT</div>
+    <ins
+        class="adsbygoogle"
+        style="display: block; height: 280px;"
+        data-ad-client="ca-pub-9482786369113753"
+        data-ad-slot="5720086888"
+        data-ad-format="auto"
+        data-full-width-responsive="true"
+    ></ins>
+    <script>
+        if (!isAuthenticated) (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</div>
+
+                    </div>
+                
+            </article>
+        </div>
+    </main>
+
+
+            
+
+<footer class="site-footer">
+    <div class="footer-container">
+        <div class="footer-top">
+            <div class="footer-desc-col">
+                <p data-test-label="tax-exempt-status">freeCodeCamp is a donor-supported tax-exempt 501(c)(3) charity organization (United States Federal Tax Identification Number: 82-0779546)</p>
+                <p data-test-label="mission-statement">Our mission: to help people learn to code for free. We accomplish this by creating thousands of videos, articles, and interactive coding lessons - all freely available to the public. We also have thousands of freeCodeCamp study groups around the world.</p>
+                <p data-test-label="donation-initiatives">Donations to freeCodeCamp go toward our education initiatives, and help pay for servers, services, and staff.</p>
+                <p class="footer-donation" data-test-label="donate-text">
+                    You can <a href="https://www.freecodecamp.org/donate/" class="inline" rel="noopener noreferrer" target="_blank" >make a tax-deductible donation here</a>.
+                </p>
+            </div>
+            <div class="trending-guides" data-test-label="trending-guides">
+                <div class="col-header">Trending Guides</div>
+                <div class="trending-guides-row">
+                    <div class="footer-col footer-col-1">
+                        <a href="https://www.freecodecamp.org/news/how-to-check-if-a-string-contains-a-substring-javascript/" rel="noopener noreferrer" target="_blank">JS Substring Tutorial
+                        </a>
+                        <a href="https://www.freecodecamp.org/news/bubble-sort-algorithm-in-java-cpp-python-with-example-code/" rel="noopener noreferrer" target="_blank">Bubble Sort Algorithm
+                        </a>
+                        <a href="https://www.freecodecamp.org/news/html-background-image-how-to-add-wallpaper-images-to-your-website/" rel="noopener noreferrer" target="_blank">HTML Background Image
+                        </a>
+                        <a href="https://www.freecodecamp.org/news/what-is-data-science-what-a-data-scientist-actually-does/" rel="noopener noreferrer" target="_blank">What is Data Science?
+                        </a>
+                        <a href="https://www.freecodecamp.org/news/sql-subquery-how-to-sub-query-in-select-statement/" rel="noopener noreferrer" target="_blank">SQL Subquery in SELECT
+                        </a>
+                        <a href="https://www.freecodecamp.org/news/rename-file-linux-bash-command/" rel="noopener noreferrer" target="_blank">Rename a File in Linux
+                        </a>
+                        <a href="https://www.freecodecamp.org/news/git-remove-last-commit-how-to-undo-a-commit-in-git/" rel="noopener noreferrer" target="_blank">Git Remove Last Commit
+                        </a>
+                        <a href="https://www.freecodecamp.org/news/what-is-a-java-hashmap/" rel="noopener noreferrer" target="_blank">What is a Java Hashmap?
+                        </a>
+                        <a href="https://www.freecodecamp.org/news/crud-operations-crud-definition-in-programming/" rel="noopener noreferrer" target="_blank">CRUD Operations Defined
+                        </a>
+                        <a href="https://www.freecodecamp.org/news/git-push-local-branch-to-remote-how-to-publish-a-new-branch-in-git/" rel="noopener noreferrer" target="_blank">Git Push Local to Remote
+                        </a>
+                    </div>
+                    <div class="footer-col footer-col-2">
+                        <a href="https://www.freecodecamp.org/news/ux-vs-ui-whats-the-difference-definition-and-meaning/" rel="noopener noreferrer" target="_blank">UX vs UI
+                        </a>
+                        <a href="https://www.freecodecamp.org/news/vlookup-in-excel-formula-and-example-function/" rel="noopener noreferrer" target="_blank">VLOOKUP in Excel
+                        </a>
+                        <a href="https://www.freecodecamp.org/news/big-o-cheat-sheet-time-complexity-chart/" rel="noopener noreferrer" target="_blank">Big O Cheatsheet
+                        </a>
+                        <a href="https://www.freecodecamp.org/news/renaming-a-git-branch-how-to-rename-the-current-branch-in-git/" rel="noopener noreferrer" target="_blank">Git Rename Branch
+                        </a>
+                        <a href="https://www.freecodecamp.org/news/how-to-create-a-pivot-table-in-excel/" rel="noopener noreferrer" target="_blank">Excel Pivot Table
+                        </a>
+                        <a href="https://www.freecodecamp.org/news/what-is-alt-text-image-alt-text-html-example/" rel="noopener noreferrer" target="_blank">What is Alt Text?
+                        </a>
+                        <a href="https://www.freecodecamp.org/news/html-drop-down-menu-how-to-add-a-drop-down-list-with-the-select-element/" rel="noopener noreferrer" target="_blank">HTML Dropdown Menu
+                        </a>
+                        <a href="https://www.freecodecamp.org/news/python-reverse-list-reversing-an-array-in-python/" rel="noopener noreferrer" target="_blank">Python Reverse List
+                        </a>
+                        <a href="https://www.freecodecamp.org/news/how-to-compare-arrays-in-javascript/" rel="noopener noreferrer" target="_blank">Compare Arrays in JS
+                        </a>
+                        <a href="https://www.freecodecamp.org/news/html-background-color-change-bg-color-tutorial/" rel="noopener noreferrer" target="_blank">HTML Background Color
+                        </a>
+                    </div>
+                    <div class="footer-col footer-col-3">
+                        <div class="footer-left">
+                            <a href="https://www.freecodecamp.org/news/how-to-lowercase-a-string-in-javascript-tolowercase-in-js/" rel="noopener noreferrer" target="_blank">Lowercase a String in JS
+                            </a>
+                            <a href="https://www.freecodecamp.org/news/data-visualization-tools-guide/" rel="noopener noreferrer" target="_blank">Data Visualization Tools
+                            </a>
+                            <a href="https://freecodecamp.org/news/css-selectors-cheat-sheet-for-beginners/" rel="noopener noreferrer" target="_blank">CSS Selectors Cheatsheet
+                            </a>
+                            <a href="https://www.freecodecamp.org/news/sort-dictionary-by-value-in-python/" rel="noopener noreferrer" target="_blank">Sort Dict by Value Python
+                            </a>
+                            <a href="https://www.freecodecamp.org/news/how-to-change-text-color-in-html/" rel="noopener noreferrer" target="_blank">Change Text Color in HTML
+                            </a>
+                        </div>
+
+                        <div class="footer-right">
+                            <a href="https://www.freecodecamp.org/news/dictionary-comprehension-in-python-dict-comprehensions-explained/" rel="noopener noreferrer" target="_blank">Python Dict Comprehension
+                            </a>
+                            <a href="https://www.freecodecamp.org/news/kernel-security-check-failure-how-to-restart-the-kernel-in-windows-10/" rel="noopener noreferrer" target="_blank">Restart Kernel in Windows
+                            </a>
+                            <a href="https://www.freecodecamp.org/news/computer-programmer-salary-how-much-do-coders-make/" rel="noopener noreferrer" target="_blank">Computer Programmer Salary
+                            </a>
+                            <a href="https://www.freecodecamp.org/news/how-to-dual-boot-windows-10-and-ubuntu-linux-dual-booting-tutorial/" rel="noopener noreferrer" target="_blank">Dual Boot Windows + Ubuntu
+                            </a>
+                            <a href="https://www.freecodecamp.org/news/what-is-information-systems-definition-for-beginners/" rel="noopener noreferrer" target="_blank">What is Information Systems?
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class='footer-bottom'>
+            <div class="col-header" data-test-label="our-nonprofit">Our Charity</div>
+            <div class="footer-divider"></div>
+            <div class="our-nonprofit">
+                <a href="https://www.freecodecamp.org/news/about/" rel="noopener noreferrer" target="_blank" data-test-label="about">
+                    About
+                </a>
+                <a href="https://www.linkedin.com/school/free-code-camp/people/" rel="noopener noreferrer" target="_blank" data-test-label="alumni">
+                    Alumni Network
+                </a>
+                <a href="https://github.com/freeCodeCamp/" rel="noopener noreferrer" target="_blank" data-test-label="open-source">
+                    Open Source
+                </a>
+                <a href="https://www.freecodecamp.org/news/shop/" rel="noopener noreferrer" target="_blank" data-test-label="shop">
+                    Shop
+                </a>
+                <a href="https://www.freecodecamp.org/news/support/" rel="noopener noreferrer" target="_blank" data-test-label="support">
+                    Support
+                </a>
+                <a href="https://www.freecodecamp.org/news/sponsors/" rel="noopener noreferrer" target="_blank" data-test-label="sponsors">
+                    Sponsors
+                </a>
+                <a href="https://www.freecodecamp.org/news/academic-honesty-policy/" rel="noopener noreferrer" target="_blank" data-test-label="honesty">
+                    Academic Honesty
+                </a>
+                <a href="https://www.freecodecamp.org/news/code-of-conduct/" rel="noopener noreferrer" target="_blank" data-test-label="coc">
+                    Code of Conduct
+                </a>
+                <a href="https://www.freecodecamp.org/news/privacy-policy/" rel="noopener noreferrer" target="_blank" data-test-label="privacy">
+                    Privacy Policy
+                </a>
+                <a href="https://www.freecodecamp.org/news/terms-of-service/" rel="noopener noreferrer" target="_blank" data-test-label="tos">
+                    Terms of Service
+                </a>
+                <a href="https://www.freecodecamp.org/news/copyright-policy/" rel="noopener noreferrer" target="_blank" data-test-label="copyright">
+                    Copyright Policy
+                </a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+        </div>
+
+        
+        
+        
+
+        <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5D6RKKP"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+        
+    <script defer src="https://static.cloudflareinsights.com/beacon.min.js/v52afc6f149f6479b8c77fa569edb01181681764108816" integrity="sha512-jGCTpDpBAYDGNYR5ztKt4BQPGef1P0giN6ZGVUi835kFF88FOmmn8jBQWNgrNd8g/Yu421NdgWhwQoaOPFflDw==" data-cf-beacon='{"rayId":"7e1183017ea3489f","version":"2023.4.0","b":1,"token":"bdb993c6dde44e178aabd9555e75e4f4","si":100}' crossorigin="anonymous"></script>
+</body>
+</html>
