@@ -47,11 +47,15 @@ tail -n 1 outputs.txt
 #Check for the third argument
 if [ -z "$3" ]
 then
-	archive_dir="https://github.com/jlnetosci/archive/pages/"
+	archive_dir="https://github.com/jlnetosci/archive/blob/main/pages/"
 fi
 
 #Add archive URL to archive list
 echo "$archive_dir$2" >> archive.lst
+
+#Add visible page URL to list
+page=$(ls pages/RNAseq_tutorial/*.html | xargs -n1 basename)
+echo "https://raw.githack.com/jlnetosci/archive/main/pages/"$2"/"$page >> pages.lst
 
 #Add webarchive URL to the metadata file
 cat <(echo "Webarchive URL:") <(tail -n 1 wayback.lst) | tr "\n" " "^C >> $PWD/pages/$2/metadata.txt
