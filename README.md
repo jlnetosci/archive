@@ -2,7 +2,7 @@
 
 ## About
 
-This is the repository for a minimalist, dockerized application that archives websites into the Internet Archive's Wayback Machine and saves a copy to the local machine -- which can be pushed to the repository itself, and therefore is also serving as a web-based personal archive.
+This is the repository for a minimalist, dockerized application that archives websites into the Internet Archive's Wayback Machine and saves a copy to the local machine - which can be pushed to the repository itself, and therefore is also serving as a web-based personal archive.
 
 ## App
 
@@ -26,3 +26,10 @@ Usage example:
 
 1.  Pull the image from dockerhub, with `docker pull jlnetosci/archive:v0.1.0`
 2.  Use `docker run -v <path/to/local/archive>:/usr/local/etc jlnetosci/archive:v0.1.0 <url_to_save> <folder_name> <prefix_of_personal_web_archive` to run the application.
+
+## Summary table
+
+|original                                                                                             |wayback                                                                                                                                         |page                                                                                                                                          |
+|:----------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------------------|
+|https://www.freecodecamp.org/news/how-to-dual-boot-windows-10-and-ubuntu-linux-dual-booting-tutorial |https://web.archive.org/web/20230703192448/https://www.freecodecamp.org/news/how-to-dual-boot-windows-10-and-ubuntu-linux-dual-booting-tutorial |https://raw.githack.com/jlnetosci/archive/main/pages/ubuntu_dual_boot/how-to-dual-boot-windows-10-and-ubuntu-linux-dual-booting-tutorial.html |
+|https://ucdavis-bioinformatics-training.github.io/2018-June-RNA-Seq-Worksho^Cthursday/DE.html        |https://web.archive.org/web/20230705131451/https://ucdavis-bioinformatics-training.github.io/2018-June-RNA-Seq-Workshop/thursday/DE.html        |https://raw.githack.com/jlnetosci/archive/main/pages/RNAseq_tutorial/DE.html                                                                  |
