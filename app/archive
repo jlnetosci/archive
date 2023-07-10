@@ -54,7 +54,7 @@ fi
 echo "$archive_dir$2" >> archive.lst
 
 #Add visible page URL to list
-page=$(ls pages/RNAseq_tutorial/*.html | xargs -n1 basename)
+page=$(ls pages/$2/*.html | xargs -n1 basename)
 echo "https://raw.githack.com/jlnetosci/archive/main/pages/"$2"/"$page >> pages.lst
 
 #Add webarchive URL to the metadata file
