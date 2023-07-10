@@ -1,0 +1,5 @@
+Date and Time: 2023-07-10 11:00:09
+Title: Cannot get the same result as the webpage · Issue #550 · GeneralMills/pytrends · GitHub
+Description: I use interest_over_time() can not get the same result as the webpage, I notice the webpage's headers['req'] is diffrent from the requests, i change it as the webpage's, but still cannot get the same result, what should i do? the webpage...
+URL: https://github.com/GeneralMills/pytrends/issues/550
+Webarchive URL: https://web.archive.org/web/20230710101645/https://github.com/GeneralMills/pytrends/issues/550 

@@ -8,3 +8,8 @@ https://web.archive.org/web/20230705131451/https://ucdavis-bioinformatics-traini
 Cached save:
 True
 Webpage and metadata saved successfully!
+Archive URL:
+https://web.archive.org/web/20230710101645/https://github.com/GeneralMills/pytrends/issues/550
+Cached save:
+True
+Finished
