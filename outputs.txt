@@ -13,3 +13,8 @@ https://web.archive.org/web/20230710101645/https://github.com/GeneralMills/pytre
 Cached save:
 True
 Finished
+Archive URL:
+https://web.archive.org/web/20230711221055/https://stackoverflow.com/questions/43661251/how-to-manually-change-text-color-of-ggplot2-legend-in-r
+Cached save:
+False
+Finished

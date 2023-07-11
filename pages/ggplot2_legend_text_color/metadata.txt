@@ -1,0 +1,5 @@
+Date and Time: 2023-07-11 22:11:07
+Title: How to manually change text color of ggplot2 legend in R? - Stack Overflow
+Description: 
+URL: https://stackoverflow.com/questions/43661251/how-to-manually-change-text-color-of-ggplot2-legend-in-r
+Webarchive URL: https://web.archive.org/web/20230711221055/https://stackoverflow.com/questions/43661251/how-to-manually-change-text-color-of-ggplot2-legend-in-r 
