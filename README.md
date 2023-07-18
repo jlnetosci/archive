@@ -25,7 +25,7 @@ The script submits the URL to the Wayback Machine via [waybackpy](https://pypi.o
 Usage example:
 
 1.  Pull the image from dockerhub, with `docker pull jlnetosci/archive:v0.1.0`
-2.  Use `docker run -v <path/to/local/archive>:/usr/local/etc jlnetosci/archive:v0.1.0 archive <url_to_save> <folder_name> <prefix_of_personal_web_archive` to run the application.
+2.  Use `docker run -v <path/to/local/archive>:/usr/local/etc jlnetosci/archive:v0.1.0 archive <url_to_save> <folder_name> <prefix_of_personal_web_archive>` to run the application.
 
 ## Summary table
 
@@ -35,3 +35,4 @@ Usage example:
 |https://ucdavis-bioinformatics-training.github.io/2018-June-RNA-Seq-Worksho^Cthursday/DE.html         |https://web.archive.org/web/20230705131451/https://ucdavis-bioinformatics-training.github.io/2018-June-RNA-Seq-Workshop/thursday/DE.html         |https://raw.githack.com/jlnetosci/archive/main/pages/RNAseq_tutorial/DE.html                                                                  |
 |https://github.com/GeneralMills/pytrends/issues/550                                                   |https://web.archive.org/web/20230710101645/https://github.com/GeneralMills/pytrends/issues/550                                                   |https://raw.githack.com/jlnetosci/archive/main/pages/google_trends_issues/550.html                                                            |
 |https://stackoverflow.com/questions/43661251/how-to-manually-change-text-color-of-ggplot2-legend-in-r |https://web.archive.org/web/20230711221055/https://stackoverflow.com/questions/43661251/how-to-manually-change-text-color-of-ggplot2-legend-in-r |https://raw.githack.com/jlnetosci/archive/main/pages/ggplot2_legend_text_color/how-to-manually-change-text-color-of-ggplot2-legend-in-r.html  |
+|https://rmisstastic.netlify.app/how-to/python/generate_html/how%20to%20generate%20missing%20values    |https://web.archive.org/web/20230718105110/https://rmisstastic.netlify.app/how-to/python/generate_html/how%20to%20generate%20missing%20values    |https://raw.githack.com/jlnetosci/archive/main/pages/missing_values_python/how%20to%20generate%20missing%20values.html                        |
