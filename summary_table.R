@@ -5,6 +5,10 @@ system('paste original.lst wayback.lst pages.lst | tr "\t" "," > tmp.csv')
 table <- "tmp.csv" |>
   read.csv(header = FALSE) |>
   setNames(c("original", "wayback", "page")) |>
+  (\(x) { 
+    x <- lapply(x, gsub, pattern = " ", replacement = "%20")
+    return(data.frame(x))
+  })() |>
   knitr::kable()
 
 readme <- readLines("README.md")
