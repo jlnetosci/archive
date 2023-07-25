@@ -1,0 +1,13 @@
+User-agent: *
+Disallow: /tag/
+Disallow: /b/
+Disallow: /user/
+Disallow: /similar/
+Disallow: /media/
+
+User-agent: Screaming Frog SEO Spider/8.0
+Disallow: /
+
+User-agent: Screaming*
+Disallow: /
+
