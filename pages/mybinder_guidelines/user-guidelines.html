@@ -1,0 +1,926 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Usage guidelines &#8212; Binder 0.1b documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="theme.css%3Fdigest=e353d410970836974a52.css" rel="stylesheet" />
+<link href="bootstrap.css%3Fdigest=e353d410970836974a52.css" rel="stylesheet" />
+<link href="pydata-sphinx-theme.css%3Fdigest=e353d410970836974a52.css" rel="stylesheet" />
+
+  
+  <link href="all.min.css%3Fdigest=e353d410970836974a52.css" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="pygments.css" />
+    <link rel="stylesheet" type="text/css" href="copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" />
+    <link rel="stylesheet" type="text/css" href="badge_only.css" />
+    <link rel="stylesheet" type="text/css" href="custom.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="bootstrap.js%3Fdigest=e353d410970836974a52" />
+<link rel="preload" as="script" href="pydata-sphinx-theme.js%3Fdigest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="documentation_options.js"></script>
+    <script src="doctools.js"></script>
+    <script src="sphinx_highlight.js"></script>
+    <script src="clipboard.min.js"></script>
+    <script src="copybutton.js"></script>
+    <script src="design-tabs.js"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-101904940-3"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'UA-101904940-3');
+            </script>
+    <script async="async" src="readthedocs-doc-embed.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'about/user-guidelines';</script>
+    <link rel="canonical" href="user-guidelines.html" />
+    <link rel="icon" href="favicon.png"/>
+    <link rel="index" title="Index" href="https://mybinder.readthedocs.io/en/latest/genindex.html" />
+    <link rel="search" title="Search" href="https://mybinder.readthedocs.io/en/latest/search.html" />
+    <link rel="next" title="mybinder.org status" href="https://mybinder.readthedocs.io/en/latest/about/status.html" />
+    <link rel="prev" title="About mybinder.org" href="https://mybinder.readthedocs.io/en/latest/about/index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  
+<!-- RTD Extra Head -->
+
+<link rel="stylesheet" href="readthedocs-doc-embed.css" type="text/css" />
+
+<script type="application/json" id="READTHEDOCS_DATA">{"ad_free": false, "api_host": "https://readthedocs.org", "build_date": "2023-04-29T05:45:17Z", "builder": "sphinx", "canonical_url": null, "commit": "2c056e4f", "docroot": "/doc/", "features": {"docsearch_disabled": false}, "global_analytics_code": "UA-17997319-1", "language": "en", "page": "about/user-guidelines", "programming_language": "words", "project": "mybinder", "proxied_api_host": "/_", "source_suffix": ".md", "subprojects": {}, "theme": "pydata_sphinx_theme", "user_analytics_code": "UA-101904940-3", "version": "latest"}</script>
+
+<!--
+Using this variable directly instead of using `JSON.parse` is deprecated.
+The READTHEDOCS_DATA global variable will be removed in the future.
+-->
+<script type="text/javascript">
+READTHEDOCS_DATA = JSON.parse(document.getElementById('READTHEDOCS_DATA').innerHTML);
+</script>
+
+<script type="text/javascript" src="readthedocs-analytics.js" async="async"></script>
+
+<!-- end RTD <extrahead> -->
+</head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="user-guidelines.html#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="https://mybinder.readthedocs.io/en/latest/search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+    <span class="fa-solid fa-bars"></span>
+  </label>
+  
+  <div class="navbar-header-items__start">
+    
+      <div class="navbar-item">
+  
+
+<a class="navbar-brand logo" href="https://mybinder.readthedocs.io/en/latest/index.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="logo-dark.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+    
+  </div>
+  
+  
+  <div class=" navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item"><nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="https://mybinder.readthedocs.io/en/latest/tutorials/index.html">
+                        Tutorials
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="https://mybinder.readthedocs.io/en/latest/howto/index.html">
+                        How-to Guides
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="https://mybinder.readthedocs.io/en/latest/reference/index.html">
+                        Reference
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="https://mybinder.readthedocs.io/en/latest/about/index.html">
+                        About mybinder.org
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+        </div>
+      
+      
+        <div class="navbar-item">
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://mybinder.org" title="Go to mybinder.org" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="favicon.png" class="icon-link-image" alt="Go to mybinder.org"/></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/jupyterhub/binder" title="GitHub repository" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-github"></i></span>
+            <label class="sr-only">GitHub repository</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/mybinderteam" title="Twitter account" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-twitter"></i></span>
+            <label class="sr-only">Twitter account</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://discourse.jupyter.org/c/binder/12" title="Community Forum" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-discourse"></i></span>
+            <label class="sr-only">Community Forum</label></a>
+        </li>
+</ul></div>
+      
+        <div class="navbar-item"><a class="btn btn-secondary support-button" href="https://mybinder.readthedocs.io/en/latest/about/support.html" role="button"><i class="fas fa-heart"></i>Support Binder</a></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+    </div>
+  
+
+  
+    <label class="sidebar-toggle secondary-toggle" for="__secondary">
+      <span class="fa-solid fa-outdent"></span>
+    </label>
+  
+</div>
+
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          <div class="navbar-item"><nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="https://mybinder.readthedocs.io/en/latest/tutorials/index.html">
+                        Tutorials
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="https://mybinder.readthedocs.io/en/latest/howto/index.html">
+                        How-to Guides
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="https://mybinder.readthedocs.io/en/latest/reference/index.html">
+                        Reference
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="https://mybinder.readthedocs.io/en/latest/about/index.html">
+                        About mybinder.org
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://mybinder.org" title="Go to mybinder.org" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="favicon.png" class="icon-link-image" alt="Go to mybinder.org"/></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/jupyterhub/binder" title="GitHub repository" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-github"></i></span>
+            <label class="sr-only">GitHub repository</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/mybinderteam" title="Twitter account" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-twitter"></i></span>
+            <label class="sr-only">Twitter account</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://discourse.jupyter.org/c/binder/12" title="Community Forum" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-discourse"></i></span>
+            <label class="sr-only">Community Forum</label></a>
+        </li>
+</ul></div>
+        
+          <div class="navbar-item"><a class="btn btn-secondary support-button" href="https://mybinder.readthedocs.io/en/latest/about/support.html" role="button"><i class="fas fa-heart"></i>Support Binder</a></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item"><nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Service information</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="user-guidelines.html#">Usage guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://mybinder.readthedocs.io/en/latest/about/status.html">mybinder.org status</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Project information</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="https://mybinder.readthedocs.io/en/latest/about/support.html">Support the project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://mybinder.readthedocs.io/en/latest/about/supporters.html">Supporting organizations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://mybinder.readthedocs.io/en/latest/about/team.html">Our team and tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://mybinder.readthedocs.io/en/latest/about/federation.html">The BinderHub Federation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://mybinder.readthedocs.io/en/latest/about/cite.html">Cite Binder</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+  <div id="ethical-ad-placement"
+       class="flat"
+       data-ea-publisher="readthedocs"
+       data-ea-type="readthedocs-sidebar"
+       data-ea-manual="true">
+  </div>
+</div>
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+<nav aria-label="Breadcrumbs">
+  <ul class="bd-breadcrumbs" role="navigation" aria-label="Breadcrumb">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="https://mybinder.readthedocs.io/en/latest/index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="https://mybinder.readthedocs.io/en/latest/about/index.html" class="nav-link">About mybinder.org</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page">Usage guidelines</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="usage-guidelines">
+<h1>Usage guidelines<a class="headerlink" href="user-guidelines.html#usage-guidelines" title="Permalink to this heading">#</a></h1>
+<p>This page details some guidelines and policies that we follow at <code class="docutils literal notranslate"><span class="pre">mybinder.org</span></code>.</p>
+<div class="warning admonition">
+<p class="admonition-title">When in doubt, open an issue</p>
+<p>If you’re not sure whether your use-case is reasonable for <code class="docutils literal notranslate"><span class="pre">mybinder.org</span></code>, don’t
+hesitate to <a class="reference external" href="https://github.com/jupyterhub/mybinder.org-deploy/issues/new?labels=question&amp;amp;template=ban_check.md">open an issue</a>
+to ask if your planned usage is OK.</p>
+</div>
+<section id="resources-available">
+<h2>Resources available<a class="headerlink" href="user-guidelines.html#resources-available" title="Permalink to this heading">#</a></h2>
+<section id="how-much-memory-am-i-given-when-using-binder">
+<span id="user-memory"></span><h3>How much memory am I given when using Binder?<a class="headerlink" href="user-guidelines.html#how-much-memory-am-i-given-when-using-binder" title="Permalink to this heading">#</a></h3>
+<p>If you or another Binder user clicks on a Binder link, the <code class="docutils literal notranslate"><span class="pre">mybinder.org</span></code>
+deployment will run the linked repository. While running, users are guaranteed
+<em>at least</em> 1GB of RAM, with a <em>maximum</em> of 2GB. This means you will always have
+1GB, you may occasionally have between 1 and 2GB, and if you go over 2GB your kernel
+will be restarted.</p>
+</section>
+<section id="how-long-will-my-binder-session-last">
+<h3>How long will my Binder session last?<a class="headerlink" href="user-guidelines.html#how-long-will-my-binder-session-last" title="Permalink to this heading">#</a></h3>
+<p>Binder is meant for interactive and ephemeral interactive coding, meaning that
+it is ideally suited for relatively short sessions. Binder will automatically
+shut down user sessions that have more than 10 minutes of inactivity
+(if you leave a jupyterlab window open in the foreground,
+this will generally be counted as “activity”).</p>
+<p>Binder aims to provide up to six hours of session time per user session,
+or up to one cpu-hour for more computationally intensive sessions.
+Beyond that, we cannot guarantee that the session will remain running.</p>
+</section>
+<section id="maximum-concurrent-users-for-a-repository">
+<h3>Maximum Concurrent Users for a Repository<a class="headerlink" href="user-guidelines.html#maximum-concurrent-users-for-a-repository" title="Permalink to this heading">#</a></h3>
+<p>We don’t want a single repository to dominate all of the traffic to Binder, so
+we’ve set a maximum limit of concurrent user sessions that point to the same
+Binder link. <strong>The maximum number of simultaneous users for a given repo is 100</strong>.
+If you think you have a <em>really</em> good reason for why this number should be
+higher, please <a class="reference external" href="https://github.com/jupyterhub/mybinder.org-deploy/issues/new?labels=impact&amp;amp;template=request_resources.md">Open an Issue</a>.
+to discuss with the community!</p>
+</section>
+<section id="events-and-workshops">
+<h3>Events and workshops<a class="headerlink" href="user-guidelines.html#events-and-workshops" title="Permalink to this heading">#</a></h3>
+<p>If you’d like to run an event with <code class="docutils literal notranslate"><span class="pre">mybinder.org</span></code> and expect more than 100 users
+to join at once, please <a class="reference external" href="https://github.com/jupyterhub/mybinder.org-deploy/issues/new?labels=impact&amp;amp;template=request_resources.md">request an increase in quota for your repository</a>.</p>
+<p>The Binder Team occasionally increases the number of sessions that can run for a single repository if it is being used for purposes that align with the mission of the Binder Project. However, there is no guarantee that this will be done for your event.</p>
+</section>
+<section id="what-can-i-do-if-mybinder-org-does-not-meet-my-needs">
+<h3>What can I do if <code class="docutils literal notranslate"><span class="pre">mybinder.org</span></code> does not meet my needs?<a class="headerlink" href="user-guidelines.html#what-can-i-do-if-mybinder-org-does-not-meet-my-needs" title="Permalink to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">mybinder.org</span></code> uses software called [BinderHub] to carry out its services.
+This is an Open Source, community-driven project that can be deployed on
+most cloud providers. If you desire more computational resources for users or
+want guaranteed uptime, consider setting up your own BinderHub deployment.</p>
+<p>For more information, see the [BinderHub documentation][binderhub]
+for instructions on how to deploy your own BinderHub, and the
+<a class="reference external" href="https://zero-to-jupyterhub.readthedocs.io/en/latest/user-experience.html#set-user-memory-and-cpu-guarantees-limits">Zero to JupyterHub</a>
+documentation for how to customize the user environment.</p>
+</section>
+</section>
+<section id="performance-and-speed">
+<h2>Performance and speed<a class="headerlink" href="user-guidelines.html#performance-and-speed" title="Permalink to this heading">#</a></h2>
+<section id="what-factors-influence-how-long-it-takes-a-binder-session-to-start">
+<h3>What factors influence how long it takes a Binder session to start?<a class="headerlink" href="user-guidelines.html#what-factors-influence-how-long-it-takes-a-binder-session-to-start" title="Permalink to this heading">#</a></h3>
+<p>Understanding why some operations take longer than others requires a very
+brief overview of the pieces of machinery at play with BinderHub. There two
+things worth mentioning:</p>
+<ul class="simple">
+<li><p>A <em>user pod</em> is the virtual machine that runs a users’ code.</p></li>
+<li><p>A <em>node</em> is the machine, running in the cloud, where a bunch of pods live.
+There are many nodes for a Binder server, depending on the number of people
+using the service.</p></li>
+<li><p>A <em>registry</em> is a service in the cloud where Docker images are stored. BinderHub
+has the ability to push / pull from this registry, which it uses to
+manage Binder environment images.</p></li>
+</ul>
+<p>With that being said, there are three primary things that need to happen any
+time someone clicks a Binder link.</p>
+<ol class="arabic simple">
+<li><p>A Docker image for the link must exist in Binder’s image registry. If an image
+for the current <code class="docutils literal notranslate"><span class="pre">ref</span></code> of the repository <em>doesn’t</em> exist, one will be built
+and registered automatically using <code class="docutils literal notranslate"><span class="pre">repo2docker</span></code>. If your
+configuration files specify a large or complex environment, this will take
+some time while your image builds.</p></li>
+<li><p>The Docker image must exist on the node that the user will use. If it does not,
+then BinderHub will pull the image. If the image is large, this will
+take some time depending on the server load and image size.</p></li>
+<li><p>A pod for the user must be created to serve this Docker image. This usually
+happens in seconds, though may take longer if the server is under a heavy
+load.</p></li>
+</ol>
+<p>These three things happen in a nested fashion. “3” always happens, “2” only
+happens the <em>first</em> time a node is used to serve a particular Docker image, “1”
+only happens the first time someone clicks a Binder link for a repository with
+an updated <code class="docutils literal notranslate"><span class="pre">ref</span></code>. They take roughly decreasing amounts of time to complete,
+so 1 &gt;&gt; 2 &gt;&gt; 3 in terms of how long each operation takes.</p>
+<p>If Binder sessions take a while to start, but you know that your image has
+already been built, there’s a good chance you are in step 2, and the server is
+still pulling the image onto the node that you’ll be using. Please be patient!</p>
+</section>
+<section id="will-repos-with-fewer-notebooks-launch-faster-should-i-split-my-notebooks-into-smaller-repos">
+<h3>Will repos with fewer notebooks launch faster? Should I split my notebooks into smaller repos?<a class="headerlink" href="user-guidelines.html#will-repos-with-fewer-notebooks-launch-faster-should-i-split-my-notebooks-into-smaller-repos" title="Permalink to this heading">#</a></h3>
+<p>Number of notebooks in a repo shouldn’t have any impact on binder launch time,
+assuming a docker image for that repo is already built. It is worth noting, however,
+that there is a limit to the number of instances of a repository that can be active
+at any moment in time.</p>
+</section>
+<section id="will-repos-that-are-launched-often-get-prioritized-and-launch-faster">
+<h3>Will repos that are launched often get prioritized and launch faster?<a class="headerlink" href="user-guidelines.html#will-repos-that-are-launched-often-get-prioritized-and-launch-faster" title="Permalink to this heading">#</a></h3>
+<p>There isn’t any intentional prioritization for repos that are launched frequently,
+however, in practice the repos that launch more often will tend to launch faster.
+This is because if a user pod is put on a node that doesn’t already have the Docker
+image for that repo, then it’ll have to do a Docker pull first, which takes time. If
+a repo is launched a lot, then most likely it will already be on a given node.</p>
+</section>
+</section>
+<section id="funding-and-support">
+<h2>Funding and support<a class="headerlink" href="user-guidelines.html#funding-and-support" title="Permalink to this heading">#</a></h2>
+<section id="is-mybinder-org-free-to-use">
+<h3>Is <code class="docutils literal notranslate"><span class="pre">mybinder.org</span></code> free to use?<a class="headerlink" href="user-guidelines.html#is-mybinder-org-free-to-use" title="Permalink to this heading">#</a></h3>
+<p>Yes! Though note that it has <span class="xref std std-ref">limited computational resources</span>.</p>
+</section>
+<section id="how-much-does-running-mybinder-org-cost">
+<h3>How much does running <code class="docutils literal notranslate"><span class="pre">mybinder.org</span></code> cost?<a class="headerlink" href="user-guidelines.html#how-much-does-running-mybinder-org-cost" title="Permalink to this heading">#</a></h3>
+<p>If you’re interested in the technical costs of running
+<code class="docutils literal notranslate"><span class="pre">mybinder.org</span></code>, we publish a semi-up-to-date dataset of our costs at the
+<a class="reference external" href="https://github.com/jupyterhub/binder-data/tree/master/billing/data/proc">binder-data</a>
+repository. In addition, you can explore these costs with the binder link below!</p>
+<a class="reference external image-reference" href="https://mybinder.org/v2/gh/jupyterhub/binder-billing/master?urlpath=lab/tree/analyze_data.ipynb"><img alt="https://mybinder.org/badge_logo.svg" src="https://mybinder.org/badge_logo.svg" /></a>
+</section>
+<section id="how-can-mybinder-org-be-free-to-use">
+<h3>How can <code class="docutils literal notranslate"><span class="pre">mybinder.org</span></code> be free to use?<a class="headerlink" href="user-guidelines.html#how-can-mybinder-org-be-free-to-use" title="Permalink to this heading">#</a></h3>
+<p><a class="reference external" href="https://mybinder.org"><code class="docutils literal notranslate"><span class="pre">mybinder.org</span></code></a> relies on the generosity of donors and volunteers.
+If you would like to make a donation see <a class="reference internal" href="https://mybinder.readthedocs.io/en/latest/about/support.html"><span class="std std-doc">Support the project</span></a>.</p>
+<p>See <span class="xref std std-ref">about</span> for more information on the mybinder.org team and who provides
+the resources to pay for the service. Generally, mybinder.org is run with modest resources
+provided to users in order to keep costs down. In the future we hope to see more
+public BinderHub services running that can form a collection of community
+resources for interactive cloud computing.</p>
+</section>
+</section>
+<section id="security-and-privacy">
+<h2>Security and privacy<a class="headerlink" href="user-guidelines.html#security-and-privacy" title="Permalink to this heading">#</a></h2>
+<p><a class="reference external" href="https://mybinder.org">mybinder.org</a> allows users to execute arbitrary code, including some outgoing network traffic.
+Users can upload additional files from their computer, fetch files from remote machines and upload files to remote machines.</p>
+<p>Providing a massively open public service like this also opens the opportunity for others to abuse our platform.
+We’ve taken care to avoid being used as <a class="reference external" href="https://en.wikipedia.org/wiki/Kill_chain#Cyber">a link in an attack chain</a>, or otherwise being abused, and haveput several safeguards in place.
+This section describes several aspects of using mybinder.org in a secure fashion.</p>
+<div class="admonition-if-you-ve-found-a-security-problem admonition">
+<p class="admonition-title">If you’ve found a security problem</p>
+<p>Please see <a class="reference internal" href="user-guidelines.html#security-report"><span class="std std-ref">Report a security issue</span></a>.</p>
+</div>
+<section id="an-overview-of-binder-s-security">
+<h3>An overview of Binder’s security<a class="headerlink" href="user-guidelines.html#an-overview-of-binder-s-security" title="Permalink to this heading">#</a></h3>
+<p>Below is a short overview of major security efforts.</p>
+<ol class="arabic simple">
+<li><p>We limit outgoing bandwidth per-session (<code class="docutils literal notranslate"><span class="pre">~1mbit</span></code>) to protect against being used as a DDoS vector.</p></li>
+<li><p>We limit launches originating from most cloud providers to prevent being used automatically in various attacks.</p></li>
+<li><p>We have anti-cryptomining safeguards that automatically detect and kill processes associated with mining.</p></li>
+<li><p>We ban malicious repositories from being launched when they are brought to our attention.</p></li>
+<li><p>We impose general resource limits (inactivity culling timeouts, memory / CPU limits, max concurrent launches, etc) to make us a less tempting target for these attacks.</p></li>
+<li><p>We do not offer persistent storage of any sort, to protect us from becoming a host for malware.</p></li>
+</ol>
+<p>We’re a volunteer run open infrastructure project, and welcome more engagement on how we can be better good citizens of the internet.
+If you’ve discovered a security problem on <a class="reference external" href="https://mybinder.org">mybinder.org</a>, please see <a class="reference internal" href="user-guidelines.html#security-report"><span class="std std-ref">Report a security issue</span></a>.</p>
+</section>
+<section id="how-we-ensure-user-privacy">
+<h3>How we ensure user privacy<a class="headerlink" href="user-guidelines.html#how-we-ensure-user-privacy" title="Permalink to this heading">#</a></h3>
+<p>We take user privacy very seriously! Because Binder runs as a public,
+free service, we don’t require any kind of log-in that would let us
+keep track of user data. All code that is run, data analyzed, papers
+reproduced, classes taught - in short, everything that happens in a
+Binder session - is destroyed when the user logs off or becomes inactive
+for more than a few minutes.</p>
+<p>Here are the pieces of information we do keep:</p>
+<ul class="simple">
+<li><p>We run google analytics with anonymized IPs and no cookies, which gives us just enough information to know how Binder is being used, and but won’t be able to identify users.</p></li>
+<li><p>We retain logs of IP addresses for 30 days, which is used solely in the case of detecting abuse of the service.</p></li>
+</ul>
+<p>If you have suggestions for how we can ensure the privacy of our data and users, we’d love to hear it!</p>
+</section>
+<section id="how-secure-is-mybinder-org">
+<h3>How secure is mybinder.org?<a class="headerlink" href="user-guidelines.html#how-secure-is-mybinder-org" title="Permalink to this heading">#</a></h3>
+<p>The Binder team has put in a lot of work to ensure that the mybinder.org
+service runs as secure as possible. However, it is a free, public service
+that is open to the world, and <strong>you should never share sensitive or personal
+information within a Binder repository</strong>. This includes passwords, data that
+shouldn’t be public, API keys, etc.</p>
+<p>You should ensure that sensitive information doesn’t make it into the built
+docker image for your Binder repository (aka, that it isn’t used in one of your
+configuration files) and that you don’t use this information from within
+a Binder session (e.g. hard-coding an API key into an HTTP request that you
+call from a Jupyter Notebook).</p>
+<p>If you require private information within your
+Binder instance, consider <a class="reference external" href="https://binderhub.readthedocs.io/en/latest/">deploying a BinderHub for your group</a>.</p>
+</section>
+<section id="report-a-security-issue">
+<span id="security-report"></span><h3>Report a security issue<a class="headerlink" href="user-guidelines.html#report-a-security-issue" title="Permalink to this heading">#</a></h3>
+<p>If you find a security vulnerability in with <code class="docutils literal notranslate"><span class="pre">mybinder.org</span></code>, please report
+it to <a class="reference external" href="mailto:security&#37;&#52;&#48;ipython&#46;org">security<span>&#64;</span>ipython<span>&#46;</span>org</a>.</p>
+<p>If you prefer to encrypt your security reports, you can use <a class="reference external" href="https://jupyter-notebook.readthedocs.io/en/stable/_downloads/ipython_security.asc">this PGP public key</a>.</p>
+</section>
+<section id="can-i-push-data-from-my-binder-session-back-to-my-repository">
+<h3>Can I push data from my Binder session back to my repository?<a class="headerlink" href="user-guidelines.html#can-i-push-data-from-my-binder-session-back-to-my-repository" title="Permalink to this heading">#</a></h3>
+<p>While it is <em>technically</em> possible to push information from a Binder
+session onto a platform like GitHub, we <em>strongly discourage</em> it. We
+cannot guarantee the security of data moving through <code class="docutils literal notranslate"><span class="pre">mybinder.org</span></code>,
+and your password or any sensitive data may be compromised. You
+shouldn’t do anything on <code class="docutils literal notranslate"><span class="pre">mybinder.org</span></code> that you wouldn’t mind sharing
+with the world!</p>
+</section>
+</section>
+<section id="abuse-policies">
+<h2>Abuse policies<a class="headerlink" href="user-guidelines.html#abuse-policies" title="Permalink to this heading">#</a></h2>
+<section id="temporary-banning">
+<h3>Temporary Banning<a class="headerlink" href="user-guidelines.html#temporary-banning" title="Permalink to this heading">#</a></h3>
+<p>Temporary banning means that <code class="docutils literal notranslate"><span class="pre">mybinder.org</span></code> will stop building / serving Binder
+sessions for a given repository. This usually happens because of some
+undesired behavior with the repository. Some examples of behavior that could
+result in temporary banning include:</p>
+<ul class="simple">
+<li><p>A large, unexpected spike in traffic that persists over time.</p></li>
+<li><p>Sessions that routinely use a large amount of CPU.</p></li>
+<li><p>Sessions that attempt to perform a lot of outgoing networking traffic.</p></li>
+</ul>
+<p>The <code class="docutils literal notranslate"><span class="pre">mybinder.org</span></code> team uses the following workflow in discussing / deciding
+when to temporarily ban a repository:</p>
+<ul class="simple">
+<li><p>An issue is created to document why a repo (or group of repos) is being banned</p></li>
+<li><p>A PR that implements the ban is opened</p></li>
+<li><p>A “bans” tag notes any PRs that created a ban</p></li>
+<li><p>The issue stays open until the ban is lifted</p></li>
+</ul>
+<p>If you are temporarily banned, contact us on the
+<a class="reference external" href="https://gitter.im/jupyterhub/binder">Gitter Channel</a> or
+<a class="reference external" href="https://github.com/jupyterhub/mybinder.org-deploy/issues">Open an Issue</a> to discuss
+how to un-ban the repository.</p>
+</section>
+<section id="using-mybinder-org-as-backend-for-your-service">
+<h3>Using mybinder.org as backend for your service<a class="headerlink" href="user-guidelines.html#using-mybinder-org-as-backend-for-your-service" title="Permalink to this heading">#</a></h3>
+<div class="warning admonition">
+<p class="admonition-title">A note on for-profit services</p>
+<p>Please do not use <code class="docutils literal notranslate"><span class="pre">mybinder.org</span></code> as backend for your for-profit service or product.</p>
+<p>The cloud resources consumed by <code class="docutils literal notranslate"><span class="pre">mybinder.org</span></code> are funded through donations or grants. Because of this we can not subsidise for-profit products or services by offering free cloud resources to them. This means we will prevent you from using <code class="docutils literal notranslate"><span class="pre">mybinder.org</span></code> as a service for your product.</p>
+<p>Operating <code class="docutils literal notranslate"><span class="pre">mybinder.org</span></code> relies on the good will of volunteers and organisations to obtain the
+resources required to do so. This is easier if we are not seen as supporting for-profit services
+that are not a net contributor to the service.</p>
+</div>
+<p>You may be considering using <code class="docutils literal notranslate"><span class="pre">mybinder.org</span></code> as a part of your service or product. We think that is great, and encourage people to experiment with using Binder technology as a part of their tools.</p>
+<p>However, depending on the size and consistency of traffic being directed at <code class="docutils literal notranslate"><span class="pre">mybinder.org</span></code>, we may restrict your usage of the <code class="docutils literal notranslate"><span class="pre">mybinder.org</span></code> service in order to avoid being overloaded by a single user / organization. This is particularly true for services that trigger many <strong>repository builds</strong>.</p>
+<p>In general, please be respectful of the Binder Project’s limited resources. Do not forget that it has no dedicated funding and runs entirely on donations of cloud resources. If you have a question about this, please <a class="reference external" href="https://github.com/jupyterhub/mybinder.org-deploy/issues/new?labels=impact&amp;amp;template=request_resources.md">Open an Issue</a>.</p>
+</section>
+<section id="report-abuse">
+<h3>Report Abuse<a class="headerlink" href="user-guidelines.html#report-abuse" title="Permalink to this heading">#</a></h3>
+<p>If you’d like to report any abuse of the <code class="docutils literal notranslate"><span class="pre">mybinder.org</span></code> service, please
+<a class="reference external" href="mailto:binder-team&#37;&#52;&#48;googlegroups&#46;com?subject=%5BABUSE%5D%20your-message-here">click here to send an abuse report</a>.</p>
+</section>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="https://mybinder.readthedocs.io/en/latest/about/index.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">About mybinder.org</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="https://mybinder.readthedocs.io/en/latest/about/status.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">mybinder.org status</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="user-guidelines.html#resources-available">Resources available</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="user-guidelines.html#how-much-memory-am-i-given-when-using-binder">How much memory am I given when using Binder?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="user-guidelines.html#how-long-will-my-binder-session-last">How long will my Binder session last?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="user-guidelines.html#maximum-concurrent-users-for-a-repository">Maximum Concurrent Users for a Repository</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="user-guidelines.html#events-and-workshops">Events and workshops</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="user-guidelines.html#what-can-i-do-if-mybinder-org-does-not-meet-my-needs">What can I do if <code class="docutils literal notranslate"><span class="pre">mybinder.org</span></code> does not meet my needs?</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="user-guidelines.html#performance-and-speed">Performance and speed</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="user-guidelines.html#what-factors-influence-how-long-it-takes-a-binder-session-to-start">What factors influence how long it takes a Binder session to start?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="user-guidelines.html#will-repos-with-fewer-notebooks-launch-faster-should-i-split-my-notebooks-into-smaller-repos">Will repos with fewer notebooks launch faster? Should I split my notebooks into smaller repos?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="user-guidelines.html#will-repos-that-are-launched-often-get-prioritized-and-launch-faster">Will repos that are launched often get prioritized and launch faster?</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="user-guidelines.html#funding-and-support">Funding and support</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="user-guidelines.html#is-mybinder-org-free-to-use">Is <code class="docutils literal notranslate"><span class="pre">mybinder.org</span></code> free to use?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="user-guidelines.html#how-much-does-running-mybinder-org-cost">How much does running <code class="docutils literal notranslate"><span class="pre">mybinder.org</span></code> cost?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="user-guidelines.html#how-can-mybinder-org-be-free-to-use">How can <code class="docutils literal notranslate"><span class="pre">mybinder.org</span></code> be free to use?</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="user-guidelines.html#security-and-privacy">Security and privacy</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="user-guidelines.html#an-overview-of-binder-s-security">An overview of Binder’s security</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="user-guidelines.html#how-we-ensure-user-privacy">How we ensure user privacy</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="user-guidelines.html#how-secure-is-mybinder-org">How secure is mybinder.org?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="user-guidelines.html#report-a-security-issue">Report a security issue</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="user-guidelines.html#can-i-push-data-from-my-binder-session-back-to-my-repository">Can I push data from my Binder session back to my repository?</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="user-guidelines.html#abuse-policies">Abuse policies</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="user-guidelines.html#temporary-banning">Temporary Banning</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="user-guidelines.html#using-mybinder-org-as-backend-for-your-service">Using mybinder.org as backend for your service</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="user-guidelines.html#report-abuse">Report Abuse</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+  
+  <div class="tocsection editthispage">
+    <a href="https://github.com/jupyterhub/binder/edit/master/doc/about/user-guidelines.md">
+      <i class="fa-solid fa-pencil"></i>
+      
+      
+        
+          Edit on GitHub
+        
+      
+    </a>
+  </div>
+</div>
+
+  <div class="sidebar-secondary-item">
+  <div class="tocsection sourcelink">
+    <a href="https://mybinder.readthedocs.io/en/latest/_sources/about/user-guidelines.md.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="bootstrap.js%3Fdigest=e353d410970836974a52"></script>
+<script src="pydata-sphinx-theme.js%3Fdigest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+  <p class="copyright">
+    
+      © Copyright 2022, The Binder Team.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.1.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item"><p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.13.3.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

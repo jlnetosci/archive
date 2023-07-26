@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>MyBinder and multiprocessing - Binder - Jupyter Community Forum</title>
+    <meta name="description" content="We have lots of tutorials about our glacier model on MyBinder. The model per default checks the number of CPUs available with multiprocessing.cpu_count() and then use all of them. On a standard MyBinder env that’d be 16. &amp;hellip;">
+    <meta name="generator" content="Discourse 3.1.0.beta6 - https://github.com/discourse/discourse version f7353e7bfa1132e0d759b4f7ed33b7ad3fa1ec33">
+<link rel="icon" type="image/png" href="https://global.discourse-cdn.com/standard11/uploads/jupyter/optimized/1X/31d4ec0f3f78ef012e9def937f37afe6ae68b8d5_2_32x32.png">
+<link rel="apple-touch-icon" type="image/png" href="https://global.discourse-cdn.com/standard11/uploads/jupyter/optimized/1X/31d4ec0f3f78ef012e9def937f37afe6ae68b8d5_2_180x180.png">
+<meta name="theme-color" media="all" content="#ffffff">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=yes, viewport-fit=cover">
+<link rel="canonical" href="3238.html" />
+
+<link rel="search" type="application/opensearchdescription+xml" href="https://discourse.jupyter.org/opensearch.xml" title="Jupyter Community Forum Search">
+
+    <link href="https://sjc6.discourse-cdn.com/standard11/stylesheets/color_definitions_light_2_3_41bed89548b103dbb5c1bf99487f131d1fe7669f.css?__ws=discourse.jupyter.org" media="all" rel="stylesheet" class="light-scheme"/>
+
+  <link href="https://sjc6.discourse-cdn.com/standard11/stylesheets/desktop_9fbf00b2fde37417c8c80860b914be91cd2ac408.css?__ws=discourse.jupyter.org" media="all" rel="stylesheet" data-target="desktop"  />
+
+
+
+  <link href="https://sjc6.discourse-cdn.com/standard11/stylesheets/chat_9fbf00b2fde37417c8c80860b914be91cd2ac408.css?__ws=discourse.jupyter.org" media="all" rel="stylesheet" data-target="chat"  />
+  <link href="https://sjc6.discourse-cdn.com/standard11/stylesheets/discourse-adplugin_9fbf00b2fde37417c8c80860b914be91cd2ac408.css?__ws=discourse.jupyter.org" media="all" rel="stylesheet" data-target="discourse-adplugin"  />
+  <link href="https://sjc6.discourse-cdn.com/standard11/stylesheets/discourse-akismet_9fbf00b2fde37417c8c80860b914be91cd2ac408.css?__ws=discourse.jupyter.org" media="all" rel="stylesheet" data-target="discourse-akismet"  />
+  <link href="https://sjc6.discourse-cdn.com/standard11/stylesheets/discourse-cakeday_9fbf00b2fde37417c8c80860b914be91cd2ac408.css?__ws=discourse.jupyter.org" media="all" rel="stylesheet" data-target="discourse-cakeday"  />
+  <link href="https://sjc6.discourse-cdn.com/standard11/stylesheets/discourse-chat-integration_9fbf00b2fde37417c8c80860b914be91cd2ac408.css?__ws=discourse.jupyter.org" media="all" rel="stylesheet" data-target="discourse-chat-integration"  />
+  <link href="https://sjc6.discourse-cdn.com/standard11/stylesheets/discourse-checklist_9fbf00b2fde37417c8c80860b914be91cd2ac408.css?__ws=discourse.jupyter.org" media="all" rel="stylesheet" data-target="discourse-checklist"  />
+  <link href="https://sjc6.discourse-cdn.com/standard11/stylesheets/discourse-details_9fbf00b2fde37417c8c80860b914be91cd2ac408.css?__ws=discourse.jupyter.org" media="all" rel="stylesheet" data-target="discourse-details"  />
+  <link href="https://sjc6.discourse-cdn.com/standard11/stylesheets/discourse-footnote_9fbf00b2fde37417c8c80860b914be91cd2ac408.css?__ws=discourse.jupyter.org" media="all" rel="stylesheet" data-target="discourse-footnote"  />
+  <link href="https://sjc6.discourse-cdn.com/standard11/stylesheets/discourse-lazy-videos_9fbf00b2fde37417c8c80860b914be91cd2ac408.css?__ws=discourse.jupyter.org" media="all" rel="stylesheet" data-target="discourse-lazy-videos"  />
+  <link href="https://sjc6.discourse-cdn.com/standard11/stylesheets/discourse-local-dates_9fbf00b2fde37417c8c80860b914be91cd2ac408.css?__ws=discourse.jupyter.org" media="all" rel="stylesheet" data-target="discourse-local-dates"  />
+  <link href="https://sjc6.discourse-cdn.com/standard11/stylesheets/discourse-narrative-bot_9fbf00b2fde37417c8c80860b914be91cd2ac408.css?__ws=discourse.jupyter.org" media="all" rel="stylesheet" data-target="discourse-narrative-bot"  />
+  <link href="https://sjc6.discourse-cdn.com/standard11/stylesheets/discourse-presence_9fbf00b2fde37417c8c80860b914be91cd2ac408.css?__ws=discourse.jupyter.org" media="all" rel="stylesheet" data-target="discourse-presence"  />
+  <link href="https://sjc6.discourse-cdn.com/standard11/stylesheets/discourse-solved_9fbf00b2fde37417c8c80860b914be91cd2ac408.css?__ws=discourse.jupyter.org" media="all" rel="stylesheet" data-target="discourse-solved"  />
+  <link href="https://sjc6.discourse-cdn.com/standard11/stylesheets/discourse-spoiler-alert_9fbf00b2fde37417c8c80860b914be91cd2ac408.css?__ws=discourse.jupyter.org" media="all" rel="stylesheet" data-target="discourse-spoiler-alert"  />
+  <link href="https://sjc6.discourse-cdn.com/standard11/stylesheets/discourse-yearly-review_9fbf00b2fde37417c8c80860b914be91cd2ac408.css?__ws=discourse.jupyter.org" media="all" rel="stylesheet" data-target="discourse-yearly-review"  />
+  <link href="https://sjc6.discourse-cdn.com/standard11/stylesheets/hosted-site_9fbf00b2fde37417c8c80860b914be91cd2ac408.css?__ws=discourse.jupyter.org" media="all" rel="stylesheet" data-target="hosted-site"  />
+  <link href="https://sjc6.discourse-cdn.com/standard11/stylesheets/poll_9fbf00b2fde37417c8c80860b914be91cd2ac408.css?__ws=discourse.jupyter.org" media="all" rel="stylesheet" data-target="poll"  />
+  <link href="https://sjc6.discourse-cdn.com/standard11/stylesheets/chat_desktop_9fbf00b2fde37417c8c80860b914be91cd2ac408.css?__ws=discourse.jupyter.org" media="all" rel="stylesheet" data-target="chat_desktop"  />
+  <link href="https://sjc6.discourse-cdn.com/standard11/stylesheets/poll_desktop_9fbf00b2fde37417c8c80860b914be91cd2ac408.css?__ws=discourse.jupyter.org" media="all" rel="stylesheet" data-target="poll_desktop"  />
+
+  <link href="https://sjc6.discourse-cdn.com/standard11/stylesheets/desktop_theme_3_735fa8982f4a9c34bc604465bfe8f472b0a9c306.css?__ws=discourse.jupyter.org" media="all" rel="stylesheet" data-target="desktop_theme" data-theme-id="3" data-theme-name="light"/>
+
+    
+    
+        <link rel="alternate nofollow" type="application/rss+xml" title="RSS feed of &#39;MyBinder and multiprocessing&#39;" href="https://discourse.jupyter.org/t/mybinder-and-multiprocessing/3238.rss" />
+    <meta property="og:site_name" content="Jupyter Community Forum" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:image" content="https://global.discourse-cdn.com/standard11/uploads/jupyter/original/1X/50206ee532fcfae18c9359cfe327ed6844d0cf79.png" />
+<meta property="og:image" content="https://global.discourse-cdn.com/standard11/uploads/jupyter/original/1X/50206ee532fcfae18c9359cfe327ed6844d0cf79.png" />
+<meta property="og:url" content="https://discourse.jupyter.org/t/mybinder-and-multiprocessing/3238" />
+<meta name="twitter:url" content="https://discourse.jupyter.org/t/mybinder-and-multiprocessing/3238" />
+<meta property="og:title" content="MyBinder and multiprocessing" />
+<meta name="twitter:title" content="MyBinder and multiprocessing" />
+<meta property="og:description" content="We have lots of tutorials about our glacier model on MyBinder. The model per default checks the number of CPUs available with multiprocessing.cpu_count() and then use all of them. On a standard MyBinder env that’d be 16.  But that’s not the true resources given the user, right? What would be the right number of processes I can start as a user in a MyBinder env? Or should we switch off multiprocessing altogether?  Context:  I’m asking because we went from a standard pool to one created with a con..." />
+<meta name="twitter:description" content="We have lots of tutorials about our glacier model on MyBinder. The model per default checks the number of CPUs available with multiprocessing.cpu_count() and then use all of them. On a standard MyBinder env that’d be 16.  But that’s not the true resources given the user, right? What would be the right number of processes I can start as a user in a MyBinder env? Or should we switch off multiprocessing altogether?  Context:  I’m asking because we went from a standard pool to one created with a con..." />
+<meta property="og:article:section" content="Binder" />
+<meta property="og:article:section:color" content="BF1E2E" />
+<meta name="twitter:label1" value="Reading time" />
+<meta name="twitter:data1" value="1 mins 🕑" />
+<meta name="twitter:label2" value="Likes" />
+<meta name="twitter:data2" value="14 ❤" />
+<meta property="article:published_time" content="2020-02-03T16:03:19+00:00" />
+<meta property="og:ignore_canonical" content="true" />
+
+
+    <script type="application/ld+json">{"@context":"http://schema.org","@type":"QAPage","name":"MyBinder and multiprocessing","mainEntity":{"@type":"Question","name":"MyBinder and multiprocessing","text":"We have lots of tutorials about our <a href="https://discourse.jupyter.org/t/mybinder-and-multiprocessing/\&quot;http://oggm.org\&quot;" rel=\"nofollow noopener\">glacier model<\/a> on MyBinder. The model per default checks the number of CPUs available with multiprocessing.cpu_count() and then use all of them. On a standard MyBinder env that’d be 16.\n\nBut that’s not the true resources given the user, right? What would be the rig&hellip;","upvoteCount":2,"answerCount":1,"dateCreated":"2020-02-03T16:03:19.417Z","author":{"@type":"Person","name":"Fabien Maussion"},"acceptedAnswer":{"@type":"Answer","text":"Here is the config of provided resource for each user: <a href="https://discourse.jupyter.org/t/mybinder-and-multiprocessing/\&quot;https://github.com/jupyterhub/mybinder.org-deploy/blob/57eb5777ade9a684a832a33b22e61bbfb5dbc574/config/prod.yaml#L51\"">https://github.com/jupyterhub/mybinder.org-deploy/blob/57eb5777ade9a684a832a33b22e61bbfb5dbc574/config/prod.yaml#L51<\/a>\n\nTo conclude, you are on (gke.)<a href="https://discourse.jupyter.org/t/mybinder-and-multiprocessing/\&quot;http://mybinder.org\&quot;">mybinder.org<\/a> limited to using 1 CPU core on average every 100ms.\n\nSo while you can run something &hellip;","upvoteCount":2,"dateCreated":"2020-02-03T17:37:19.617Z","url":"https://discourse.jupyter.org/t/mybinder-and-multiprocessing/3238/2","author":{"@type":"Person","name":"consideRatio"}}}}</script>
+  </head>
+  <body class="crawler ">
+    
+    <header>
+  <a href="https://discourse.jupyter.org/">
+    Jupyter Community Forum
+  </a>
+</header>
+
+    <div id="main-outlet" class="wrap" role="main">
+        <div id="topic-title">
+    <h1>
+      <a href="3238.html">MyBinder and multiprocessing</a>
+    </h1>
+
+      <div class="topic-category" itemscope itemtype="http://schema.org/BreadcrumbList">
+          <span itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+            <a href="https://discourse.jupyter.org/c/binder/12" class="badge-wrapper bullet" itemprop="item">
+              <span class='badge-category-bg' style='background-color: #BF1E2E'></span>
+              <span class='badge-category clear-badge'>
+                <span class='category-name' itemprop='name'>Binder</span>
+              </span>
+            </a>
+            <meta itemprop="position" content="1" />
+          </span>
+      </div>
+
+  </div>
+
+  
+
+    <div itemscope itemtype='http://schema.org/DiscussionForumPosting'>
+      <meta itemprop='headline' content='MyBinder and multiprocessing'>
+        <meta itemprop='articleSection' content='Binder'>
+      <meta itemprop='keywords' content=''>
+      <div itemprop='publisher' itemscope itemtype="http://schema.org/Organization">
+        <meta itemprop='name' content='Jupyter Community Forum'>
+          <div itemprop='logo' itemscope itemtype="http://schema.org/ImageObject">
+            <meta itemprop='url' content='https://global.discourse-cdn.com/standard11/uploads/jupyter/original/1X/5042a9e9c48769ff730b5bf57c0d8875e24b4439.png'>
+          </div>
+      </div>
+
+          <div id='post_1'  class='topic-body crawler-post'>
+            <div class='crawler-post-meta'>
+              <span class="creator" itemprop="author" itemscope itemtype="http://schema.org/Person">
+                <a itemprop="url" href='https://discourse.jupyter.org/u/fmaussion'><span itemprop='name'>fmaussion</span></a>
+                
+              </span>
+
+              <link itemprop="mainEntityOfPage" href="3238.html">
+
+
+              <span class="crawler-post-infos">
+                  <time itemprop='datePublished' datetime='2020-02-03T16:03:19Z' class='post-time'>
+                    February 3, 2020,  4:03pm
+                  </time>
+                  <meta itemprop='dateModified' content='2020-02-03T16:15:17Z'>
+              <span itemprop='position'>1</span>
+              </span>
+            </div>
+            <div class='post' itemprop='articleBody'>
+              <p>We have lots of tutorials about our <a href="http://oggm.org" rel="nofollow noopener">glacier model</a> on MyBinder. The model per default checks the number of CPUs available with <code>multiprocessing.cpu_count()</code> and then use all of them. On a standard MyBinder env that’d be 16.</p>
+<p>But that’s not the true resources given the user, right? What would be the right number of processes I can start as a user in a MyBinder env? Or should we switch off multiprocessing altogether?</p>
+<p><em>Context:</em><br>
+I’m asking because we went from a standard pool to one created with a <a href="https://docs.python.org/3/library/multiprocessing.html#multiprocessing.get_context" rel="nofollow noopener">context object</a> (for obscure reasons you don’t want to know about), and creating the new pool (which stores plenty of variables to be shared across processes) now takes ages (or freezes the notebook, I never had the patience to wait for it to be created).</p>
+            </div>
+
+            <div itemprop="interactionStatistic" itemscope itemtype="http://schema.org/InteractionCounter">
+              <meta itemprop="interactionType" content="http://schema.org/LikeAction"/>
+              <meta itemprop="userInteractionCount" content="2" />
+              <span class='post-likes'>2 Likes</span>
+            </div>
+
+            <div itemprop="interactionStatistic" itemscope itemtype="http://schema.org/InteractionCounter">
+                <meta itemprop="interactionType" content="http://schema.org/CommentAction"/>
+                <meta itemprop="userInteractionCount" content="0" />
+              </div>
+
+                <div class='crawler-linkback-list' itemscope itemtype='http://schema.org/ItemList'>
+                      <div itemprop='itemListElement' itemscope itemtype='http://schema.org/ListItem'>
+                        <a itemprop='url' href="https://discourse.jupyter.org/t/detecting-cpu-and-ram-limits-on-mybinder-org/4640">Detecting CPU and RAM limits on mybinder.org</a>
+                        <meta itemprop='position' content='3'>
+                      </div>
+                </div>
+          </div>
+          <div id='post_2' itemprop='comment' itemscope itemtype='http://schema.org/Comment' class='topic-body crawler-post'>
+            <div class='crawler-post-meta'>
+              <span class="creator" itemprop="author" itemscope itemtype="http://schema.org/Person">
+                <a itemprop="url" href='https://discourse.jupyter.org/u/consideRatio'><span itemprop='name'>consideRatio</span></a>
+                
+              </span>
+
+              <link itemprop="mainEntityOfPage" href="3238.html">
+
+
+              <span class="crawler-post-infos">
+                  <time itemprop='datePublished' datetime='2020-02-03T17:37:19Z' class='post-time'>
+                    February 3, 2020,  5:37pm
+                  </time>
+                  <meta itemprop='dateModified' content='2020-02-03T17:37:19Z'>
+              <span itemprop='position'>2</span>
+              </span>
+            </div>
+            <div class='post' itemprop='text'>
+              <p>Here is the config of provided resource for each user: <a href="https://github.com/jupyterhub/mybinder.org-deploy/blob/57eb5777ade9a684a832a33b22e61bbfb5dbc574/config/prod.yaml#L51">https://github.com/jupyterhub/mybinder.org-deploy/blob/57eb5777ade9a684a832a33b22e61bbfb5dbc574/config/prod.yaml#L51</a></p>
+<p>To conclude, you are on (gke.)<a href="http://mybinder.org">mybinder.org</a> limited to using 1 CPU core on average every 100ms.</p>
+<p>So while you can run something in parallell, the net use of CPU per 100ms on average needs to be max 1CPU, so it probably doesnt make sense given those restrictions.</p>
+            </div>
+
+            <div itemprop="interactionStatistic" itemscope itemtype="http://schema.org/InteractionCounter">
+              <meta itemprop="interactionType" content="http://schema.org/LikeAction"/>
+              <meta itemprop="userInteractionCount" content="2" />
+              <span class='post-likes'>2 Likes</span>
+            </div>
+
+            <div itemprop="interactionStatistic" itemscope itemtype="http://schema.org/InteractionCounter">
+                <meta itemprop="interactionType" content="http://schema.org/CommentAction"/>
+                <meta itemprop="userInteractionCount" content="1" />
+              </div>
+
+          </div>
+          <div id='post_3' itemprop='comment' itemscope itemtype='http://schema.org/Comment' class='topic-body crawler-post'>
+            <div class='crawler-post-meta'>
+              <span class="creator" itemprop="author" itemscope itemtype="http://schema.org/Person">
+                <a itemprop="url" href='https://discourse.jupyter.org/u/consideRatio'><span itemprop='name'>consideRatio</span></a>
+                
+              </span>
+
+              <link itemprop="mainEntityOfPage" href="3238.html">
+
+                <link itemprop="image" href="https://global.discourse-cdn.com/standard11/uploads/jupyter/original/2X/b/bc43d7e362f02dafe9b34a0847df55b68373189a.jpeg">
+
+              <span class="crawler-post-infos">
+                  <time itemprop='datePublished' datetime='2020-02-03T17:43:08Z' class='post-time'>
+                    February 3, 2020,  5:43pm
+                  </time>
+                  <meta itemprop='dateModified' content='2020-02-03T17:43:08Z'>
+              <span itemprop='position'>3</span>
+              </span>
+            </div>
+            <div class='post' itemprop='text'>
+              <p>Wow I’m so often amazed on what use <a href="http://mybinder.org">mybinder.org</a> end up having, the OGGM project seems amazing! I’m sorry to conclude you are limited like this when doing cool stuff like that open source!</p>
+<p><div class="lightbox-wrapper"><a class="lightbox" href="https://global.discourse-cdn.com/standard11/uploads/jupyter/original/2X/b/bc43d7e362f02dafe9b34a0847df55b68373189a.jpeg" data-download-href="/uploads/short-url/qRt7jS6kXqJUolGXR0D3njgAPW2.jpeg?dl=1" title="image"><img src="https://global.discourse-cdn.com/standard11/uploads/jupyter/optimized/2X/b/bc43d7e362f02dafe9b34a0847df55b68373189a_2_281x499.jpeg" alt="image" data-base62-sha1="qRt7jS6kXqJUolGXR0D3njgAPW2" width="281" height="499" srcset="https://global.discourse-cdn.com/standard11/uploads/jupyter/optimized/2X/b/bc43d7e362f02dafe9b34a0847df55b68373189a_2_281x499.jpeg, https://global.discourse-cdn.com/standard11/uploads/jupyter/optimized/2X/b/bc43d7e362f02dafe9b34a0847df55b68373189a_2_421x748.jpeg 1.5x, https://global.discourse-cdn.com/standard11/uploads/jupyter/optimized/2X/b/bc43d7e362f02dafe9b34a0847df55b68373189a_2_562x998.jpeg 2x" data-small-upload="https://global.discourse-cdn.com/standard11/uploads/jupyter/optimized/2X/b/bc43d7e362f02dafe9b34a0847df55b68373189a_2_10x10.png"><div class="meta">
+<svg class="fa d-icon d-icon-far-image svg-icon" aria-hidden="true"><use xlink:href="#far-image"></use></svg><span class="filename">image</span><span class="informations">750×1334 256 KB</span><svg class="fa d-icon d-icon-discourse-expand svg-icon" aria-hidden="true"><use xlink:href="#discourse-expand"></use></svg>
+</div></a></div></p>
+            </div>
+
+            <div itemprop="interactionStatistic" itemscope itemtype="http://schema.org/InteractionCounter">
+              <meta itemprop="interactionType" content="http://schema.org/LikeAction"/>
+              <meta itemprop="userInteractionCount" content="2" />
+              <span class='post-likes'>2 Likes</span>
+            </div>
+
+            <div itemprop="interactionStatistic" itemscope itemtype="http://schema.org/InteractionCounter">
+                <meta itemprop="interactionType" content="http://schema.org/CommentAction"/>
+                <meta itemprop="userInteractionCount" content="0" />
+              </div>
+
+          </div>
+          <div id='post_4' itemprop='comment' itemscope itemtype='http://schema.org/Comment' class='topic-body crawler-post'>
+            <div class='crawler-post-meta'>
+              <span class="creator" itemprop="author" itemscope itemtype="http://schema.org/Person">
+                <a itemprop="url" href='https://discourse.jupyter.org/u/betatim'><span itemprop='name'>betatim</span></a>
+                
+              </span>
+
+              <link itemprop="mainEntityOfPage" href="3238.html">
+
+
+              <span class="crawler-post-infos">
+                  <time itemprop='datePublished' datetime='2020-02-03T17:51:20Z' class='post-time'>
+                    February 3, 2020,  5:51pm
+                  </time>
+                  <meta itemprop='dateModified' content='2020-02-03T17:51:20Z'>
+              <span itemprop='position'>4</span>
+              </span>
+            </div>
+            <div class='post' itemprop='text'>
+              <p>All the clusters backing <a href="http://mybinder.org">mybinder.org</a> should give you 1 core. I don’t know a general way to ask the question “how many cores does the container I am running in actually have access to?”. Asking for the number of CPUs (while inside a container) mostly just tells you the number of cores the host has :-/</p>
+<p>For the specific case of <a href="http://mybinder.org">mybinder.org</a> checking the value of the <code>CPU_LIMIT</code> environment variable will tell you how many cores you can use. <code>MEM_LIMIT</code> is the corresponding variable for memory usage (in bytes).</p>
+            </div>
+
+            <div itemprop="interactionStatistic" itemscope itemtype="http://schema.org/InteractionCounter">
+              <meta itemprop="interactionType" content="http://schema.org/LikeAction"/>
+              <meta itemprop="userInteractionCount" content="3" />
+              <span class='post-likes'>3 Likes</span>
+            </div>
+
+            <div itemprop="interactionStatistic" itemscope itemtype="http://schema.org/InteractionCounter">
+                <meta itemprop="interactionType" content="http://schema.org/CommentAction"/>
+                <meta itemprop="userInteractionCount" content="0" />
+              </div>
+
+          </div>
+          <div id='post_5' itemprop='comment' itemscope itemtype='http://schema.org/Comment' class='topic-body crawler-post'>
+            <div class='crawler-post-meta'>
+              <span class="creator" itemprop="author" itemscope itemtype="http://schema.org/Person">
+                <a itemprop="url" href='https://discourse.jupyter.org/u/fmaussion'><span itemprop='name'>fmaussion</span></a>
+                
+              </span>
+
+              <link itemprop="mainEntityOfPage" href="3238.html">
+
+
+              <span class="crawler-post-infos">
+                  <time itemprop='datePublished' datetime='2020-02-03T19:58:47Z' class='post-time'>
+                    February 3, 2020,  7:58pm
+                  </time>
+                  <meta itemprop='dateModified' content='2020-02-03T19:58:47Z'>
+              <span itemprop='position'>5</span>
+              </span>
+            </div>
+            <div class='post' itemprop='text'>
+              <p>Thank you all for your replies! We can totally live with these limitations, we just need to set some environment variable which will prevent the model to use multiprocessing on MyBinder.</p>
+            </div>
+
+            <div itemprop="interactionStatistic" itemscope itemtype="http://schema.org/InteractionCounter">
+              <meta itemprop="interactionType" content="http://schema.org/LikeAction"/>
+              <meta itemprop="userInteractionCount" content="2" />
+              <span class='post-likes'>2 Likes</span>
+            </div>
+
+            <div itemprop="interactionStatistic" itemscope itemtype="http://schema.org/InteractionCounter">
+                <meta itemprop="interactionType" content="http://schema.org/CommentAction"/>
+                <meta itemprop="userInteractionCount" content="0" />
+              </div>
+
+          </div>
+          <div id='post_6' itemprop='comment' itemscope itemtype='http://schema.org/Comment' class='topic-body crawler-post'>
+            <div class='crawler-post-meta'>
+              <span class="creator" itemprop="author" itemscope itemtype="http://schema.org/Person">
+                <a itemprop="url" href='https://discourse.jupyter.org/u/ostrokach'><span itemprop='name'>ostrokach</span></a>
+                
+              </span>
+
+              <link itemprop="mainEntityOfPage" href="3238.html">
+
+
+              <span class="crawler-post-infos">
+                  <time itemprop='datePublished' datetime='2020-02-06T21:13:57Z' class='post-time'>
+                    February 6, 2020,  9:13pm
+                  </time>
+                  <meta itemprop='dateModified' content='2020-02-06T21:13:57Z'>
+              <span itemprop='position'>6</span>
+              </span>
+            </div>
+            <div class='post' itemprop='text'>
+              <p>You may get a more accurate “cpu count” using <code>len(os.sched_getaffinity(0))</code>.</p>
+<p>See this <a href="https://stackoverflow.com/a/55423170/2063031" rel="nofollow noopener">StackOverflow answer</a> for more info.</p>
+            </div>
+
+            <div itemprop="interactionStatistic" itemscope itemtype="http://schema.org/InteractionCounter">
+              <meta itemprop="interactionType" content="http://schema.org/LikeAction"/>
+              <meta itemprop="userInteractionCount" content="3" />
+              <span class='post-likes'>3 Likes</span>
+            </div>
+
+            <div itemprop="interactionStatistic" itemscope itemtype="http://schema.org/InteractionCounter">
+                <meta itemprop="interactionType" content="http://schema.org/CommentAction"/>
+                <meta itemprop="userInteractionCount" content="0" />
+              </div>
+
+          </div>
+          <div id='post_7' itemprop='comment' itemscope itemtype='http://schema.org/Comment' class='topic-body crawler-post'>
+            <div class='crawler-post-meta'>
+              <span class="creator" itemprop="author" itemscope itemtype="http://schema.org/Person">
+                <a itemprop="url" href='https://discourse.jupyter.org/u/rokroskar'><span itemprop='name'>rokroskar</span></a>
+                
+              </span>
+
+              <link itemprop="mainEntityOfPage" href="3238.html">
+
+
+              <span class="crawler-post-infos">
+                  <time itemprop='datePublished' datetime='2020-03-03T20:04:39Z' class='post-time'>
+                    March 3, 2020,  8:04pm
+                  </time>
+                  <meta itemprop='dateModified' content='2020-03-03T20:04:39Z'>
+              <span itemprop='position'>7</span>
+              </span>
+            </div>
+            <div class='post' itemprop='text'>
+              <p><a class="mention" href="https://discourse.jupyter.org/u/ostrokach">@ostrokach</a> in a (docker) container, I think this still gives you just the total number of cores, does it not?</p>
+            </div>
+
+            <div itemprop="interactionStatistic" itemscope itemtype="http://schema.org/InteractionCounter">
+              <meta itemprop="interactionType" content="http://schema.org/LikeAction"/>
+              <meta itemprop="userInteractionCount" content="0" />
+              <span class='post-likes'></span>
+            </div>
+
+            <div itemprop="interactionStatistic" itemscope itemtype="http://schema.org/InteractionCounter">
+                <meta itemprop="interactionType" content="http://schema.org/CommentAction"/>
+                <meta itemprop="userInteractionCount" content="0" />
+              </div>
+
+          </div>
+          <div id='post_8' itemprop='comment' itemscope itemtype='http://schema.org/Comment' class='topic-body crawler-post'>
+            <div class='crawler-post-meta'>
+              <span class="creator" itemprop="author" itemscope itemtype="http://schema.org/Person">
+                <a itemprop="url" href='https://discourse.jupyter.org/u/ostrokach'><span itemprop='name'>ostrokach</span></a>
+                
+              </span>
+
+              <link itemprop="mainEntityOfPage" href="3238.html">
+
+
+              <span class="crawler-post-infos">
+                  <time itemprop='datePublished' datetime='2020-03-03T20:39:55Z' class='post-time'>
+                    March 3, 2020,  8:39pm
+                  </time>
+                  <meta itemprop='dateModified' content='2020-03-03T20:39:55Z'>
+              <span itemprop='position'>8</span>
+              </span>
+            </div>
+            <div class='post' itemprop='text'>
+              <p><a class="mention" href="https://discourse.jupyter.org/u/rokroskar">@rokroskar</a> Depends how the docker container is executed:</p>
+<pre><code class="lang-bash">$ docker run -it --rm --cpus="0.5" python:3.8-buster python -c "import os; print(len(os.sched_getaffinity(0)))"
+12
+</code></pre>
+<pre><code class="lang-bash">$ docker run -it --rm --cpuset-cpus=0 python:3.8-buster python -c "import os; print(len(os.sched_getaffinity(0)))"
+1
+</code></pre>
+            </div>
+
+            <div itemprop="interactionStatistic" itemscope itemtype="http://schema.org/InteractionCounter">
+              <meta itemprop="interactionType" content="http://schema.org/LikeAction"/>
+              <meta itemprop="userInteractionCount" content="0" />
+              <span class='post-likes'></span>
+            </div>
+
+            <div itemprop="interactionStatistic" itemscope itemtype="http://schema.org/InteractionCounter">
+                <meta itemprop="interactionType" content="http://schema.org/CommentAction"/>
+                <meta itemprop="userInteractionCount" content="1" />
+              </div>
+
+          </div>
+          <div id='post_9' itemprop='comment' itemscope itemtype='http://schema.org/Comment' class='topic-body crawler-post'>
+            <div class='crawler-post-meta'>
+              <span class="creator" itemprop="author" itemscope itemtype="http://schema.org/Person">
+                <a itemprop="url" href='https://discourse.jupyter.org/u/rokroskar'><span itemprop='name'>rokroskar</span></a>
+                
+              </span>
+
+              <link itemprop="mainEntityOfPage" href="3238.html">
+
+
+              <span class="crawler-post-infos">
+                  <time itemprop='datePublished' datetime='2020-03-10T12:39:43Z' class='post-time'>
+                    March 10, 2020, 12:39pm
+                  </time>
+                  <meta itemprop='dateModified' content='2020-03-10T12:39:43Z'>
+              <span itemprop='position'>9</span>
+              </span>
+            </div>
+            <div class='post' itemprop='text'>
+              <p>Interesting, thanks! I didn’t think about binding cpus - I guess kubernetes doesn’t do this automatically and fractional values are by definition not supported?</p>
+            </div>
+
+            <div itemprop="interactionStatistic" itemscope itemtype="http://schema.org/InteractionCounter">
+              <meta itemprop="interactionType" content="http://schema.org/LikeAction"/>
+              <meta itemprop="userInteractionCount" content="0" />
+              <span class='post-likes'></span>
+            </div>
+
+            <div itemprop="interactionStatistic" itemscope itemtype="http://schema.org/InteractionCounter">
+                <meta itemprop="interactionType" content="http://schema.org/CommentAction"/>
+                <meta itemprop="userInteractionCount" content="0" />
+              </div>
+
+          </div>
+    </div>
+
+
+
+
+
+
+    </div>
+    <footer class="container wrap">
+  <nav class='crawler-nav'>
+    <ul>
+      <li itemscope itemtype='http://schema.org/SiteNavigationElement'>
+        <span itemprop='name'>
+          <a href='https://discourse.jupyter.org/' itemprop="url">Home </a>
+        </span>
+      </li>
+      <li itemscope itemtype='http://schema.org/SiteNavigationElement'>
+        <span itemprop='name'>
+          <a href='https://discourse.jupyter.org/categories' itemprop="url">Categories </a>
+        </span>
+      </li>
+      <li itemscope itemtype='http://schema.org/SiteNavigationElement'>
+        <span itemprop='name'>
+          <a href='https://discourse.jupyter.org/guidelines' itemprop="url">FAQ/Guidelines </a>
+        </span>
+      </li>
+        <li itemscope itemtype='http://schema.org/SiteNavigationElement'>
+          <span itemprop='name'>
+            <a href='https://discourse.jupyter.org/tos' itemprop="url">Terms of Service </a>
+          </span>
+        </li>
+        <li itemscope itemtype='http://schema.org/SiteNavigationElement'>
+          <span itemprop='name'>
+            <a href='https://discourse.jupyter.org/privacy' itemprop="url">Privacy Policy </a>
+          </span>
+        </li>
+    </ul>
+  </nav>
+  <p class='powered-by-link'>Powered by <a href="https://www.discourse.org">Discourse</a>, best viewed with JavaScript enabled</p>
+</footer>
+
+    
+    
+  </body>
+  
+</html>
