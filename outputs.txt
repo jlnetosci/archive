@@ -38,3 +38,8 @@ https://web.archive.org/web/20230725170057/https://mybinder.readthedocs.io/en/la
 Cached save:
 False
 Finished
+Archive URL:
+https://web.archive.org/web/20230727155624/https://math.stackexchange.com/questions/3310277/how-to-calculate-cumulative-s-d
+Cached save:
+True
+Finished
