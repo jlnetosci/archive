@@ -27,6 +27,10 @@ Usage example:
 1.  Pull the image from dockerhub, with `docker pull jlnetosci/archive:v0.1.0`
 2.  Use `docker run -v <path/to/local/archive>:/usr/local/etc jlnetosci/archive:v0.1.0 archive <url_to_save> <folder_name> <prefix_of_personal_web_archive>` to run the application.
 
+## Update README.md
+
+The summary table in README.md is updated using the `summary_table.R` coupled with the docker image `jlnetosci/r-minimal-knitr:1.43`. Usage example: `docker run --rm -v <path/to/local/archive>:/root jlnetosci/r-minimal-knitr:1.43 Rscript summary_table.R`
+
 ## Summary table
 
 |original                                                                                              |wayback                                                                                                                                          |page                                                                                                                                          |
@@ -40,3 +44,4 @@ Usage example:
 |https://discourse.jupyter.org/t/mybinder-and-multiprocessing/3238                                     |https://web.archive.org/web/20230725165857/https://discourse.jupyter.org/t/mybinder-and-multiprocessing/3238                                     |https://raw.githack.com/jlnetosci/archive/main/pages/mybinder_multiprocessing/3238.html                                                       |
 |https://mybinder.readthedocs.io/en/latest/about/user-guidelines.html                                  |https://web.archive.org/web/20230725170057/https://mybinder.readthedocs.io/en/latest/about/user-guidelines.html                                  |https://raw.githack.com/jlnetosci/archive/main/pages/mybinder_guidelines/user-guidelines.html                                                 |
 |https://math.stackexchange.com/questions/3310277/how-to-calculate-cumulative-s-d                      |https://web.archive.org/web/20230727155624/https://math.stackexchange.com/questions/3310277/how-to-calculate-cumulative-s-d                      |https://raw.githack.com/jlnetosci/archive/main/pages/cumulative_standard_deviation/how-to-calculate-cumulative-s-d.html                       |
+|http://scholarpedia.org/article/K-nearest_neighbor                                                    |https://web.archive.org/web/20230728182404/http://scholarpedia.org/article/K-nearest_neighbor                                                    |https://raw.githack.com/jlnetosci/archive/main/pages/knn_datasets/K-nearest_neighbor.html                                                     |

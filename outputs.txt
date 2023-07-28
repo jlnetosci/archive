@@ -43,3 +43,8 @@ https://web.archive.org/web/20230727155624/https://math.stackexchange.com/questi
 Cached save:
 True
 Finished
+Archive URL:
+https://web.archive.org/web/20230728182404/http://scholarpedia.org/article/K-nearest_neighbor
+Cached save:
+False
+Finished

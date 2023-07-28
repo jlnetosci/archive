@@ -1,0 +1,1031 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="client-nojs">
+<head>
+<title>K-nearest neighbor - Scholarpedia</title>
+<meta charset="UTF-8" />
+<meta name="generator" content="MediaWiki 1.19.17" />
+<meta name="citation_title" content="K-nearest neighbor" />
+<meta name="citation_author" content="Leif E. Peterson" />
+<meta name="citation_date" content="2009/2/21" />
+<meta name="citation_journal_title" content="Scholarpedia" />
+<meta name="citation_issn" content="1941-6016" />
+<meta name="citation_volume" content="4" />
+<meta name="citation_issue" content="2" />
+<meta name="citation_firstpage" content="1883" />
+<meta name="citation_doi" content="10.4249/scholarpedia.1883" />
+<link rel="shortcut icon" href="http://scholarpedia.org/w/images/6/64/Favicon.ico" />
+<link rel="search" type="application/opensearchdescription+xml" href="http://scholarpedia.org/w/opensearch_desc.php" title="Scholarpedia (en)" />
+<link rel="EditURI" type="application/rsd+xml" href="http://scholarpedia.org/w/api.php?action=rsd" />
+<link rel="alternate" type="application/atom+xml" title="Scholarpedia Atom feed" href="http://scholarpedia.org/w/index.php?title=Special:RecentChanges&amp;feed=atom" />
+<link rel="stylesheet" href="http://scholarpedia.org/w/load.php?debug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%2Cshared%7Cskins.vector&amp;only=styles&amp;skin=vector&amp;*" />
+<link rel="stylesheet" href="http://scholarpedia.org/w/skins/vector/font-awesome.min.css" />
+<link rel="stylesheet" href="http://scholarpedia.org/w/skins/vector/local-screen.css" /><meta name="ResourceLoaderDynamicStyles" content="" />
+<link rel="stylesheet" href="http://scholarpedia.org/w/load.php?debug=false&amp;lang=en&amp;modules=site&amp;only=styles&amp;skin=vector&amp;*" />
+<style>a:lang(ar),a:lang(ckb),a:lang(fa),a:lang(kk-arab),a:lang(mzn),a:lang(ps),a:lang(ur){text-decoration:none}a.new,#quickbar a.new{color:#ba0000}
+
+/* cache key: wikidb:resourceloader:filter:minify-css:7:c88e2bcd56513749bec09a7e29cb3ffa */</style>
+
+<script src="http://scholarpedia.org/w/load.php?debug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=vector&amp;*"></script>
+<script>if(window.mw){
+mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"K-nearest_neighbor","wgTitle":"K-nearest neighbor","wgCurRevisionId":137311,"wgArticleId":1883,"wgIsArticle":true,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["Computational Intelligence"],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgRelevantPageName":"K-nearest_neighbor","wgRestrictionEdit":[],"wgRestrictionMove":[],"wgVectorEnabledModules":{"collapsiblenav":true,"collapsibletabs":true,"editwarning":false,"expandablesearch":false,"footercleanup":false,"sectioneditlinks":false,"simplesearch":true,"experiments":true}});
+}</script><script>if(window.mw){
+mw.loader.implement("user.options",function($){mw.user.options.set({"ccmeonemails":0,"cols":80,"date":"default","diffonly":0,"disablemail":0,"disablesuggest":0,"editfont":"default","editondblclick":0,"editsection":1,"editsectiononrightclick":0,"enotifminoredits":0,"enotifrevealaddr":0,"enotifusertalkpages":1,"enotifwatchlistpages":1,"extendwatchlist":0,"externaldiff":0,"externaleditor":0,"fancysig":0,"forceeditsummary":0,"gender":"unknown","hideminor":0,"hidepatrolled":0,"highlightbroken":1,"imagesize":2,"justify":0,"math":1,"minordefault":0,"newpageshidepatrolled":0,"nocache":0,"noconvertlink":0,"norollbackdiff":0,"numberheadings":0,"previewonfirst":0,"previewontop":1,"quickbar":5,"rcdays":7,"rclimit":50,"rememberpassword":0,"rows":25,"searchlimit":20,"showhiddencats":0,"showjumplinks":1,"shownumberswatching":1,"showtoc":1,"showtoolbar":1,"skin":"vector","stubthreshold":0,"thumbsize":2,"underline":2,"uselivepreview":0,"usenewrc":0,"watchcreations":0,"watchdefault":0,"watchdeletion":0,
+"watchlistdays":3,"watchlisthideanons":0,"watchlisthidebots":0,"watchlisthideliu":0,"watchlisthideminor":0,"watchlisthideown":0,"watchlisthidepatrolled":0,"watchmoves":0,"wllimit":250,"vector-simplesearch":1,"vector-collapsiblenav":1,"variant":"en","language":"en","searchNs0":true,"searchNs1":false,"searchNs2":false,"searchNs3":false,"searchNs4":false,"searchNs5":false,"searchNs6":false,"searchNs7":false,"searchNs8":false,"searchNs9":false,"searchNs10":false,"searchNs11":false,"searchNs12":false,"searchNs13":false,"searchNs14":false,"searchNs15":false,"searchNs200":false,"searchNs201":false,"searchNs400":false,"searchNs401":false});;},{},{});mw.loader.implement("user.tokens",function($){mw.user.tokens.set({"editToken":"+\\","watchToken":false});;},{},{});
+
+/* cache key: wikidb:resourceloader:filter:minify-js:7:e87579b4b142a5fce16144e6d8ce1889 */
+}</script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.page.startup","mediawiki.legacy.wikibits","mediawiki.legacy.ajax"]);
+}</script>
+<link rel="canonical" href="http://www.scholarpedia.org/article/K-nearest_neighbor" />
+<!--[if lt IE 7]><style type="text/css">body{behavior:url("/w/skins/vector/csshover.min.htc")}</style><![endif]--></head>
+<body class="mediawiki ltr sitedir-ltr ns-0 ns-subject page-K-nearest_neighbor skin-vector action-view cp-body-published">
+		<div id="mw-page-base" class="noprint"></div>
+		<div id="mw-head-base" class="noprint"></div>
+		<!-- content -->
+		<div id="content" class="mw-body">
+			<a id="top"></a>
+			<div id="mw-js-message" style="display:none;"></div>
+						<!-- sitenotice -->
+			<div id="siteNotice"><script type="text/javascript">
+/* <![CDATA[ */
+document.writeln("\x3cdiv id=\"localNotice\" lang=\"en\" dir=\"ltr\"\x3e\x3cp style=text-align:left;font-style:italic\x3eScholarpedia is supported by \x3ca href=\'http://www.braincorp.com\'\x3eBrain Corporation\x3c/a\x3e\x3c/p\x3e\x3c/div\x3e");
+/* ]]> */
+</script></div>
+			<!-- /sitenotice -->
+						<!-- firstHeading -->
+			<h1 id="firstHeading" class="firstHeading">
+				<span dir="auto">K-nearest neighbor</span>
+			</h1>
+			<!-- /firstHeading -->
+
+                            <div class="cp-googleplus">
+                    <div class="g-plusone" align="right" data-size="small" data-annotation="inline"
+                         data-width="180"></div>
+                    <script type="text/javascript">
+                        (function () {
+                            var po = document.createElement('script');
+                            po.type = 'text/javascript';
+                            po.async = true;
+                            po.src = 'https://apis.google.com/js/plusone.js';
+                            var s = document.getElementsByTagName('script')[0];
+                            s.parentNode.insertBefore(po, s);
+                        })();
+                    </script>
+                </div>
+            
+			<!-- bodyContent -->
+			<div id="bodyContent">
+								<!-- tagline -->
+				<div id="siteSub">From Scholarpedia</div>
+				<!-- /tagline -->
+								<!-- subtitle -->
+				<div id="contentSub"><span class="subpages"><table class="cp-citation-subtitle" width="100%" cellpadding="0" cellspacing="0" border="0">
+<tr valign="bottom">
+<td align="left">Leif E. Peterson (2009), Scholarpedia, 4(2):1883.</td>
+<td align="center"><a href="http://dx.doi.org/10.4249/scholarpedia.1883">doi:10.4249/scholarpedia.1883</a></td>
+<td align="right">revision #137311 [<a href="http://scholarpedia.org/w/index.php?title=K-nearest_neighbor&amp;action=cite&amp;rev=137311" title="K-nearest neighbor">link to/cite this article</a>]</td>
+</tr>
+</table>
+</span></div>
+				<!-- /subtitle -->
+																<!-- jumpto -->
+				<div id="jump-to-nav" class="mw-jump">
+					Jump to: <a href="K-nearest_neighbor.html#mw-head">navigation</a>,
+					<a href="K-nearest_neighbor.html#p-search">search</a>
+				</div>
+				<!-- /jumpto -->
+								<!-- bodycontent -->
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><div class="cp-box-container"><div class="cp-curator-box noprint"><b><u>Post-publication activity</u></b><br /><button class="cp-button btn"></button><p><span class="cp-title-label">Curator:</span> <a href="http://scholarpedia.org/article/User:Leif_E._Peterson" title="User:Leif E. Peterson">Leif E. Peterson</a>
+</p><div class="cp-assistants hidden"><div><span class="cp-title-label">Contributors:</span><p>&nbsp;</p></div><div><span>0.14 - </span><p><a href="http://scholarpedia.org/article/User:Eugene_M._Izhikevich" title="User:Eugene M. Izhikevich">Eugene M. Izhikevich</a>
+</p></div><div><span></span><p><a href="http://scholarpedia.org/article/User:Nick_Orbeck" title="User:Nick Orbeck">Nick Orbeck</a>
+</p></div><div><span></span><p><a href="http://scholarpedia.org/article/User:Ke_CHEN" title="User:Ke CHEN">Ke CHEN</a>
+</p></div><div><span></span><p><a href="http://scholarpedia.org/article/User:Tobias_Denninger" title="User:Tobias Denninger">Tobias Denninger</a>
+</p></div><div><span></span><p><a href="http://scholarpedia.org/article/User:Francesco_Masulli" title="User:Francesco Masulli">Francesco Masulli</a>
+</p></div><div><span></span><p><a href="http://scholarpedia.org/article/User:Juan_Pablo_Carbajal" title="User:Juan Pablo Carbajal">Juan Pablo Carbajal</a>
+</p></div></div></div></div><div class="cp-author-order"><ul id="sp_authors"><li id="sort-1"><p><a href="http://scholarpedia.org/article/User:Leif_E._Peterson" title="User:Leif E. Peterson"><span class="bold">Leif E. Peterson</span>, Center for Biostatistics, The Methodist Hospital Research Institute</a>
+</p></li></ul></div><p><strong><span class="tex2jax_ignore">K-nearest-neighbor</span></strong> <b>(kNN)</b> classification is one of the most fundamental and simple classification methods and should be one of the first choices for a classification study when there is little or no prior knowledge about the distribution of the data.  K-nearest-neighbor classification was developed from the need to perform discriminant analysis when reliable parametric estimates of probability densities are unknown or difficult to determine.  In an unpublished US Air Force School of Aviation Medicine report in 1951, Fix and Hodges introduced a non-parametric method for pattern classification that has since become known the k-nearest neighbor rule (Fix &amp; Hodges, 1951).  Later in 1967, some of the formal properties of the k-nearest-neighbor rule were worked out; for instance it was shown that for \(k = 1\) and \(n\rightarrow \infty\) the k-nearest-neighbor classification error is bounded above by twice the Bayes error rate (Cover &amp; Hart, 1967).  Once such formal properties of k-nearest-neighbor classification were established, a long line of investigation ensued including new rejection approaches (Hellman, 1970), refinements with respect to Bayes error rate (Fukunaga &amp; Hostetler, 1975), distance weighted approaches (Dudani, 1976; Bailey &amp; Jain, 1978), soft computing (Bermejo &amp; Cabestany, 2000) methods and fuzzy methods (Jozwik, 1983; Keller et al., 1985).
+</p>
+<table id="toc" class="toc"><tr><td><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="K-nearest_neighbor.html#Characteristics_of_kNN"><span class="tocnumber">1</span> <span class="toctext">Characteristics of kNN</span></a>
+<ul>
+<li class="toclevel-2 tocsection-2"><a href="K-nearest_neighbor.html#Between-sample_geometric_distance"><span class="tocnumber">1.1</span> <span class="toctext">Between-sample geometric distance</span></a></li>
+<li class="toclevel-2 tocsection-3"><a href="K-nearest_neighbor.html#Classification_decision_rule_and_confusion_matrix"><span class="tocnumber">1.2</span> <span class="toctext">Classification decision rule and confusion matrix</span></a></li>
+<li class="toclevel-2 tocsection-4"><a href="K-nearest_neighbor.html#Feature_transformation"><span class="tocnumber">1.3</span> <span class="toctext">Feature transformation</span></a></li>
+<li class="toclevel-2 tocsection-5"><a href="K-nearest_neighbor.html#Performance_assessment_with_cross-validation"><span class="tocnumber">1.4</span> <span class="toctext">Performance assessment with cross-validation</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-6"><a href="K-nearest_neighbor.html#Pseudocode_.28algorithm.29"><span class="tocnumber">2</span> <span class="toctext">Pseudocode (algorithm)</span></a></li>
+<li class="toclevel-1 tocsection-7"><a href="K-nearest_neighbor.html#Commonly_Employed_Data_Sets"><span class="tocnumber">3</span> <span class="toctext">Commonly Employed Data Sets</span></a></li>
+<li class="toclevel-1 tocsection-8"><a href="K-nearest_neighbor.html#Performance_Evaluation"><span class="tocnumber">4</span> <span class="toctext">Performance Evaluation</span></a></li>
+<li class="toclevel-1 tocsection-9"><a href="K-nearest_neighbor.html#Acknowledgments"><span class="tocnumber">5</span> <span class="toctext">Acknowledgments</span></a></li>
+<li class="toclevel-1 tocsection-10"><a href="K-nearest_neighbor.html#References"><span class="tocnumber">6</span> <span class="toctext">References</span></a></li>
+<li class="toclevel-1 tocsection-11"><a href="K-nearest_neighbor.html#Recommended_reading"><span class="tocnumber">7</span> <span class="toctext">Recommended reading</span></a></li>
+</ul>
+</td></tr></table>
+<h2> <span class="mw-headline" id="Characteristics_of_kNN">Characteristics of kNN</span></h2>
+<h3> <span class="mw-headline" id="Between-sample_geometric_distance">Between-sample geometric distance</span></h3>
+<div id="fig:Knn_voronoi.png" class="thumb tright"><div class="thumbinner" style="width:302px;"><a href="http://scholarpedia.org/article/File:Knn_voronoi.png" class="image"><img alt="" src="http://scholarpedia.org/w/images/thumb/6/66/Knn_voronoi.png/300px-Knn_voronoi.png" width="300" height="293" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://scholarpedia.org/article/File:Knn_voronoi.png" class="internal" title="Enlarge"><img src="http://scholarpedia.org/w/skins/common/images/magnify-clip.png" width="15" height="11" alt="" /></a></div>Figure 1: Voronoi tessellation showing Voronoi cells of 19 samples marked with a "+".  The Voronoi tessellation reflects two characteristics of the example 2-dimensional coordinate system: i) all possible points within a sample's Voronoi cell are the nearest neighboring points for that sample, and ii) for any sample, the nearest sample is determined by the closest Voronoi cell edge.</div></div></div>
+<p>The k-nearest-neighbor classifier is commonly based on the Euclidean distance between a test sample and the specified training samples.  Let \({\textbf x}_i\) be an input sample with \(p\) features \((x_{i1}, x_{i2}, \ldots, x_{ip})\ ,\) \(n\) be the total number of input samples (\(i=1,2,\ldots,n\)) and \(p\) the total number of features \((j=1,2,\ldots,p)\ .\)  The Euclidean distance between sample \({\textbf x}_i\) and \({\textbf x}_l\) (\(l=1,2,\ldots,n\)) is defined as
+</p><p>\(
+ d({\textbf x}_i,{\textbf x}_l) = \sqrt{(x_{i1}-x_{l1})^2 + (x_{i2}-x_{l2})^2 + \cdots + (x_{ip}-x_{lp})^2} .
+\)
+</p><p>A graphic depiction of the nearest neighbor concept is illustrated in the Voronoi tessellation (Voronoi, 1907) shown in Figure 1.  The tessellation shows 19 samples marked with a "+", and the Voronoi cell, \(R\ ,\) surrounding each sample.  A Voronoi cell encapsulates all neighboring points that are nearest to each sample and is defined as 
+</p><p>\(R_i = \{ \textbf{x} \in \R^p : d(\textbf{x},\textbf{x}_i) \leq d(\textbf{x},\textbf{x}_m), \quad \forall \quad i \neq m \}\ ,\)
+</p><p>where \(R_i \) is the Voronoi cell for sample \(\textbf{x}_i\ ,\) and \(\textbf{x}\) represents all possible points within Voronoi cell \(R_i \ .\)  Voronoi tessellations primarily reflect two characteristics of a coordinate system: i) all possible points within a sample's Voronoi cell are the nearest neighboring points for that sample, and ii) for any sample, the nearest sample is determined by the closest Voronoi cell edge.   Using the latter characteristic, the k-nearest-neighbor classification rule is to assign to a test sample the majority category label of its k nearest training samples.  In practice, k is usually chosen to be odd, so as to avoid ties.  The k = 1 rule is generally called the nearest-neighbor classification rule.
+</p>
+<h3> <span class="mw-headline" id="Classification_decision_rule_and_confusion_matrix">Classification decision rule and confusion matrix</span></h3>
+<p>Classification typically involves partitioning samples into training and testing categories. 
+Let \(\textbf{x}_i\) be a training sample and \(\textbf{x}\) be a test sample, and 
+let \(\omega\) be the true class of a training sample and \(\hat{\omega}\) be the predicted class for a test sample 
+\((\omega,\hat{\omega}=1,2,\ldots,\Omega)\ .\)  Here, \(\Omega\) is the total number of classes.
+</p><p>During the training process, we use only the true class \(\omega\) of each training sample to train the classifier, while during testing we predict the class \(\hat{\omega}\) of each test sample.  It warrants noting that kNN is a "supervised" classification method in that it uses the class labels of the training data.  <i>Unsupervised</i> classification methods, or "clustering" methods, on the other hand, do not employ the class labels of the training data.    
+</p><p>With 1-nearest neighbor rule, the predicted class of test sample \(\textbf{x}\) is set equal to the true class \(\omega\) of its nearest neighbor, where \(\textbf{m}_i\) is a nearest neighbor to \(\textbf{x}\) if the distance 
+</p><p>\(d( \textbf{m}_i, \textbf{x})={\min}_j\{ d(\textbf{m}_j, \textbf{x})\}.\)  
+</p><p>For k-nearest neighbors, the predicted class of test sample \(\textbf{x}\) is set equal to the most frequent true class among \(k\) nearest training samples.  This forms the decision rule \(D:\textbf{x}\rightarrow \hat{\omega}\ .\)   
+</p><p>The confusion matrix used for tabulating test sample class predictions during testing is denoted as \(\textbf C\) and has dimensions \(\Omega \times \Omega\ .\)  During testing, if the predicted class of test sample \(\textbf{x}\) is correct (i.e., \(\hat{\omega}=\omega\)), then the diagonal element \(c_{\omega \omega}\) of the confusion matrix is incremented by 1.  However, if the predicted class is incorrect (i.e., \(\hat{\omega} \neq \omega\)), then the off-diagonal element \(c_{\omega \hat{\omega}}\) is incremented by 1.  Once all the test samples have been classified, the classification accuracy is based on the ratio of the number of correctly classified samples to the total number of samples classified, given in the form
+</p><p>\(Acc = \frac{\sum_{\omega} ^ {\Omega} c_{\omega \omega}} {n_{total}}\) 
+</p><p>where \(c_{\omega \omega}\) is a diagonal element of \(\textbf C\) and 
+\(n_{total}\) is the total number of samples classified.
+</p><p>Consider a machine learning study to classify 19 samples with 2 features, \(X\) and \(Y\ .\)  Table 1 lists the pairwise Euclidean distance between the 19 samples.  Assume that sample \({\textbf x}_{11}\) is being used as a test sample while all remaining samples are used for training.  For k=4, the four samples closest to sample  \({\textbf x}_{11}\) are sample  \({\textbf x}_{10}\) (blue class label), sample  \({\textbf x}_{12}\) (red class label),  \({\textbf x}_{13}\) (red class label), and  \({\textbf x}_{14}\)(red class label).   
+</p>
+<table class="wikitable" style="text-align:center" border="1">
+<caption>Table 1.  Euclidean distance matrix <b>D</b> listing all possible pairwise Euclidean distances between 19 samples.
+</caption>
+<tr>
+<th> </th>
+<th> \({\textbf x}_1\ \) </th>
+<th>  \({\textbf x}_2\ \)  </th>
+<th>  \({\textbf x}_3\ \) </th>
+<th> \({\textbf x}_4\ \) </th>
+<th> \({\textbf x}_5\ \) </th>
+<th>  \({\textbf x}_6\ \)  </th>
+<th>  \({\textbf x}_7\ \)  </th>
+<th>  \({\textbf x}_8\ \)  </th>
+<th>  \({\textbf x}_9\ \) </th>
+<th>  \({\textbf x}_{10}\ \)  </th>
+<th>  \({\textbf x}_{11}\ \)  </th>
+<th>  \({\textbf x}_{12}\ \)  </th>
+<th>  \({\textbf x}_{13}\ \)  </th>
+<th>  \({\textbf x}_{14}\ \)  </th>
+<th>  \({\textbf x}_{15}\ \)  </th>
+<th>  \({\textbf x}_{16}\ \)  </th>
+<th>  \({\textbf x}_{17}\ \)  </th>
+<th>  \({\textbf x}_{18}\)
+</th></tr>
+<tr style="color:blue">
+<th> \({\textbf x}_2\)
+</th>
+<td> 1.5
+</td></tr>
+<tr style="color:blue">
+<th> \({\textbf x}_3\)
+</th>
+<td> 1.4</td>
+<td> 1.6
+</td></tr>
+<tr style="color:blue">
+<th> \({\textbf x}_4\)
+</th>
+<td> 1.6 </td>
+<td> 1.4 </td>
+<td> 1.3
+</td></tr>
+<tr style="color:blue">
+<th> \({\textbf x}_5\)
+</th>
+<td> 1.7 </td>
+<td> 1.4 </td>
+<td> 1.5 </td>
+<td> 1.5
+</td></tr>
+<tr style="color:blue">
+<th> \({\textbf x}_6\)
+</th>
+<td> 1.3</td>
+<td> 1.4</td>
+<td> 1.4</td>
+<td> 1.5 </td>
+<td> 1.4
+</td></tr>
+<tr style="color:blue">
+<th> \({\textbf x}_7\)
+</th>
+<td> 1.6 </td>
+<td> 1.3 </td>
+<td> 1.4 </td>
+<td> 1.4 </td>
+<td> 1.5 </td>
+<td> 1.8
+</td></tr>
+<tr style="color:blue">
+<th> \({\textbf x}_8\)
+</th>
+<td> 1.5 </td>
+<td> 1.4 </td>
+<td> 1.6 </td>
+<td> 1.3 </td>
+<td> 1.7 </td>
+<td> 1.6 </td>
+<td> 1.4
+</td></tr>
+<tr style="color:blue">
+<th> \({\textbf x}_9\)
+</th>
+<td> 1.4 </td>
+<td> 1.3 </td>
+<td> 1.4 </td>
+<td> 1.5 </td>
+<td> 1.2 </td>
+<td> 1.4 </td>
+<td> 1.3 </td>
+<td> 1.5
+</td></tr>
+<tr style="color:blue">
+<th> \({\textbf x}_{10}\)
+</th>
+<td> 2.3 </td>
+<td> 2.4 </td>
+<td> 2.5 </td>
+<td> 2.3 </td>
+<td> 2.6 </td>
+<td> 2.7 </td>
+<td> 2.8 </td>
+<td> 2.7 </td>
+<td> 3.1
+</td></tr>
+<tr style="color:green">
+<th> \({\textbf x}_{11}\)
+</th>
+<td> 2.9 </td>
+<td> 2.8 </td>
+<td> 2.9 </td>
+<td> 3.0 </td>
+<td> 2.9 </td>
+<td> 3.1 </td>
+<td> 2.9 </td>
+<td> 3.1 </td>
+<td> 3.0 </td>
+<td style="background:blue"> <span style="color:yellow"> 1.5
+</td></tr>
+<tr style="color:red">
+<th> \({\textbf x}_{12}\)
+</th>
+<td> 3.2 </td>
+<td> 3.3 </td>
+<td> 3.2 </td>
+<td> 3.1 </td>
+<td> 3.3 </td>
+<td> 3.4 </td>
+<td> 3.3 </td>
+<td> 3.4 </td>
+<td>3.5 </td>
+<td>3.3 </td>
+<td style="background:red"> <span style="color:yellow"> 1.6 </span>
+</td></tr>
+<tr style="color:red">
+<th> \({\textbf x}_{13}\)
+</th>
+<td> 3.3 </td>
+<td> 3.4 </td>
+<td> 3.2 </td>
+<td> 3.2 </td>
+<td> 3.3 </td>
+<td> 3.4 </td>
+<td> 3.2 </td>
+<td> 3.3 </td>
+<td>3.5 </td>
+<td>3.6 </td>
+<td style="background:red"> <span style="color:yellow"> 1.4 </span> </td>
+<td>1.7
+</td></tr>
+<tr style="color:red">
+<th> \({\textbf x}_{14}\)
+</th>
+<td> 3.4 </td>
+<td> 3.2 </td>
+<td> 3.5 </td>
+<td> 3.4 </td>
+<td> 3.7 </td>
+<td> 3.5 </td>
+<td> 3.6 </td>
+<td> 3.3 </td>
+<td>3.5 </td>
+<td>3.6 </td>
+<td style="background:red"> <span style="color:yellow"> 1.5 </span> </td>
+<td>1.8 </td>
+<td>0.5
+</td></tr>
+<tr style="color:red">
+<th> <span style="color:red">\({\textbf x}_{15}\)</span>
+</th>
+<td> 4.2 </td>
+<td> 4.1 </td>
+<td> 4.1 </td>
+<td> 4.1 </td>
+<td> 4.1 </td>
+<td> 4.1 </td>
+<td> 4.1 </td>
+<td> 4.1 </td>
+<td>4.1 </td>
+<td>4.1 </td>
+<td> <span style="color:green"> 1.7 </span> </td>
+<td>1.6 </td>
+<td>0.3 </td>
+<td>0.5
+</td></tr>
+<tr style="color:red">
+<th> \({\textbf x}_{16}\)
+</th>
+<td> 4.1 </td>
+<td> 4.1 </td>
+<td> 4.1 </td>
+<td> 4.1 </td>
+<td> 4.1 </td>
+<td> 4.1 </td>
+<td> 4.1 </td>
+<td> 4.1 </td>
+<td>4.1 </td>
+<td>4.1 </td>
+<td> <span style="color:green"> 1.6 </span> </td>
+<td>1.5 </td>
+<td>0.4 </td>
+<td>0.5 </td>
+<td>0.4
+</td></tr>
+<tr style="color:red">
+<th> \({\textbf x}_{17}\)
+</th>
+<td> 5.9 </td>
+<td> 6.2 </td>
+<td> 6.2 </td>
+<td> 5.8 </td>
+<td> 6.1 </td>
+<td> 6.0 </td>
+<td> 6.1 </td>
+<td> 5.9 </td>
+<td>5.8 </td>
+<td>6.0 </td>
+<td> <span style="color:green"> 2.3 </span> </td>
+<td>2.3 </td>
+<td>2.5 </td>
+<td>2.3 </td>
+<td>2.4 </td>
+<td>2.5
+</td></tr>
+<tr style="color:red">
+<th> \({\textbf x}_{18}\)
+</th>
+<td> 6.1 </td>
+<td> 6.3 </td>
+<td> 6.2 </td>
+<td> 5.8 </td>
+<td> 6.1 </td>
+<td> 6.0 </td>
+<td> 6.1 </td>
+<td> 5.9 </td>
+<td>5.8 </td>
+<td>6.0 </td>
+<td> <span style="color:green"> 3.1 </span> </td>
+<td>2.7 </td>
+<td>2.6 </td>
+<td>2.3 </td>
+<td>2.5 </td>
+<td>2.6 </td>
+<td>3.0
+</td></tr>
+<tr style="color:red">
+<th> \({\textbf x}_{19}\)
+</th>
+<td> 6.0 </td>
+<td> 6.1 </td>
+<td> 6.2 </td>
+<td> 5.8 </td>
+<td> 6.1 </td>
+<td> 6.0 </td>
+<td> 6.1 </td>
+<td> 5.9 </td>
+<td>5.8 </td>
+<td>6.0 </td>
+<td> <span style="color:green"> 3.0 </span> </td>
+<td>2.9 </td>
+<td>2.7 </td>
+<td>2.4 </td>
+<td>2.5 </td>
+<td>2.8 </td>
+<td>3.1 </td>
+<td> 0.4
+</td></tr></table>
+<p>Figure 2 shows an X-Y scatterplot of the 19 samples plotted as a function of their \(X\) and \(Y\) values.  One can notice that among the four samples closest to test sample \({\textbf x}_{11}\) (labeled green), 3/4 of the class labels are for Class A (red color), and therefore, the test sample is assigned to Class A. 
+</p>
+<div id="fig:Knn_sample_plot.png" class="thumb tright"><div class="thumbinner" style="width:302px;"><a href="http://scholarpedia.org/article/File:Knn_sample_plot.png" class="image"><img alt="" src="http://scholarpedia.org/w/images/thumb/1/13/Knn_sample_plot.png/300px-Knn_sample_plot.png" width="300" height="247" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://scholarpedia.org/article/File:Knn_sample_plot.png" class="internal" title="Enlarge"><img src="http://scholarpedia.org/w/skins/common/images/magnify-clip.png" width="15" height="11" alt="" /></a></div>Figure 2: X-Y Scatterplot of the 19 samples for which pairwise Euclidean distances are listed in Table 1.  Among the 4 nearest neighbors of the test sample, the most frequent class label color is red, and thus the test sample is assigned to the red class.</div></div></div>
+<h3> <span class="mw-headline" id="Feature_transformation">Feature transformation </span></h3>
+<p>Increased performance of a classifier can sometimes be achieved when the feature values are transformed prior to classification analysis.  Two commonly used feature transformations are standardization and fuzzification.  
+</p><p><i><b>Standardization</b></i> removes scale effects caused by use of features with different measurement scales.  For example, if one feature is based on patient weight in units of kg and another feature is based on blood protein values in units of ng/dL in the range [-3,3], then patient weight will have a much greater influence on the distance between samples and may bias the performance of the classifier.  Standardization transforms raw feature values into <i>z-scores</i> using the mean and standard deviation of a feature values over all input samples, given by the relationship
+</p><p>\(
+z_{ij}=\frac{x_{ij} - \mu_j}{\sigma_j},
+\)
+</p><p>where \(x_{ij}\) is the value for the <i>i</i>th sample and <i>j</i>th feature,  \(\mu_j\) is the average of all \(x_{ij}\) for feature <i>j</i>, \(\sigma_j\)  is the standard deviation of all \(x_{ij}\) over all input samples.  If the feature values take on a Gaussian distribution, then the histogram of z-scores will represent a standard normal distribution having a mean of zero and variance of unity.  Once standardization is performed on a set of features, the range and scale of the z-scores should be similar, providing the distributions of raw feature values are alike.  
+</p><p><i><b>Fuzzification</b></i> is a transformation which exploits uncertainty in feature values in order to increase classification performance.  Fuzzification replaces the original features by mapping original values of an input feature into 3 <a href="http://scholarpedia.org/article/Fuzzy_sets" title="Fuzzy sets">fuzzy sets</a> representing linguistic membership functions in order to facilitate the semantic interpretation of each fuzzy set (Klir and Juan, 1995; Dubois and Prade, 2000; Pal and Mitra, 2004).  First, determine \(x_{min}\) and \(x_{max}\) as the minimum and maximum values of \(x_{ij}\) for feature <i>j</i> over all input samples and \(q_1\) and \(q_2\) as the quantile values of \(x_{ij}\) at the 33rd and 66th percentile.  Next, calculate the averages \(Avg_1=(x_{min}+q_1)/2\ ,\) \(Avg_2=(q_1+q_2)/2\ ,\) and \(Avg_3=(q_2+x_{max})/2\ .\) Next, translate each value of \(x_{ij}\) for feature <i>j</i> into 3 fuzzy membership values in the range [0,1] as \(\mu_{low,i,j}\ ,\) \(\mu_{mid,i,j}\ ,\) and \(\mu_{high,i,j}\) using the relationships
+</p><p><br />
+\(
+\mu_{low,i,j}=
+\begin{cases}
+1 &amp; x &lt; Avg_1 \\
+\frac{q_2 - x}{q_2 - Avg_1} &amp; Avg_1 \leq x &lt; q_2\\
+0 &amp; x \geq q_2,
+\end{cases}
+\)
+</p><p>\(
+\mu_{med,i,j}=
+\begin{cases}
+0 &amp; x &lt; q_1 \\
+\frac{Avg_2 - x}{Avg_2 - q_1} &amp; q_1 \leq x &lt; Avg_2\\
+\frac{q_2 - x}{q_2 - Avg_2} &amp; Avg_2 \leq x &lt; q_2\\
+0 &amp; x \geq q_2,
+\end{cases}
+\)
+</p><p>\(
+\mu_{high,i,j}=
+\begin{cases}
+0 &amp; x &lt; q_1 \\
+\frac{x - q_1}{Avg_3 - q_1} &amp; q_1 \leq x &lt; Avg_3\\
+1 &amp; x \geq Avg_3.
+\end{cases}
+\)
+</p><p>The above computations result in 3 fuzzy sets (vectors) \(\boldsymbol{\mu}_{low,j}\ ,\) \(\boldsymbol{\mu}_{med,j}\) and \(\boldsymbol{\mu}_{high,j}\) of length <i>n</i> which replace the original input feature.  
+</p><p>The statistical significance of class discrimination for each <i>j</i>th feature can be assessed by using the F-ratio test, given as 
+</p><p>\(
+F(j)=\frac{\sum_{\omega=1}^\Omega n_\omega (\bar{y}_\omega - \bar{y})^2 /(\Omega-1)}{\sum_{\omega=1}^\Omega \sum_{i=1}^{n_\omega} (y_{\omega i} - \bar{y}_\omega)^2 /(n-\Omega)},
+\)
+</p><p>where \(n_\omega\) is the number of training samples in class \(\omega\) \((\omega=1,2,\ldots,\Omega)\ ,\) \(\bar{y}_\omega\) is the mean feature value among training samples in class \(\omega\ ,\) \(\bar{y}\) is the mean feature value for all training samples, and \(y_{\omega i}\) is the feature value among training samples in class \(\omega\ ,\) \((\Omega-1)\) is the numerator degrees of freedom and \((n-\Omega)\) is the denominator degrees of freedom for the F-ratio test.  Tail probabilities, i.e., \(Prob_j\ ,\) are derived for values of the F-ratio statistic based on the numerator and denominator degrees of freedom.  A simple way to quantify simultaneously the total statistical significance of class discrimination for <i>p</i> independent features is to sum the minus natural logarithm of feature-specific p-values using the form
+</p><p>\(
+\textrm{sum[-log(p-value)]}=\frac{\sum_j^p Prob_j}{p}.
+\)
+</p><p>High values of sum[-log(p-value)] for a set of features (&gt;1000) suggest that the feature values are heterogeneous across the classes considered and can discriminate classes well, whereas low values of sum[-log(p-value)] (&lt;100) suggest poor discrimination ability of a feature.
+</p>
+<h3> <span class="mw-headline" id="Performance_assessment_with_cross-validation">Performance assessment with cross-validation</span></h3>
+<p>A basic rule in classification analysis is that class predictions are not made for data samples that are used for training or learning.  If class predictions are made for samples used in training or learning, the accuracy will be artificially biased upward.  Instead, class predictions are made for samples that are kept out of training process.   
+</p><p>The performance of most classifiers is typically evaluated through <i>cross-validation</i>, which involves the determination of classification accuracy for multiple partitions of the input samples used in training.  For example, during 5-fold \((\kappa=5)\) cross-validation training, a set of input samples is split up into 5 partitions \(\mathcal{D}_1, \mathcal{D}_2, \ldots, \mathcal{D}_5\) having equal sample sizes to the extent possible.  The notion of ensuring uniform class representation among the partitions is called <i>stratified cross-validation</i>, which is preferred.  To begin, for 5-fold cross-validation, samples in partitions \(\mathcal{D}_2, \mathcal{D}_3, \ldots, \mathcal{D}_5\) are first used for training while samples in partition \(\mathcal{D}_1\) are used for testing.  Next, samples in groups \(\mathcal{D}_1, \mathcal{D}_3, \ldots, \mathcal{D}_5\) are used for training and samples in partition  \(\mathcal{D}_2\) used for testing.  This is repeated until each partitions have been used singly for testing.  It is also customary to re-partition all of the input samples e.g. 10 times in order to get a better estimate of accuracy.
+</p>
+<h2> <span class="mw-headline" id="Pseudocode_.28algorithm.29">Pseudocode (<a href="http://scholarpedia.org/article/Algorithm" title="Algorithm">algorithm</a>)</span></h2>
+<p><i>Pseudocode</i> is defined as a listing of sequential steps for solving a computational problem.  Pseudocode is used by computer programmers to mentally translate each computational step into a set of programming instructions involving various mathematical operations (addition, subtraction, multiplication, division, power and transcendental functions, differentiation/integration, etc.) and resources (vectors, arrays, graphics, input/output, etc.) in order to solve an analytic problem.  Following is a listing of pseudocode for the k-nearest-neighbor classification method using cross-validation.         
+</p>
+<hr />
+<p><b>Algorithm 1. (PseudoCode for \(\kappa\)-Fold Cross-Validation)</b>
+<b></b>
+</p>
+<hr />
+<p><b>begin</b>
+</p><p>initialize the \(n \times n\) distance matrix \(\textbf{D}\ ,\) initialize the 
+\(\Omega \times \Omega\) confusion matrix \(\textbf{C}\ ,\) set \(t \leftarrow 0\ ,\) \(TotAcc \leftarrow 0\ ,\) and set \(NumIterations\) equal to the desired number of iterations (re-partitions). 
+</p><p>calculate distances between all the input samples and store in \(n \times n\) matrix \(\textbf{D}\ .\)  (For a large number of samples, use only the lower or upper triangular of \(\textbf{D}\) for storage since it is a square symmetric matrix.)
+</p><p><b>for</b> \(t \leftarrow \) 1 <b>to</b> \(NumIterations\) <b>do</b>
+</p>
+<dl><dd>set \(\textbf{C} \leftarrow \)0, and \(n_{total} \leftarrow 0\ .\)
+</dd></dl>
+<dl><dd>partition the input samples into \(\kappa\) equally-sized groups.  
+</dd></dl>
+<dl><dd><b>for</b> \(fold \leftarrow\) 1 <b>to</b> \(\kappa\) <b>do</b>
+</dd></dl>
+<dl><dd><dl><dd>assign samples in the \(fold\)th partition to testing, and use the remaining samples for training.  Set the number of samples used for testing as \(n_{test}\ .\)
+</dd></dl>
+</dd></dl>
+<dl><dd><dl><dd>set \(n_{total} \leftarrow n_{total}+n_{test}\ .\)
+</dd></dl>
+</dd></dl>
+<dl><dd><dl><dd><b>for</b> <i>i</i> \( \leftarrow \) 1 <b>to</b> \(n_{test}\) <b>do</b>
+</dd></dl>
+</dd></dl>
+<dl><dd><dl><dd><dl><dd>for test sample \(\textbf{x}_i\)determine the \(k\) closest training samples based on the calculated distances.
+</dd></dl>
+</dd></dl>
+</dd></dl>
+<dl><dd><dl><dd><dl><dd>determine \(\hat{\omega}\ ,\) the most frequent class label among the \(k\) closest training samples.
+</dd></dl>
+</dd></dl>
+</dd></dl>
+<dl><dd><dl><dd><dl><dd>increment confusion matrix \(\textbf{C}\) by 1 in element \(c_{\omega,\hat{\omega}}\ ,\) where \(\omega\) is the true and \(\hat{\omega}\) the predicted class label for test sample \(\textbf{x}_i\ .\)  If \(\omega =\hat{\omega}\) then the increment of \(+1\) will occur on the diagonal of the confusion matrix, otherwise, the increment will occur in an off-diagonal.   
+</dd></dl>
+</dd></dl>
+</dd></dl>
+<dl><dd>determine the classification accuracy using \(Acc = \frac{\sum_j^{\Omega}c_{jj}}{n_{total}}\) where \(c_{jj}\) is a diagonal element of the confusion matrix \(\textbf{C}\ .\)
+</dd></dl>
+<dl><dd>calculate \(TotAcc = TotAcc + Acc\ .\)  
+</dd></dl>
+<p>calculate \(AvgAcc = TotAcc/NumIterations\)
+</p><p><b>end</b>
+</p><p>The above pseudocode was applied to several commonly used data sets (see next section) where the fold value varied in order to asses s performance (accuracy) as a function of the size of the cross validation partitions.
+</p>
+<h2> <span class="mw-headline" id="Commonly_Employed_Data_Sets">Commonly Employed Data Sets</span></h2>
+<p>Nine data sets from the <a rel="nofollow" class="external text" href="http://mlearn.ics.uci.edu/MLRepository.html">Machine Learning Repository</a> of the University of California - Irvine (UCI) were used for several k-nearest neighbor runs (Newman et al., 1998).  Table 2 lists the data sets, number of classes, number of samples, and number of features (attributes) in each data set.
+</p>
+<table class="wikitable" style="text-align:center" border="1">
+<caption>Table 2.  Data sets used.
+</caption>
+<tr>
+<th>  Data set </th>
+<th> #Samples </th>
+<th> #Classes</th>
+<th> #Features </th>
+<th> Reference
+</th></tr>
+<tr>
+<td>Cancer	(Wisconsin)</td>
+<td> 699	</td>
+<td> 2</td>
+<td> 9 </td>
+<td> Wolberg &amp; Mangasarin, 1990
+</td></tr>
+<tr>
+<td> Dermatology	</td>
+<td> 	366	</td>
+<td> 	6  </td>
+<td> 34 </td>
+<td> Guvenir et al., 1998
+</td></tr>
+<tr>
+<td>Glass	</td>
+<td> 	214	</td>
+<td> 	6</td>
+<td> 9 </td>
+<td>Evett &amp; Spiehler, 1987
+</td></tr>
+<tr>
+<td>Ionosphere	</td>
+<td> 	351	</td>
+<td> 	2</td>
+<td> 32</td>
+<td>Sigillito et al., 1989
+</td></tr>
+<tr>
+<td>Fisher Iris	</td>
+<td> 	150	</td>
+<td> 	3</td>
+<td> 4 </td>
+<td> Fisher, 1936
+</td></tr>
+<tr>
+<td>Liver	</td>
+<td> 	345	</td>
+<td> 2</td>
+<td> 	8 </td>
+<td> Forsyth, 1990
+</td></tr>
+<tr>
+<td>Pima Diabetes	</td>
+<td> 	768	</td>
+<td>  2</td>
+<td>  	8</td>
+<td> Smith et al., 1988
+</td></tr>
+<tr>
+<td>Soybean	</td>
+<td> 	266	</td>
+<td> 	15</td>
+<td> 38 </td>
+<td> Michalski &amp; Chilausky, 1980
+</td></tr>
+<tr>
+<td>Wine	</td>
+<td> 	178	</td>
+<td> 	3</td>
+<td> 13</td>
+<td>Aeberhard et al., 1992
+</td></tr></table>
+<h2> <span class="mw-headline" id="Performance_Evaluation">Performance Evaluation</span></h2>
+<p>Figure 3 shows the strong linear relationship between 10-fold cross-validation accuracy for the 9 data sets as a function of the ratio of the feature sum[-log(p)] to number of features.  The liver data set resulted in the lowest accuracy, while the Fisher Iris data resulted in the greatest accuracy.  The low value of sum[-log(p-value)] for features in the liver data set will on average result in lower classification accuracy, wheres the greater level of sum[-log(p-value)] for the Fisher Iris data and cancer data set  will yield much greater levels of accuracy.  
+</p>
+<div id="fig:Acc_vs_slp2feat.png" class="thumb tright"><div class="thumbinner" style="width:302px;"><a href="http://scholarpedia.org/article/File:Acc_vs_slp2feat.png" class="image"><img alt="" src="http://scholarpedia.org/w/images/thumb/a/a4/Acc_vs_slp2feat.png/300px-Acc_vs_slp2feat.png" width="300" height="228" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://scholarpedia.org/article/File:Acc_vs_slp2feat.png" class="internal" title="Enlarge"><img src="http://scholarpedia.org/w/skins/common/images/magnify-clip.png" width="15" height="11" alt="" /></a></div>Figure 3: Linear relationship between classification accuracy and the ratio sum[-log(p)]/#features.  5NN used with feature standardization.</div></div></div>
+<p>Figure 4 reflects k-nearest neighbor performance (k=5, feature standardization) for various cross validation methods for each data set.  2- and 5-fold cross validation ("CV2" and "CV5") performed worse than 10-fold ("CV10") and leave-one-out cross validation ("CV-1").   10-fold cross validation ("CV10") was approximately the same as leave-one-out cross validation ("CV-1").  Bootstrapping resulted in slightly lower performance when compared with CV10 and CV-1.  
+</p><p>Figure 5 shows that when <a href="http://scholarpedia.org/article/Averaging" title="Averaging">averaging</a> performance over all data sets (k=5), that both feature standardization and feature fuzzification resulted in greater accuracy levels when compared with no feature transformation.   
+</p><p>Figures 6, 7, and 8 illustrates the CV10 accuracy for each data set as a function of k without no transformation, standardization, and fuzzification, respectively.  It was apparent that feature standardization (Figure 7) and fuzzification (Figure 8) greatly improved the accuracy of the dermatology and wine data sets.  Fuzzification (Figure 8) slightly reduced the performance of the Fisher Iris data set.   Interestingly, performance for the soybean data set did not improve with increasing values of k, suggesting overlearning or overfitting.  
+</p>
+<div id="fig:KNN_cv_data.png" class="thumb tright"><div class="thumbinner" style="width:302px;"><a href="http://scholarpedia.org/article/File:KNN_cv_data.png" class="image"><img alt="" src="http://scholarpedia.org/w/images/thumb/1/19/KNN_cv_data.png/300px-KNN_cv_data.png" width="300" height="244" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://scholarpedia.org/article/File:KNN_cv_data.png" class="internal" title="Enlarge"><img src="http://scholarpedia.org/w/skins/common/images/magnify-clip.png" width="15" height="11" alt="" /></a></div>Figure 4: Bias as a function of various cross-validation methods for the data sets used.  Feature values standardized and k=5.</div></div></div>
+<p>Average accuracy as function of k is shown for feature standardization and fuzzification for all data sets combined is shown in Figure 9.  Again, feature standardization and fuzzification resulted in improved accuracy values over the range of k.   
+Finally, in Figures 10, 11, and 12 are shown the bootstrap accuracy as a function of training sample size when (k=5), i.e. 5NN, with and without feature standardization and fuzzification.  The use of feature standardization and fuzzification resulted in substantial performance gains for the dermatology and wine data sets.  Feature fuzzification markedly improved performance for the dermatology data set, especially at lower sample size.  Standardization also improved the dermatology date set performance at smaller sample sizes.  Performance for the liver, glass, and soybean data sets was not improved by feature standardization or fuzzification.   
+</p><p><br />
+</p>
+<div id="fig:KNN_cv_avg.png" class="thumb tright"><div class="thumbinner" style="width:302px;"><a href="http://scholarpedia.org/article/File:KNN_cv_avg.png" class="image"><img alt="" src="http://scholarpedia.org/w/images/thumb/0/05/KNN_cv_avg.png/300px-KNN_cv_avg.png" width="300" height="244" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://scholarpedia.org/article/File:KNN_cv_avg.png" class="internal" title="Enlarge"><img src="http://scholarpedia.org/w/skins/common/images/magnify-clip.png" width="15" height="11" alt="" /></a></div>Figure 5: Bias as a function of cross validation method averaged over all training sets as a function of feature transformation.  K=5 used.</div></div></div>
+<p><br />
+</p>
+<div id="fig:KNN_k_data.png" class="thumb tright"><div class="thumbinner" style="width:302px;"><a href="http://scholarpedia.org/article/File:KNN_k_data.png" class="image"><img alt="" src="http://scholarpedia.org/w/images/thumb/1/1a/KNN_k_data.png/300px-KNN_k_data.png" width="300" height="200" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://scholarpedia.org/article/File:KNN_k_data.png" class="internal" title="Enlarge"><img src="http://scholarpedia.org/w/skins/common/images/magnify-clip.png" width="15" height="11" alt="" /></a></div>Figure 6: Bias as a function of <i>k</i> without feature transformation.  10-fold cross validation used.</div></div></div>
+<div id="fig:KNN_k_data_std.png" class="thumb tright"><div class="thumbinner" style="width:302px;"><a href="http://scholarpedia.org/article/File:KNN_k_data_std.png" class="image"><img alt="" src="http://scholarpedia.org/w/images/thumb/2/2a/KNN_k_data_std.png/300px-KNN_k_data_std.png" width="300" height="200" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://scholarpedia.org/article/File:KNN_k_data_std.png" class="internal" title="Enlarge"><img src="http://scholarpedia.org/w/skins/common/images/magnify-clip.png" width="15" height="11" alt="" /></a></div>Figure 7: Bias as a function of <i>k</i> with feature standardization.  10-fold cross validation used.</div></div></div>
+<div id="fig:KNN_k_data_fuzzy.png" class="thumb tright"><div class="thumbinner" style="width:302px;"><a href="http://scholarpedia.org/article/File:KNN_k_data_fuzzy.png" class="image"><img alt="" src="http://scholarpedia.org/w/images/thumb/2/26/KNN_k_data_fuzzy.png/300px-KNN_k_data_fuzzy.png" width="300" height="200" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://scholarpedia.org/article/File:KNN_k_data_fuzzy.png" class="internal" title="Enlarge"><img src="http://scholarpedia.org/w/skins/common/images/magnify-clip.png" width="15" height="11" alt="" /></a></div>Figure 8: Bias as a function of <i>k</i> with feature fuzzification.  10-fold cross validation used.</div></div></div>
+<div id="fig:KNN_k_avg.png" class="thumb tright"><div class="thumbinner" style="width:302px;"><a href="http://scholarpedia.org/article/File:KNN_k_avg.png" class="image"><img alt="" src="http://scholarpedia.org/w/images/thumb/0/01/KNN_k_avg.png/300px-KNN_k_avg.png" width="300" height="227" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://scholarpedia.org/article/File:KNN_k_avg.png" class="internal" title="Enlarge"><img src="http://scholarpedia.org/w/skins/common/images/magnify-clip.png" width="15" height="11" alt="" /></a></div>Figure 9: Bias as a function of <i>k</i> averaged over all training sets as a function of feature transformation.</div></div></div>
+<div id="fig:5NN_bb.png" class="thumb tright"><div class="thumbinner" style="width:302px;"><a href="http://scholarpedia.org/article/File:5NN_bb.png" class="image"><img alt="" src="http://scholarpedia.org/w/images/thumb/d/de/5NN_bb.png/300px-5NN_bb.png" width="300" height="200" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://scholarpedia.org/article/File:5NN_bb.png" class="internal" title="Enlarge"><img src="http://scholarpedia.org/w/skins/common/images/magnify-clip.png" width="15" height="11" alt="" /></a></div>Figure 10: Bootstrap bias as a function of the number of training instances sampled randomly with replacement. No feature transformation used.</div></div></div>
+<div id="fig:5NN_bb_std.png" class="thumb tright"><div class="thumbinner" style="width:302px;"><a href="http://scholarpedia.org/article/File:5NN_bb_std.png" class="image"><img alt="" src="http://scholarpedia.org/w/images/thumb/8/82/5NN_bb_std.png/300px-5NN_bb_std.png" width="300" height="200" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://scholarpedia.org/article/File:5NN_bb_std.png" class="internal" title="Enlarge"><img src="http://scholarpedia.org/w/skins/common/images/magnify-clip.png" width="15" height="11" alt="" /></a></div>Figure 11: Bootstrap bias as a function of the number of training instances sampled randomly with replacement. Feature standardization used.</div></div></div>
+<div id="fig:5NN_bb_fuzzy.png" class="thumb tright"><div class="thumbinner" style="width:302px;"><a href="http://scholarpedia.org/article/File:5NN_bb_fuzzy.png" class="image"><img alt="" src="http://scholarpedia.org/w/images/thumb/b/b9/5NN_bb_fuzzy.png/300px-5NN_bb_fuzzy.png" width="300" height="200" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="http://scholarpedia.org/article/File:5NN_bb_fuzzy.png" class="internal" title="Enlarge"><img src="http://scholarpedia.org/w/skins/common/images/magnify-clip.png" width="15" height="11" alt="" /></a></div>Figure 12: Bootstrap bias as a function of the number of training instances sampled randomly with replacement.  Feature fuzzification used.</div></div></div>
+<p>Performance of the unsupervised k-nearest neighbor classification method was assessed using several data sets, cross validation, and bootstrapping.  All methods involved initial use of a distance matrix and construction of a confusion matrix during sample testing, from which classification accuracy was determined.  With regard to accuracy calculation, for cross-validation it is recommended that the confusion matrix be filled incrementally with results for all input samples partitioned into the various groups, and then calculating accuracy -- rather than calculating accuracy and averaging after each partition of training samples is used for testing.  In other words, for e.g. 5-fold cross-validation, it is not recommended to calculate accuracy after the first 4/5ths of samples are used for training and the first 1/5th of samples are used for testing.  Instead, it is better to determine accuracy after all 5 partitions have been used for testing to fill in the confusion matrix for each input sample considered along the way.  Then, re-partition the samples into 5 groups again and repeat training and testing on each of the partitions.  Another example would be to consider an analysis for which there are 100 input samples and 10-fold cross-validation is to be used.  The suggestion is not to calculate average accuracy every time 10 of the samples are used for testing, but rather to go through the 10 partitions in order to fill in the confusion matrix for the entire set of 100 samples, and then calculate accuracy.  This should be repeated e.g. 10 times during which re-partitioning is done.   
+</p><p>The <i>hold-out</i> method of accuracy determination is another approach to assess the performance of k-nearest neighbor.  Here, input samples are randomly split into 2 groups with 2/3 (~66%) of the input samples assigned to the training set and 1/3 (~33%) of the samples (remaining) assigned to testing.  Training results are used to classify the test samples.  A major criticism of the hold-out method when compared with cross-validation is that it makes inefficient use of the entire data set, since date are split one time and used once in this configuration to assess classification accuracy.  It is important to recognize that the hold-out method is not the same as predicting class membership for an independent set of supplemental experimental <i>validation</i> samples.  Validation sets are used when the goal is to confirm the predictive capabilities of a classification scheme based on the results from an independent set of supplemental samples not used previously for training and testing.  Laboratory investigations involving molecular biology and genomics commonly use validation sets raised independently from the original training/testing samples.  By using an independent set of validation samples, the ability of a set of pre-selected features (e.g. mRNA or microRNA transcripts, or proteins) to correctly classify new samples can be better evaluated.  The attempt to validate a set of features using a new set of samples should be done carefully, since processing new samples at a later date using different lab protocols, buffers, and technicians can introduce significant systematic error into the investigation.  As a precautionary method, a laboratory should plan on processing the independent validation set of samples in the same laboratory, using the same protocol and buffer solutions, the same technician(s), and preferably at the same time the original samples are processed.  Waiting until a later phase in a study to generate the independent validation set of samples may seriously degrade the predictive ability of the features identified from the original samples, ultimately jeopardizing the classification study.  
+</p><p>The data sets used varied over the number of classes, features, and statistical significance for class discrimination based on the feature-specific F-ratio tests.  An important finding during the performance evaluation of k-nearest neighbor was that feature standardization improved accuracy for some data sets and did not reduce accuracy.  On the other hand, while feature fuzzification improved performance for several data sets, it nevertheless resulted in decreased performance for one data set (Fisher Iris).  The effect of feature standardization and fuzzification varies depending on the data set and the classifier being used.  In an independent analysis of 14 classifiers applied to 9 large <a href="http://scholarpedia.org/article/DNA" title="DNA">DNA</a> microarray data sets, it was found that feature standardization or fuzzification improved performance for all classifiers except <a href="http://scholarpedia.org/article/Naive_Bayes_classifier" title="Naive Bayes classifier">naive Bayes classifier</a>, quadratic discriminant analysis, and artificial <a href="http://scholarpedia.org/article/Neuron" title="Neuron">neural</a> networks (Peterson and Coleman, 2007).  While standardization reduced performance of only quadratic discriminant analysis, fuzzification reduced the performance of the naive Bayes, quadratic discriminant analysis, and artificial neural networks classifiers.   
+</p><p>In light of the transformations explored in this study of k-nearest neighbor classification, it is recommended that at least the effects of feature standardization be performed and comparatively assessed when using k-nearest neighbor classification.  In addition, the effects of values of k should also be determined in order to identify regions where overlearning or overfitting may occur.  Lastly, there may be unique characteristics of the sample and feature space being studied, which may cause other classifiers to result in better (worse) performance when compared with k-nearest neighbor classification.  Hence, a full evaluation of K-nearest neighbor performance as a function of feature transformation and k is suggested.
+</p>
+<h2> <span class="mw-headline" id="Acknowledgments">Acknowledgments</span></h2>
+<p>We are grateful to the current and past librarians of the University of California-Irvine (UCI) Machine Learning Repository, namely, Patrick M. Murphy, David Aha, and Christopher J. Merz.  
+</p>
+<h2> <span class="mw-headline" id="References">References</span></h2>
+<ul><li> Aeberhard, S., Coomans, D., de Vel, O. Comparison of Classifiers in High Dimensional Settings. Tech. Rep. no. 92-02, (1992), Dept. of Computer Science and Dept. of Mathematics and Statistics, James Cook University of North Queensland, 1992.
+</li></ul>
+<ul><li> Bailey, T.,  Jain, A. A note on distance-weighted k-nearest neighbor rules.  IEEE Trans. Systems, Man, Cybernetics, Vol. 8, pp. 311-313, 1978.
+</li></ul>
+<ul><li> Bermejo, S. Cabestany, J.  Adaptive soft k-nearest-neighbour classifiers. Pattern Recognition, Vol. 33, pp. 1999-2005, 2000.
+</li></ul>
+<ul><li> Cover, T.M., Hart, P.E. Nearest neighbor pattern classification. IEEE Trans. Inform. Theory, IT-13(1):21–27, 1967.
+</li></ul>
+<ul><li> Dubois, D., Prade, H. Fundamentals of Fuzzy Sets, Boston (MA), Kluwer, 2000.
+</li></ul>
+<ul><li> Dudani, S.A. The distance-weighted k-nearest-neighbor rule. IEEE Trans. Syst. Man Cybern., SMC-6:325–327, 1976.
+</li></ul>
+<ul><li> Evett, I.W., Spiehler, E.J., Rule Induction in Forensic Science.  Central Research Establishment, Home Office Forensic Science Service, Aldermaston, Reading, Berkshire RG7 4PN, 1987.   
+</li></ul>
+<ul><li> Fisher, R.A. The use of multiple measurements in taxonomic problems. Annals Eugenics, 7, Part II, 179-188, 1936.
+</li></ul>
+<ul><li> Fix, E., Hodges, J.L. Discriminatory analysis, nonparametric discrimination: Consistency properties. Technical Report 4, USAF School of Aviation Medicine, Randolph Field, Texas, 1951.
+</li></ul>
+<ul><li> Forsyth, R.S., BUPA Liver Disorders.  Nottingham NG3 5DX, 0602-621676, 1990.
+</li></ul>
+<ul><li> Fukunaga, K., Hostetler, L. k-nearest-neighbor bayes-risk estimation.  IEEE Trans. Information Theory, 21(3), 285-293,  1975.
+</li></ul>
+<ul><li> Guvenir, H.A., Demiroz, G., Ilter, N. Learning differential diagnosis of erythemato-squamous diseases using voting feature intervals.  Artificial Intelligence in Medicine.  13(3):147-165; 1998.
+</li></ul>
+<ul><li> Hellman, M.E. The nearest neighbor classification rule with a reject option. IEEE Trans. Syst. Man Cybern., 3:179–185, 1970.
+</li></ul>
+<ul><li> Jozwik, A. A learning scheme for a fuzzy k-nn rule. Pattern Recognition Letters, 1:287–289, 1983.
+</li></ul>
+<ul><li> Keller, J.M., Gray, M.R., Givens, J.A. A fuzzy k-nn neighbor algorithm. IEEE Trans. Syst. Man Cybern., SMC-15(4):580–585, 1985.
+</li></ul>
+<ul><li> Klir, G.J., Yuan, B.  Fuzzy Sets and <a href="http://scholarpedia.org/article/Fuzzy_Logic" title="Fuzzy Logic">Fuzzy Logic</a>,  Upper Saddle River(NJ), Prentice-Hall, 1995.
+</li></ul>
+<ul><li> Michalski, R.S., Chilausky R.L. Learning by Being Told and Learning from Examples: An Experimental Comparison of the Two Methods of Knowledge Acquisition in the Context of Developing an Expert System for Soybean Disease Diagnosis. International Journal of Policy Analysis and Information Systems. 4(2), 1980.
+</li></ul>
+<ul><li> Newman, D.J. &amp; Hettich, S. &amp; Blake, C.L. &amp; Merz, C.J. (1998). UCI Repository of machine learning databases <a rel="nofollow" class="external autonumber" href="http://www.ics.uci.edu/~mlearn/MLRepository.html">[1]</a>. Irvine, CA: University of California, Department of Information and Computer Science.
+</li></ul>
+<ul><li> Pal, S.K., Mitra, P. Pattern Recognition Algorithms for Data Mining: Scalability, Knowledge Discovery and Soft Granular Computing. Boca Raton (FL), Chapman &amp; Hall, 2004.
+</li></ul>
+<ul><li> Peterson, L.E., Coleman, M.A.  Machine learning-based receiver operating characteristic (ROC) curves for crisp and fuzzy classification of DNA microarrays in cancer research.  Int. J. of Approximate Reasoning.   47, 17-36; 2008.
+</li></ul>
+<ul><li> Sigillito, V.G., Wing, S.P., Hutton, L.V., Baker, K.B. Classification of radar returns from the ionosphere using neural networks. Johns Hopkins APL Technical Digest, 10, 262-266; 1989.
+</li></ul>
+<ul><li> Smith,J.W., Everhart, J.E., Dickson,W.C., Knowler, W.C., Johannes, R.S. Using the ADAP learning algorithm to forecast the onset of diabetes mellitus.  Proceedings of the Symposium on Computer Applications and Medical Care} (pp. 261--265).  IEEE Computer Society Press, 1988.
+</li></ul>
+<ul><li> Voronoi, G. Nouvelles applications des paramètres continus à la théorie des formes quadratiques. Journal für die Reine und Angewandte Mathematik. 133, 97-178; 1907.
+</li></ul>
+<ul><li> Wolberg, W.H., Mangasarian, O.L. Multisurface method of pattern separation for medical diagnosis applied to breast cytology. PNAS.   87: 9193-9196; 1990.
+</li></ul>
+<p><b>Internal references</b>
+</p>
+<ul><li> Jan A. Sanders (2006) <a href="http://scholarpedia.org/article/Averaging" title="Averaging">Averaging</a>. <a href="http://scholarpedia.org/article/Scholarpedia" title="Scholarpedia">Scholarpedia</a>, 1(11):1760.
+</li></ul>
+<ul><li> Milan Mares (2006) <a href="http://scholarpedia.org/article/Fuzzy_sets" title="Fuzzy sets">Fuzzy sets</a>. Scholarpedia, 1(10):2031.
+</li></ul>
+<p><br />
+</p>
+<h2> <span class="mw-headline" id="Recommended_reading">Recommended reading</span></h2>
+<ul><li> <a rel="nofollow" class="external text" href="http://www.cs.cmu.edu/~zhuxj/courseproject/knndemo/KNN.html">k Nearest Neighbor Demo (Java)</a>
+</li></ul>
+<ul><li> <a rel="nofollow" class="external text" href="http://www.statsoft.com/textbook/stknn.html">k Nearest Neighbor - Electronic Statistical Textbook (Statsoft, Inc.)</a>
+</li></ul>
+<ul><li> <a rel="nofollow" class="external text" href="http://www.amazon.com/Nearest-Neighbor-Pattern-Classification-Techniques/dp/0818689307/">Dasarthy, B.V. Nearest Neighbor Classification Techniques.  IEEE Press, Hoboken(NJ), 1990.</a>
+</li></ul>
+<ul><li> <a rel="nofollow" class="external text" href="http://www.amazon.com/Machine-Learning-Mcgraw-Hill-International-Edit/dp/0071154671/">Mitchell, T.M.  Machine Learning.  McGraw-Hill, Columbus(OH), 1997.</a>
+</li></ul>
+<ul><li> <a rel="nofollow" class="external text" href="http://www.amazon.com/Pattern-Classification-2nd-Richard-Duda/dp/0471056693/">Duda, R.O, Hart, P.G., Stork, D.E. Pattern Classification.  John Wiley &amp; Sons, New York(NY), 2001.</a>
+</li></ul>
+<ul><li> <a rel="nofollow" class="external text" href="http://www.amazon.com/Elements-Statistical-Learning-T-Hastie/dp/0387952845/">Hastie, T., Tibshirani, R., Friedman, J.H.  The Elements of Statistical Learning.  Berlin, Springer-Verlag, 2001.</a>
+</li></ul>
+
+<!-- Tidy found serious XHTML errors -->
+
+<!-- 
+NewPP limit report
+Preprocessor node count: 65/1000000
+Post‐expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Expensive parser function count: 0/100
+ExtLoops count: 0/100
+-->
+<div class="cp-footer"><table cellpadding="0" border="0"><tr><td>Sponsored by: <a href="http://scholarpedia.org/article/User:Eugene_M._Izhikevich" title="User:Eugene M. Izhikevich"><span>Eugene M. Izhikevich</span>, <span>Editor-in-Chief of Scholarpedia, the peer-reviewed open-access encyclopedia</span></a></td></tr><tr><td><a rel="nofollow" class="external text" href="http://scholarpedia.org/w/index.php?title=K-nearest_neighbor&amp;oldid=30134">Reviewed by</a>: <a href="http://scholarpedia.org/article/User:Francesco_Masulli" title="User:Francesco Masulli"><span>Dr. Francesco Masulli</span>, <span>Dipartimento di Informatica e Scienze dell'Informazione    Universita' di Genova, Italy</span></a></td></tr><tr><td><a rel="nofollow" class="external text" href="http://scholarpedia.org/w/index.php?title=K-nearest_neighbor&amp;oldid=30134">Reviewed by</a>: <a href="http://scholarpedia.org/article/User:Anonymous" title="User:Anonymous"><span>Anonymous</span></a></td></tr><tr><td>Accepted on: <a rel="nofollow" class="external text" href="http://scholarpedia.org/w/index.php?title=K-nearest_neighbor&amp;oldid=58444">2009-02-21 18:06:59 GMT</a></td></tr></table></div>
+</div>				<!-- /bodycontent -->
+								<!-- printfooter -->
+				<div class="printfooter">
+				Retrieved from "<a href="http://www.scholarpedia.org/w/index.php?title=K-nearest_neighbor&amp;oldid=137311">http://www.scholarpedia.org/w/index.php?title=K-nearest_neighbor&amp;oldid=137311</a>"				</div>
+				<!-- /printfooter -->
+												<!-- catlinks -->
+				<div id='catlinks' class='catlinks'><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="http://scholarpedia.org/article/Special:Categories" title="Special:Categories">Category</a>: <ul><li><a href="http://scholarpedia.org/article/Category:Computational_Intelligence" title="Category:Computational Intelligence">Computational Intelligence</a></li></ul></div></div>				<!-- /catlinks -->
+												<div class="visualClear"></div>
+				<!-- debughtml -->
+								<!-- /debughtml -->
+			</div>
+			<!-- /bodyContent -->
+		</div>
+		<!-- /content -->
+		<!-- header -->
+		<div id="mw-head" class="noprint">
+			
+<!-- 0 -->
+<div id="p-personal" class="">
+	<h5>Personal tools</h5>
+	<ul>
+		<li id="pt-login"><a href="http://scholarpedia.org/w/index.php?title=Special:UserLogin&amp;returnto=K-nearest+neighbor" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>
+	</ul>
+</div>
+
+<!-- /0 -->
+			<div id="left-navigation">
+				
+<!-- 0 -->
+<div id="p-namespaces" class="vectorTabs">
+	<h5>Namespaces</h5>
+	<ul>
+					<li  id="ca-nstab-main" class="selected"><span><a href="K-nearest_neighbor.html"  title="View the content page [c]" accesskey="c">Page</a></span></li>
+					<li  id="ca-talk"><span><a href="http://scholarpedia.org/article/Talk:K-nearest_neighbor"  title="Discussion about the content page [t]" accesskey="t">Discussion</a></span></li>
+			</ul>
+</div>
+
+<!-- /0 -->
+
+<!-- 1 -->
+<div id="p-variants" class="vectorMenu emptyPortlet">
+	<h4>
+		</h4>
+	<h5><span>Variants</span><a href="K-nearest_neighbor.html#"></a></h5>
+	<div class="menu">
+		<ul>
+					</ul>
+	</div>
+</div>
+
+<!-- /1 -->
+			</div>
+			<div id="right-navigation">
+				
+<!-- 0 -->
+<div id="p-views" class="vectorTabs">
+	<h5>Views</h5>
+	<ul>
+					<li id="ca-view" class="selected"><span><a href="K-nearest_neighbor.html" >Read</a></span></li>
+					<li id="ca-viewsource"><span><a href="http://scholarpedia.org/w/index.php?title=K-nearest_neighbor&amp;action=edit"  title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span></li>
+					<li id="ca-history" class="collapsible"><span><a href="http://scholarpedia.org/w/index.php?title=K-nearest_neighbor&amp;action=history"  title="Past revisions of this page [h]" accesskey="h">View history</a></span></li>
+			</ul>
+</div>
+
+<!-- /0 -->
+
+<!-- 1 -->
+<div id="p-cactions" class="vectorMenu emptyPortlet">
+	<h5><span>Actions</span><a href="K-nearest_neighbor.html#"></a></h5>
+	<div class="menu">
+		<ul>
+					</ul>
+	</div>
+</div>
+
+<!-- /1 -->
+
+<!-- 2 -->
+<div id="p-search">
+	<h5><label for="searchInput">Search</label></h5>
+	<form action="http://scholarpedia.org/w/index.php" id="searchform">
+				<div id="simpleSearch">
+						<input name="search" title="Search Scholarpedia [f]" accesskey="f" id="searchInput" />						<button name="button" title="Search the pages for this text" id="searchButton"><img src="http://scholarpedia.org/w/skins/vector/images/search-ltr.png?303" alt="Search" /></button>								<input type='hidden' name="title" value="Special:Search"/>
+		</div>
+	</form>
+</div>
+
+<!-- /2 -->
+			</div>
+		</div>
+		<!-- /header -->
+		<!-- panel -->
+			<div id="mw-panel" class="noprint">
+				<!-- logo -->
+					<div id="p-logo"><a style="background-image: url(http://scholarpedia.org/w/skins/vector/images/splogo.png);" href="http://scholarpedia.org/article/Main_Page"  title="Visit the main page"></a></div>
+				<!-- /logo -->
+				
+<!-- navigation -->
+<div class="portal" id='p-navigation'>
+	<h5>Navigation</h5>
+	<div class="body">
+		<ul>
+			<li id="n-mainpage-description"><a href="http://scholarpedia.org/article/Main_Page" title="Visit the main page [z]" accesskey="z">Main page</a></li>
+			<li id="n-About"><a href="http://scholarpedia.org/article/Scholarpedia:About">About</a></li>
+			<li id="n-Propose-a-new-article"><a href="http://scholarpedia.org/article/Special:ProposeArticle">Propose a new article</a></li>
+			<li id="n-Instructions-for-Authors"><a href="http://scholarpedia.org/article/Scholarpedia:Instructions_for_Authors">Instructions for Authors</a></li>
+			<li id="n-randompage"><a href="http://scholarpedia.org/article/Special:Random" title="Load a random page [x]" accesskey="x">Random article</a></li>
+			<li id="n-FAQs"><a href="http://scholarpedia.org/article/Help:Frequently_Asked_Questions">FAQs</a></li>
+			<li id="n-Help"><a href="http://scholarpedia.org/article/Scholarpedia:Help">Help</a></li>
+		</ul>
+	</div>
+</div>
+
+<!-- /navigation -->
+
+<!-- Focal areas -->
+<div class="portal" id='p-Focal_areas'>
+	<h5>Focal areas</h5>
+	<div class="body">
+		<ul>
+			<li id="n-Astrophysics"><a href="http://scholarpedia.org/article/Encyclopedia:Astrophysics">Astrophysics</a></li>
+			<li id="n-Celestial-mechanics"><a href="http://scholarpedia.org/article/Encyclopedia:Celestial_Mechanics">Celestial mechanics</a></li>
+			<li id="n-Computational-neuroscience"><a href="http://scholarpedia.org/article/Encyclopedia:Computational_neuroscience">Computational neuroscience</a></li>
+			<li id="n-Computational-intelligence"><a href="http://scholarpedia.org/article/Encyclopedia:Computational_intelligence">Computational intelligence</a></li>
+			<li id="n-Dynamical-systems"><a href="http://scholarpedia.org/article/Encyclopedia:Dynamical_systems">Dynamical systems</a></li>
+			<li id="n-Physics"><a href="http://scholarpedia.org/article/Encyclopedia:Physics">Physics</a></li>
+			<li id="n-Touch"><a href="http://scholarpedia.org/article/Encyclopedia:Touch">Touch</a></li>
+			<li id="n-More-topics"><a href="http://scholarpedia.org/article/Scholarpedia:Topics">More topics</a></li>
+		</ul>
+	</div>
+</div>
+
+<!-- /Focal areas -->
+
+<!-- Activity -->
+<div class="portal" id='p-Activity'>
+	<h5>Activity</h5>
+	<div class="body">
+		<ul>
+			<li id="n-Recently-published-articles"><a href="http://scholarpedia.org/article/Special:RecentlyPublished">Recently published articles</a></li>
+			<li id="n-Recently-sponsored-articles"><a href="http://scholarpedia.org/article/Special:RecentlySponsored">Recently sponsored articles</a></li>
+			<li id="n-recentchanges"><a href="http://scholarpedia.org/article/Special:RecentChanges" title="A list of recent changes in the wiki [r]" accesskey="r">Recent changes</a></li>
+			<li id="n-All-articles"><a href="http://scholarpedia.org/article/Special:AllPages">All articles</a></li>
+			<li id="n-List-all-Curators"><a href="http://scholarpedia.org/article/Special:ListCurators">List all Curators</a></li>
+			<li id="n-List-all-users"><a href="http://scholarpedia.org/article/Special:ListUsers">List all users</a></li>
+			<li id="n-Journal"><a href="http://scholarpedia.org/article/Special:Journal">Scholarpedia Journal</a></li>
+		</ul>
+	</div>
+</div>
+
+<!-- /Activity -->
+
+<!-- SEARCH -->
+
+<!-- /SEARCH -->
+
+<!-- TOOLBOX -->
+<div class="portal" id='p-tb'>
+	<h5>Tools</h5>
+	<div class="body">
+		<ul>
+			<li id="t-whatlinkshere"><a href="http://scholarpedia.org/article/Special:WhatLinksHere/K-nearest_neighbor" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li>
+			<li id="t-recentchangeslinked"><a href="http://scholarpedia.org/article/Special:RecentChangesLinked/K-nearest_neighbor" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li>
+			<li id="t-specialpages"><a href="http://scholarpedia.org/article/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li>
+			<li><a href="http://scholarpedia.org/w/index.php?title=K-nearest_neighbor&amp;printable=yes" rel="alternate">Printable version</a></li>
+			<li id="t-permalink"><a href="http://scholarpedia.org/w/index.php?title=K-nearest_neighbor&amp;oldid=137311" title="Permanent link to this revision of the page">Permanent link</a></li>
+		</ul>
+	</div>
+</div>
+
+<!-- /TOOLBOX -->
+
+<!-- LANGUAGES -->
+
+<!-- /LANGUAGES -->
+
+                
+			</div>
+		<!-- /panel -->
+		<!-- footer -->
+		<div id="footer">
+
+            
+
+            <div id="footer-icons">
+                <ul class="social">
+                    <li><a href="https://twitter.com/scholarpedia" target="_blank"><img src="http://scholarpedia.org/w/skins/vector/images/twitter.png?303" /></a></li>
+                    <li><a href="https://plus.google.com/112873162496270574424" target="_blank"><img src="https://ssl.gstatic.com/images/icons/gplus-16.png" /></a></li>
+                    <li><a href="http://www.facebook.com/Scholarpedia" target="_blank"><img src="http://scholarpedia.org/w/skins/vector/images/facebook.png?303" /></a></li>
+                    <li><a href="http://www.linkedin.com/groups/Scholarpedia-4647975/about" target="_blank"><img src="http://scholarpedia.org/w/skins/vector/images/linkedin.png?303" /></a></li>
+                </ul>
+
+                                    <ul id="footer-icons" class="noprint">
+                                                    <li id="footer-poweredbyico">
+                                                                    <a href="http://www.mediawiki.org/"><img src="http://scholarpedia.org/w/skins/common/images/poweredby_mediawiki_88x31.png" alt="Powered by MediaWiki" width="88" height="31" /></a>                                                                    <a href="http://www.mathjax.org/"><img src="http://scholarpedia.org/w/skins/common/images/MathJaxBadge.gif" alt="Powered by MathJax" width="88" height="31" /></a>                                                                    <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_US"><img src="http://scholarpedia.org/w/skins/common/88x31.png" alt="Creative Commons License" width="88" height="31" /></a>                                                            </li>
+                                            </ul>
+                            </div>
+
+							<ul id="footer-info">
+											<li id="footer-info-lastmod"> This page was last modified on 3 November 2013, at 20:07.</li>
+											<li id="footer-info-viewcount">This page has been accessed 374,167 times.</li>
+											<li id="footer-info-copyright">
+                <span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">"K-nearest neighbor"</span> by
+            <a xmlns:cc="http://creativecommons.org/ns#" href="http://www.scholarpedia.org/article/K-nearest_neighbor" property="cc:attributionName" rel="cc:attributionURL">
+                Leif E. Peterson
+            </a> is licensed under a
+            <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_US">
+	    Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>. Permissions beyond the scope of this license are described in the <a xmlns:cc="http://creativecommons.org/ns#" href="http://www.scholarpedia.org/article/Scholarpedia:Terms_of_use" rel="cc:morePermissions">Terms of Use</a></li>
+									</ul>
+							<ul id="footer-places">
+											<li id="footer-places-privacy"><a href="http://scholarpedia.org/article/Scholarpedia:Privacy_policy" title="Scholarpedia:Privacy policy">Privacy policy</a></li>
+											<li id="footer-places-about"><a href="http://scholarpedia.org/article/Scholarpedia:About" class="mw-redirect" title="Scholarpedia:About">About Scholarpedia</a></li>
+											<li id="footer-places-disclaimer"><a href="http://scholarpedia.org/article/Scholarpedia:General_disclaimer" title="Scholarpedia:General disclaimer">Disclaimers</a></li>
+									</ul>
+			
+			<div style="clear:both"></div>
+		</div>
+		<!-- /footer -->
+		<script src="http://scholarpedia.org/w/load.php?debug=false&amp;lang=en&amp;modules=skins.vector&amp;only=scripts&amp;skin=vector&amp;*"></script>
+<script>if(window.mw){
+mw.loader.load(["jquery.ui.dialog","curatorpedia.dashboard","curatorpedia.confirm","mediawiki.user","mediawiki.page.ready","ext.vector.collapsibleNav","ext.vector.collapsibleTabs","ext.vector.simpleSearch"], null, true);
+}</script>
+<script>
+var wgSitename = 'http://scholarpedia.org';</script>
+
+<script type='text/x-mathjax-config'>
+//<![CDATA[
+    MathJax.Hub.Config({
+	styles: { 
+	     ".MathJax_Display": { 
+	       display: "table-cell ! important", 
+	       padding: "1em 0 ! important", 
+	       width: (MathJax.Hub.Browser.isMSIE && (document.documentMode||0) < 8 ? 
+			 "100% ! important" : "1000em ! important") 
+	       } 
+        },
+        extensions: ["tex2jax.js","TeX/noErrors.js", "TeX/AMSmath.js","TeX/AMSsymbols.js"],
+        jax: ["input/TeX", "output/HTML-CSS"],
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+            displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+            processEscapes: false,
+            element: "content",
+            ignoreClass: "(tex2jax_ignore|mw-search-results|searchresults)", /* note: this is part of a regex, check the docs! */
+            skipTags: ["script","noscript","style","textarea","code"] /* removed pre as wikimedia renders math in there */
+        },
+        TeX: {
+          Macros: {
+            /* Wikipedia compatibility: these macros are used on Wikipedia */
+            empty: '\\emptyset',
+            P: '\\unicode{xb6}',
+            Alpha: '\\unicode{x391}', /* FIXME: These capital Greeks don't show up in bold in \boldsymbol ... */
+            Beta: '\\unicode{x392}',
+            Epsilon: '\\unicode{x395}',
+            Zeta: '\\unicode{x396}',
+            Eta: '\\unicode{x397}',
+            Iota: '\\unicode{x399}',
+            Kappa: '\\unicode{x39a}',
+            Mu: '\\unicode{x39c}',
+            Nu: '\\unicode{x39d}',
+            Pi: '\\unicode{x3a0}',
+            Rho: '\\unicode{x3a1}',
+            Sigma: '\\unicode{x3a3}',
+            Tau: '\\unicode{x3a4}',
+            Chi: '\\unicode{x3a7}',
+            C: '\\mathbb{C}',        /* the complex numbers */
+            N: '\\mathbb{N}',        /* the natural numbers */
+            Q: '\\mathbb{Q}',        /* the rational numbers */
+            R: '\\mathbb{R}',        /* the real numbers */
+            Z: '\\mathbb{Z}',        /* the integer numbers */
+
+            /* some extre macros for ease of use; these are non-standard! */
+            F: '\\mathbb{F}',        /* a finite field */
+            HH: '\\mathcal{H}',      /* a Hilbert space */
+            bszero: '\\boldsymbol{0}', /* vector of zeros */
+            bsone: '\\boldsymbol{1}',  /* vector of ones */
+            bst: '\\boldsymbol{t}',    /* a vector 't' */
+            bsv: '\\boldsymbol{v}',    /* a vector 'v' */
+            bsw: '\\boldsymbol{w}',    /* a vector 'w' */
+            bsx: '\\boldsymbol{x}',    /* a vector 'x' */
+            bsy: '\\boldsymbol{y}',    /* a vector 'y' */
+            bsz: '\\boldsymbol{z}',    /* a vector 'z' */
+            bsDelta: '\\boldsymbol{\\Delta}', /* a vector '\Delta' */
+            E: '\\mathrm{e}',          /* the exponential */
+            rd: '\\,\\mathrm{d}',      /*  roman d for use in integrals: $\int f(x) \rd x$ */
+            rdelta: '\\,\\delta',      /* delta operator for use in sums */
+            rD: '\\mathrm{D}',         /* differential operator D */
+
+            /* example from MathJax on how to define macros with parameters: */
+            /* bold: ['{\\bf #1}', 1] */
+
+            RR: '\\mathbb{R}',
+            ZZ: '\\mathbb{Z}',
+            NN: '\\mathbb{N}',
+            QQ: '\\mathbb{Q}',
+            CC: '\\mathbb{C}',
+            FF: '\\mathbb{F}'
+          }
+        }
+    });
+//]]>
+//<![CDATA[
+MathJax.Hub.config.tex2jax.inlineMath.push(['$','$']);
+MathJax.Hub.config.tex2jax.displayMath.push(['$$','$$']);
+//]]>
+</script>
+
+<script type='text/javascript' src='https://cdn.mathjax.org/mathjax/2.3-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+
+<script src="http://scholarpedia.org/w/load.php?debug=false&amp;lang=en&amp;modules=site&amp;only=scripts&amp;skin=vector&amp;*"></script>
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-22078568-1");
+pageTracker._initData();
+pageTracker._trackPageview();
+</script><!-- Served in 1.022 secs. -->
+        
+	</body>
+</html>
