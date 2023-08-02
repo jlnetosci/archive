@@ -1,0 +1,7 @@
+Sitemap: https://komodor.com/sitemap_index.xml
+
+User-agent: *
+Disallow: /wp-admin/
+Disallow: /news/
+Disallow: /all-resources/podcast/
+Allow: /wp-admin/admin-ajax.php
