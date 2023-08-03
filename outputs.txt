@@ -53,3 +53,8 @@ https://web.archive.org/web/20230802122746/https://komodor.com/learn/git-errors/
 Cached save:
 False
 Finished
+Archive URL:
+https://web.archive.org/web/20230803141338/https://stackoverflow.com/questions/57983431/whats-the-most-space-efficient-way-to-compress-serialized-python-data
+Cached save:
+False
+Finished

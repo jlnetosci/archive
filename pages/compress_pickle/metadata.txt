@@ -1,0 +1,5 @@
+Date and Time: 2023-08-03 14:13:50
+Title: serialization - What's the most space-efficient way to compress serialized Python data? - Stack Overflow
+Description: 
+URL: https://stackoverflow.com/questions/57983431/whats-the-most-space-efficient-way-to-compress-serialized-python-data
+Webarchive URL: https://web.archive.org/web/20230803141338/https://stackoverflow.com/questions/57983431/whats-the-most-space-efficient-way-to-compress-serialized-python-data 
