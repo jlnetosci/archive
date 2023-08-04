@@ -58,3 +58,8 @@ https://web.archive.org/web/20230803141338/https://stackoverflow.com/questions/5
 Cached save:
 False
 Finished
+Archive URL:
+https://web.archive.org/web/20230804195452/https://ctan.org/tex-archive/fonts/atkinson
+Cached save:
+False
+Finished

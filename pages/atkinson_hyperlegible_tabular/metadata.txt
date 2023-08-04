@@ -1,0 +1,5 @@
+Date and Time: 2023-08-04 19:55:13
+Title: CTAN: /tex-archive/fonts/atkinson
+Description: 
+URL: https://ctan.org/tex-archive/fonts/atkinson
+Webarchive URL: https://web.archive.org/web/20230804195452/https://ctan.org/tex-archive/fonts/atkinson 
